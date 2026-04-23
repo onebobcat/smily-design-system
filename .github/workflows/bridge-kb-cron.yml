@@ -1,0 +1,29 @@
+name: Bridge KB Sync
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Extract DS from Figma
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+        run: |
+          npx @noemuch/bridge-ds@6 extract \
+            --figma-file-key flMGdSqr1NNqKGK5jp9QtH \
+            --output bridge-ds/knowledge-base/registries
+      - name: Commit updated registries
+        run: |
+          git config user.name "bridge-bot"
+          git config user.email "bridge-bot@users.noreply.github.com"
+          git add bridge-ds/knowledge-base/registries/
+          git diff --staged --quiet || git commit -m "chore: bridge KB sync $(date -u +%Y-%m-%d)"
+          git push

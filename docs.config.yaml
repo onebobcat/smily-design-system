@@ -1,0 +1,14 @@
+bridge:
+  version: "6"
+  ds_name: "Smily Design System"
+  figma_file_key: "flMGdSqr1NNqKGK5jp9QtH"
+  github_repo: "onebobcat/bridge-design-system-smily"
+
+kb:
+  registries_dir: bridge-ds/knowledge-base/registries
+  recipes_dir: bridge-ds/knowledge-base/recipes
+
+cron:
+  cadence: daily
+  time: "06:00"
+  secret_name: FIGMA_ACCESS_TOKEN

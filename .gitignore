@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# System
+.DS_Store
+
+# Local MCP config (contains token — never commit)
+.mcp.json
