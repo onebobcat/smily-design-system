@@ -1,16 +1,70 @@
-# React + Vite
+# Smily Design System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Component library and design token reference for building Smily prototypes.
 
-Currently, two official plugins are available:
+🔗 **Live site:** https://smily-design-system.vercel.app  
+📁 **Component source:** [`src/SmilyDesignSystem.jsx`](src/SmilyDesignSystem.jsx)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## What's inside
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Tab | Components |
+|-----|-----------|
+| 🎨 Colors | Brand, status, gray scale, teal & pink palettes — click any swatch to copy the hex |
+| 📝 Typography | Mulish (headings) + Open Sans (body) · full scale with weights |
+| 🔘 Buttons | Solid, Outline, Tonal, Text · sizes S/M · disabled & loading states |
+| 📥 Inputs | Default, focused, filled, error, disabled, minimal |
+| 💬 Dialogs | Default, Delete (destructive), Success (celebration) — all interactive |
+| 🧭 Navigation | Full sidebar drawer with account switcher · 17 nav items · active/hover states |
+| 🃏 Cards | Info cards (6 color purposes), Metric cards, Discovery/promo card |
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Using this to create prototypes with Claude
+
+The easiest way to generate a Smily-style prototype is to share this repo with Claude in your conversation:
+
+> "Use the design system at https://github.com/onebobcat/smily-design-system to create a prototype of [screen description]."
+
+Claude will read `CLAUDE.md` automatically and apply the correct colors, fonts, components, and layout rules.
+
+**What to ask for:**
+- "Create a bookings list page"
+- "Design a guest communication inbox"
+- "Build a rental property settings form"
+- "Make a dashboard with key metrics"
+
+---
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Tech stack
+
+- React 18 + Vite
+- Inline styles (no CSS framework)
+- Google Fonts: Mulish + Open Sans
+- Deployed on Vercel
+
+---
+
+## Design tokens (quick reference)
+
+```js
+primary:         "#1DC8CA"
+primaryGradient: "linear-gradient(82.58deg, #08767D 15.234%, #1DC8CA 241.16%)"
+secondary:       "#FF01BB"
+headingFont:     "'Mulish', sans-serif"
+bodyFont:        "'Open Sans', sans-serif"
+borderRadius:    "6px"
+cardShadow:      "2px 4px 20px rgba(0,0,0,0.10)"
+pageBg:          "#f6f7f9"
+cardBg:          "#ffffff"
+```
+
+Full token reference → [`CLAUDE.md`](CLAUDE.md)
