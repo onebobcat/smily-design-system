@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-23",
+  "recipes": [
+    {
+      "id": "r-sidebar-form-001",
+      "archetype": "sidebar-form",
+      "name": "Sidebar + Tabbed Form Page",
+      "tags": ["form", "sidebar", "edit", "rental", "settings", "tabs"],
+      "confidence": 0.75,
+      "file": "r-sidebar-form-001.json"
+    }
+  ]
+}

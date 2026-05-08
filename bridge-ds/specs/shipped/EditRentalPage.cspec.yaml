@@ -1,0 +1,361 @@
+meta:
+  name: EditRentalPage
+  type: screen
+  canvas: web
+  width: 1440
+  height: 960
+  pattern: sidebar-form
+  recipe: ""
+
+intent: |
+  Edit Rental detail page. Left navigation sidebar with app-wide nav items,
+  main content with tab bar (Base tab active) and a property details form.
+  Sections: instant booking banner, name, property attributes, check-in settings,
+  and rooms configuration.
+
+layout:
+  type: FRAME
+  name: EditRentalPage
+  layout: HORIZONTAL
+  fill: "$colors/gray-50"
+  width: 1440
+  height: 960
+  children:
+
+    - type: FRAME
+      name: LeftNav
+      layout: VERTICAL
+      width: 175
+      fillV: true
+      fill: "$colors/gray-50"
+      stroke: "$colors/gray-200"
+      strokeWeight: 1
+      strokeAlign: INSIDE
+      children:
+        - type: FRAME
+          name: LogoArea
+          layout: VERTICAL
+          fillH: true
+          paddingTop: "$spacing/5"
+          paddingLeft: "$spacing/5"
+          paddingRight: "$spacing/5"
+          paddingBottom: "$spacing/4"
+          gap: "$spacing/2"
+          children:
+            - type: TEXT
+              name: AppName
+              characters: "Welkeys"
+              textStyle: "$heading/sm"
+              fill: "$colors/turquoise/Teal-700"
+            - type: TEXT
+              name: SwitchAccount
+              characters: "Switch account ▾"
+              textStyle: "$text/regular/xs"
+              fill: "$colors/gray-500"
+        - type: REPEAT
+          name: NavItems
+          count: 15
+          data:
+            - label: "Dashboard"
+            - label: "Inbox"
+            - label: "Tasks"
+            - label: "Calendar"
+            - label: "Bookings"
+            - label: "Guests"
+            - label: "Rentals"
+            - label: "Rate tables"
+            - label: "Discounts"
+            - label: "Inquiries"
+            - label: "Reviews"
+            - label: "Performance"
+            - label: "Finance"
+            - label: "Apps"
+            - label: "What's new?"
+          template:
+            - type: INSTANCE
+              name: NavItem
+              component: "menu item"
+              variant: { State: "Default" }
+              properties: { Label: "{{label}}" }
+              fillH: true
+
+    - type: FRAME
+      name: MainContent
+      layout: VERTICAL
+      fillH: true
+      fillV: true
+      fill: "$colors/gray-50"
+      children:
+        - type: FRAME
+          name: TopBar
+          layout: HORIZONTAL
+          fillH: true
+          paddingTop: "$spacing/5"
+          paddingLeft: "$spacing/7"
+          paddingRight: "$spacing/7"
+          paddingBottom: "$spacing/5"
+          counterAxisAlign: CENTER
+          children:
+            - type: INSTANCE
+              name: BreadcrumbNav
+              component: breadcrumbs
+              fillH: true
+
+        - type: FRAME
+          name: TabBar
+          layout: HORIZONTAL
+          fillH: true
+          paddingLeft: "$spacing/7"
+          paddingRight: "$spacing/7"
+          stroke: "$colors/gray-200"
+          strokeWeight: 1
+          strokeAlign: INSIDE
+          children:
+            - type: INSTANCE
+              name: TabsBar
+              component: "Tabs/desktop"
+              fillH: true
+
+        - type: FRAME
+          name: ContentArea
+          layout: VERTICAL
+          fillH: true
+          fillV: true
+          paddingTop: "$spacing/7"
+          paddingLeft: "$spacing/7"
+          paddingRight: "$spacing/7"
+          paddingBottom: "$spacing/7"
+          gap: "$spacing/6"
+          children:
+            - type: INSTANCE
+              name: InstantBookableBanner
+              component: Banner
+              fillH: true
+
+            - type: FRAME
+              name: FormBody
+              layout: VERTICAL
+              fillH: true
+              gap: "$spacing/5"
+              children:
+                - type: INSTANCE
+                  name: NameField
+                  component: "Input field"
+                  properties: { Label: "Name", Value: "6casa - Boulogne-Billancourt - F92" }
+                  fillH: true
+
+                - type: FRAME
+                  name: RowRentalType
+                  layout: HORIZONTAL
+                  fillH: true
+                  gap: "$spacing/5"
+                  children:
+                    - type: INSTANCE
+                      name: RentalTypeDropdown
+                      component: Dropdown
+                      properties: { Label: "Rental type", Value: "Apartment" }
+                      fillH: true
+                    - type: INSTANCE
+                      name: ResidencyCategoryDropdown
+                      component: Dropdown
+                      properties: { Label: "Residency category", Value: "Primary residence" }
+                      fillH: true
+
+                - type: FRAME
+                  name: RowSleeps
+                  layout: HORIZONTAL
+                  fillH: true
+                  gap: "$spacing/5"
+                  children:
+                    - type: INSTANCE
+                      name: SleepsField
+                      component: "Input field"
+                      properties: { Label: "Sleeps", Value: "1" }
+                      fillH: true
+                    - type: INSTANCE
+                      name: SleepsMaxField
+                      component: "Input field"
+                      properties: { Label: "Sleeps max", Value: "4" }
+                      fillH: true
+
+                - type: FRAME
+                  name: RowArea
+                  layout: HORIZONTAL
+                  fillH: true
+                  gap: "$spacing/5"
+                  children:
+                    - type: INSTANCE
+                      name: AreaField
+                      component: "Input field"
+                      properties: { Label: "Area", Value: "43" }
+                      fillH: true
+                    - type: INSTANCE
+                      name: AreaUnitDropdown
+                      component: Dropdown
+                      properties: { Label: "Area unit", Value: "m²" }
+                      width: 160
+
+                - type: FRAME
+                  name: RowStories
+                  layout: HORIZONTAL
+                  fillH: true
+                  gap: "$spacing/5"
+                  children:
+                    - type: INSTANCE
+                      name: StoriesField
+                      component: "Input field"
+                      properties: { Label: "Stories" }
+                      fillH: true
+                    - type: INSTANCE
+                      name: FloorNumberField
+                      component: "Input field"
+                      properties: { Label: "Floor number", Value: "6e" }
+                      fillH: true
+
+                - type: FRAME
+                  name: RowPermit
+                  layout: HORIZONTAL
+                  fillH: true
+                  gap: "$spacing/5"
+                  children:
+                    - type: INSTANCE
+                      name: PermitField
+                      component: "Input field"
+                      properties: { Label: "Permit/License/Registration number", Value: "9201200010015" }
+                      fillH: true
+                    - type: INSTANCE
+                      name: IssueDateField
+                      component: "Input field"
+                      properties: { Label: "Issue date" }
+                      fillH: true
+
+                - type: FRAME
+                  name: RowCertifications
+                  layout: HORIZONTAL
+                  fillH: true
+                  gap: "$spacing/5"
+                  children:
+                    - type: INSTANCE
+                      name: CertificationsField
+                      component: "Input field"
+                      properties: { Label: "Certifications" }
+                      fillH: true
+                    - type: INSTANCE
+                      name: RentalMgmtTypeDropdown
+                      component: Dropdown
+                      properties: { Label: "Rental management type", Value: "Professional listing" }
+                      fillH: true
+
+                - type: FRAME
+                  name: RowCheckin
+                  layout: HORIZONTAL
+                  fillH: true
+                  gap: "$spacing/5"
+                  children:
+                    - type: INSTANCE
+                      name: CheckinTypeDropdown
+                      component: Dropdown
+                      properties: { Label: "Checkin type" }
+                      fillH: true
+                    - type: INSTANCE
+                      name: CheckinTimeDropdown
+                      component: Dropdown
+                      properties: { Label: "Checkin time" }
+                      fillH: true
+                    - type: INSTANCE
+                      name: CheckinEndTimeDropdown
+                      component: Dropdown
+                      properties: { Label: "Checkin end time" }
+                      fillH: true
+                    - type: INSTANCE
+                      name: CheckoutTimeDropdown
+                      component: Dropdown
+                      properties: { Label: "Checkout time" }
+                      fillH: true
+
+                - type: FRAME
+                  name: RoomsSection
+                  layout: HORIZONTAL
+                  fillH: true
+                  gap: "$spacing/5"
+                  children:
+                    - type: FRAME
+                      name: BedroomsColumn
+                      layout: VERTICAL
+                      fillH: true
+                      gap: "$spacing/4"
+                      children:
+                        - type: TEXT
+                          name: BedroomsTitle
+                          characters: "Bedrooms"
+                          textStyle: "$heading/md"
+                          fill: "$colors/gray-900"
+                        - type: TEXT
+                          name: Bedroom1Label
+                          characters: "Bedroom 1  1 double bed"
+                          textStyle: "$text/regular/sm"
+                          fill: "$colors/gray-800"
+                        - type: TEXT
+                          name: AddBedroom
+                          characters: "+ New Bedroom"
+                          textStyle: "$text/regular/sm"
+                          fill: "$colors/turquoise/Teal-600"
+                    - type: FRAME
+                      name: BathroomsColumn
+                      layout: VERTICAL
+                      fillH: true
+                      gap: "$spacing/4"
+                      children:
+                        - type: TEXT
+                          name: BathroomsTitle
+                          characters: "Bathrooms"
+                          textStyle: "$heading/md"
+                          fill: "$colors/gray-900"
+                        - type: TEXT
+                          name: Bathroom1Label
+                          characters: "Bathroom 1"
+                          textStyle: "$text/regular/sm"
+                          fill: "$colors/gray-800"
+                        - type: TEXT
+                          name: AddBathroom
+                          characters: "+ New Bathroom"
+                          textStyle: "$text/regular/sm"
+                          fill: "$colors/turquoise/Teal-600"
+
+ds_components:
+  - name: "menu item"
+    variant: "Default"
+    location: "LeftNav > NavItems"
+  - name: breadcrumbs
+    location: "TopBar"
+  - name: "Tabs/desktop"
+    location: "TabBar"
+  - name: Banner
+    location: "ContentArea"
+  - name: "Input field"
+    location: "FormBody — Name, Sleeps, Area, Stories, Floor, Permit, Issue, Certifications"
+  - name: Dropdown
+    location: "FormBody — Rental type, Residency, Area unit, Rental mgmt, Checkin ×4"
+
+new_components: []
+
+tokens:
+  colors:
+    - { token: "$colors/gray-50", usage: "Page background" }
+    - { token: "$colors/gray-200", usage: "Sidebar border" }
+    - { token: "$colors/gray-500", usage: "Muted text" }
+    - { token: "$colors/gray-800", usage: "Body text" }
+    - { token: "$colors/gray-900", usage: "Primary text, section headers" }
+    - { token: "$colors/turquoise/Teal-600", usage: "Links (+ New Bedroom etc)" }
+    - { token: "$colors/turquoise/Teal-700", usage: "Logo text" }
+  spacing:
+    - { token: "$spacing/2", usage: "Logo area internal gap (4px)" }
+    - { token: "$spacing/4", usage: "Logo area bottom padding (12px)" }
+    - { token: "$spacing/5", usage: "Row gaps, content padding (16px)" }
+    - { token: "$spacing/6", usage: "Section gap in content area (20px)" }
+    - { token: "$spacing/7", usage: "Main content outer padding (24px)" }
+  typography:
+    - { token: "$heading/sm", usage: "Logo name" }
+    - { token: "$heading/md", usage: "Rooms section titles" }
+    - { token: "$text/regular/xs", usage: "Switch account label" }
+    - { token: "$text/regular/sm", usage: "Nav items, form labels, room entries" }

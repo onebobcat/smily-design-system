@@ -12,3 +12,36 @@ cron:
   cadence: daily
   time: "06:00"
   secret_name: FIGMA_ACCESS_TOKEN
+
+defaults:
+  canvas:
+    width: 1512
+    height: 959
+    layout: absolute
+  shell:
+    browser_bars:
+      component_key: "ffff1582a8f62ed835adbe21ca3c29255a87ab82"
+      set_key: "e100c012d79e9eb9c1d51353044ee23c4e23674d"
+      x: 0
+      y: 0
+      w: 1512
+      h: 73
+    nav_drawer:
+      component_key: "2fffea7054972c809d15257f00e4bcc93bb016c2"
+      set_key: "533290e0d6fdefa5feef8d6a6b447e9459dcb735"
+      x: 0
+      y: 74
+      w: 240
+      h: 885
+    top_nav_bar:
+      component_key: "12d26b582b2a44924c9cb87bbee0a3c0459caf32"
+      set_key: "53ced9cd3c999efa60a58be72729217f78d6386c"
+      x: 241
+      y: 74
+      w: 1271
+      h: 72
+    content_area:
+      x: 241
+      y: 146
+      w: 1271
+      h: 813

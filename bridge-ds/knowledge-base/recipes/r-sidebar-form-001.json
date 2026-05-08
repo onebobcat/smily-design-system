@@ -1,0 +1,57 @@
+{
+  "id": "r-sidebar-form-001",
+  "meta": {
+    "archetype": "sidebar-form",
+    "name": "Sidebar + Tabbed Form Page",
+    "description": "Full app shell with browser bar, navigation drawer, top nav bar, and a multi-section form with labelled inputs, select fields, and room configuration.",
+    "tags": ["form", "sidebar", "edit", "rental", "settings", "tabs"],
+    "confidence": 0.75,
+    "successCount": 1,
+    "avgCorrections": 6,
+    "createdAt": "2026-04-23",
+    "lastUsedAt": "2026-04-23",
+    "sourceSpec": "EditRentalPage"
+  },
+  "canvas": {
+    "width": 1512,
+    "height": "AUTO",
+    "layout": "absolute"
+  },
+  "shell": {
+    "browserBars": { "nodeId": "4424:9503", "x": 0, "y": 0, "w": 1512, "h": 73 },
+    "navDrawer":   { "nodeId": "0:3277",    "x": 0, "y": 74, "w": 240, "h": 885, "activeItemIndex": "{{ activeNavIndex }}" },
+    "topNavBar":   { "nodeId": "1719:17034","x": 241, "y": 74, "w": 1271, "h": 72 },
+    "contentArea": { "x": 241, "y": 146, "w": 1271, "h": "AUTO", "paddingTop": 24, "paddingRight": 32, "paddingBottom": 40, "paddingLeft": 32 }
+  },
+  "parameters": {
+    "activeNavIndex": { "type": "number", "default": 6, "description": "Index of selected nav item (0-based)" },
+    "pageTitle": { "type": "string", "default": "Edit {{ entityName }}" },
+    "entityName": { "type": "string", "default": "Rental" },
+    "bannerText": { "type": "string", "default": "Instantly bookable once published" },
+    "formSections": { "type": "array", "description": "Array of form section definitions" }
+  },
+  "structure": {
+    "zones": [
+      { "id": "banner", "component": "@lookup:Banner", "variant": { "Property 1": "neutral" }, "fillH": true },
+      { "id": "formBody", "type": "VERTICAL", "gap": 16, "fillH": true },
+      { "id": "checkinRow", "type": "HORIZONTAL", "gap": 16, "fields": 4, "fillH": true },
+      { "id": "roomsSection", "type": "HORIZONTAL", "gap": 40, "fillH": true }
+    ]
+  },
+  "fieldDefaults": {
+    "textInput": { "component": "@lookup:Input field", "type": "text", "state": "Enabled placeholder", "hideTooltip": true, "hideHelperText": true },
+    "selectInput": { "component": "@lookup:Input field", "type": "select", "state": "Enabled placeholder", "hideTooltip": true, "hideHelperText": true }
+  },
+  "roomSection": {
+    "header": { "component": "@lookup:Section", "variant": { "Icon": "without icon" }, "hideSubtitle": true },
+    "row": { "component": "@lookup:Breakdown row", "variant": { "Role": "parent", "Type": "non expandable row", "State": "default" }, "hideValueFrame": true }
+  },
+  "learningsApplied": [
+    "Use getNodeByIdAsync (not importComponentByKeyAsync) for local DS components",
+    "Input placeholder text = field label name",
+    "Hide tooltip icon wrapper and Helper Text frame in all Input field instances",
+    "Use Input field Type=select for dropdowns instead of Dropdown component",
+    "Background always white (#FFFFFF) — no gray fill on root frame",
+    "Content area height = AUTO to avoid clipping"
+  ]
+}
