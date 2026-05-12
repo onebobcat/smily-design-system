@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// ─── SMILY DESIGN TOKENS ────────────────────────────────────────────────────
+// ─── SMILY DESIGN TOKENS ─────────────────────────────────────────────────────
 
 const tokens = {
   colors: {
