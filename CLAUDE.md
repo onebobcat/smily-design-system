@@ -21,6 +21,8 @@ Always import Google Fonts in your prototype:
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 ```
 
+> **Font note:** The Figma design system uses **Sofia Pro** for headings. For web prototypes, use **Mulish** as the closest available Google Fonts substitute. Open Sans is used for all body text in both Figma and web.
+
 ---
 
 ## 🎨 Design Tokens — use these exact values, always
@@ -60,13 +62,34 @@ const tokens = {
     white:        "#FFFFFF",
   },
   fonts: {
-    heading: "'Mulish', sans-serif",   // Used for titles, nav labels, UI headings
-    body:    "'Open Sans', sans-serif", // Used for everything else
+    // Figma DS: Sofia Pro — web prototype substitute: Mulish
+    heading: "'Mulish', sans-serif",
+    body:    "'Open Sans', sans-serif",
   },
   radii: {
-    sm: "5px",
-    md: "6px",
-    lg: "8px",
+    xs:  "2.5px",
+    sm:  "5px",
+    md:  "10px",
+    lg:  "20px",
+    xl:  "40px",
+    pill: "1000px",
+  },
+  spacing: {
+    0:  "0px",
+    1:  "2px",
+    2:  "4px",
+    3:  "8px",
+    4:  "12px",
+    5:  "16px",
+    6:  "20px",
+    7:  "24px",
+    8:  "32px",
+  },
+  shadows: {
+    card:       "0px 2px 9px rgba(98, 112, 147, 0.14)",
+    cardStrong: "2px 4px 20px rgba(0, 0, 0, 0.10)",
+    cardWide:   "0px 4px 40px rgba(0, 0, 0, 0.10)",
+    inner:      "inset -1px 0px 12px rgba(0, 0, 0, 0.04)",
   },
 };
 ```
@@ -91,7 +114,7 @@ const tokens = {
   background: "linear-gradient(82.58deg, #08767D 15.234%, #1DC8CA 241.16%)",
   color: "#fff",
   border: "none",
-  borderRadius: "6px",
+  borderRadius: "5px",
   padding: "12px 16px",
   fontFamily: "'Open Sans', sans-serif",
   fontWeight: 600,
@@ -108,7 +131,7 @@ const tokens = {
   background: "#fff",
   color: "#627093",
   border: "1px solid #aeb6cb",
-  borderRadius: "6px",
+  borderRadius: "5px",
   padding: "12px 16px",
   fontFamily: "'Open Sans', sans-serif",
   fontWeight: 600,
@@ -119,13 +142,13 @@ const tokens = {
 </button>
 ```
 
-### Button — Tonal
+### Button — Tonal (secondary emphasis)
 ```jsx
 <button style={{
   background: "rgba(29, 200, 202, 0.12)",
   color: "#1DC8CA",
   border: "none",
-  borderRadius: "6px",
+  borderRadius: "5px",
   padding: "12px 16px",
   fontFamily: "'Open Sans', sans-serif",
   fontWeight: 600,
@@ -133,6 +156,24 @@ const tokens = {
   cursor: "pointer",
 }}>
   View details
+</button>
+```
+
+### Button — Ghost / Text (low-commitment action)
+```jsx
+<button style={{
+  background: "transparent",
+  color: "#1DC8CA",
+  border: "none",
+  borderRadius: "5px",
+  padding: "12px 4px",
+  fontFamily: "'Open Sans', sans-serif",
+  fontWeight: 600,
+  fontSize: "14px",
+  cursor: "pointer",
+  textDecoration: "underline",
+}}>
+  Skip
 </button>
 ```
 
@@ -163,7 +204,7 @@ const tokens = {
 Width: 256px, white background, `border-right: 1px solid #ecedf2`.
 - Active item: `background: rgba(29,200,202,0.10)`, text `#1DC8CA`, weight 600
 - Default item: text `#404964`, weight 400
-- Item height: ~36px, padding: `8px 10px`, border-radius: `6px`
+- Item height: ~36px, padding: `8px 10px`, border-radius: `5px`
 - Icons: 17px, gray-400 default / primary when active
 
 Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Rentals, Rate tables, Discounts, Inquiries, Reviews, Performance, Finance, Apps, What's new?, Help, Settings
@@ -180,7 +221,7 @@ Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Renta
   {/* Modal card */}
   <div style={{
     background: "#fff",
-    borderRadius: "8px",
+    borderRadius: "20px",
     boxShadow: "2px 4px 20px rgba(0,0,0,0.10)",
     width: 500,
     padding: "24px",
@@ -195,7 +236,7 @@ Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Renta
 <div style={{
   background: "#f1f9fe",
   border: "1px solid #99c2f5",
-  borderRadius: "12px",
+  borderRadius: "20px",
   padding: "20px",
 }}>
   <div style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 600, fontSize: 14, color: "#114869" }}>
@@ -213,7 +254,7 @@ Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Renta
   background: "#fff",
   borderBottom: "1px solid #ecedf2",
   padding: "20px 32px",
-  fontFamily: "'Mulish', sans-serif",
+  fontFamily: "'Mulish', sans-serif", // Sofia Pro in Figma, Mulish on web
   fontSize: 20,
   fontWeight: 800,
   color: "#152536",
@@ -233,7 +274,6 @@ Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Renta
 
 ### Badge
 ```jsx
-// Status badge
 <span style={{
   background: "#f2fbf4",
   border: "1px solid #96dfa6",
@@ -253,7 +293,7 @@ Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Renta
 ## 📐 Layout Rules
 
 - **Page background:** `#f6f7f9` (gray-50)
-- **Cards / panels:** `#ffffff` with `border: 1px solid #ecedf2` and `border-radius: 8px`
+- **Cards / panels:** `#ffffff` with `border: 1px solid #ecedf2` and `border-radius: 20px`
 - **Card shadow (light):** `box-shadow: 0px 2px 9px rgba(98,112,147,0.14)`
 - **Card shadow (strong):** `box-shadow: 2px 4px 20px rgba(0,0,0,0.10)`
 - **Content max-width:** 900–1200px, centered
@@ -264,25 +304,54 @@ Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Renta
 
 ## 🖋 Typography Rules
 
-| Usage | Font | Size | Weight | Color |
-|---|---|---|---|---|
-| Page title | Mulish | 20–24px | 800 | `#152536` |
-| Section heading | Mulish | 16px | 700 | `#152536` |
-| Card title | Open Sans | 16px | 600 | `#4e5a7b` |
-| Body text | Open Sans | 14px | 400 | `#404964` |
-| Labels / captions | Open Sans | 12px | 400 | `#4e5a7b` |
-| Nav items | Open Sans | 13px | 400/600 | `#404964` / `#1DC8CA` |
+| Usage | Font (Figma) | Font (web) | Size | Weight | Color |
+|---|---|---|---|---|---|
+| Page title | Sofia Pro | Mulish | 20–24px | 800 | `#152536` |
+| Section heading | Sofia Pro | Mulish | 16px | 700 | `#152536` |
+| Card title | Open Sans | Open Sans | 16px | 600 | `#4e5a7b` |
+| Body text | Open Sans | Open Sans | 14px | 400 | `#404964` |
+| Labels / captions | Open Sans | Open Sans | 12px | 400 | `#4e5a7b` |
+| Nav items | Open Sans | Open Sans | 13px | 400/600 | `#404964` / `#1DC8CA` |
+
+---
+
+## ⚖️ Design Rules (from production learnings)
+
+These rules were captured from real design sessions and corrections. Follow them precisely.
+
+### Buttons
+- **Primary gradient** (`linear-gradient`) is reserved for the host page's main CTA only. Never use it inside dialogs-over-content or in-app intercepts.
+- **Tonal / Secondary** is the correct button for submit actions inside intercepts and dialogs — it is prominent without competing with the page's own primary action.
+- **Ghost / Text** is the correct button for dismiss/skip actions — it signals lower commitment than an outline button.
+
+### In-app Intercepts (feedback, NPS, survey overlays)
+- **No status icon** — icons (error, warning, success) are reserved for system-state dialogs. A feedback intercept has no system state to communicate.
+- **No title divider** — removing the divider reduces visual weight and signals this is lighter than a blocking dialog.
+- **Close X button is always visible** — it is the primary dismiss affordance and must never be hidden.
+- **One open-ended question + free-text area only** — no multi-step flows, no rating scales, no chevrons. Single question = lower friction = higher completion.
+- **Trigger timing: at the moment of user action** — not before, not after. Signal quality is highest when captured at the exact moment the user acts.
+
+### Dialogs vs Intercepts
+| | Blocking Dialog | In-app Intercept |
+|---|---|---|
+| Status icon | ✅ Yes | ❌ No |
+| Title divider | ✅ Yes | ❌ No |
+| Primary gradient button | ✅ Yes | ❌ No |
+| Submit button style | Primary (gradient) | Secondary (tonal) |
+| Dismiss button style | Outline | Ghost / Text |
+| Close X | Optional | Always visible |
 
 ---
 
 ## 💡 Prototyping Tips
 
 1. **Start with the layout shell** — sidebar nav (256px) + main content area with gray-50 background.
-2. **Use the page header pattern** — white bar with Mulish title + optional buttons top-right.
-3. **Cards everywhere** — Smily uses white cards with light borders for all data panels.
-4. **Teal is the primary action color** — use the gradient for CTAs, solid teal for active states.
+2. **Use the page header pattern** — white bar with heading font title + optional buttons top-right.
+3. **Cards everywhere** — Smily uses white cards with light borders and `border-radius: 20px` for all data panels.
+4. **Teal is the primary action color** — use the gradient for page-level CTAs, solid teal for active states.
 5. **Data tables are common** — use Open Sans 14px, row borders `#ecedf2`, header row slightly bolder.
 6. **Avoid bright/loud colors** — only use secondary pink (`#FF01BB`) for badges/highlights, never for large areas.
+7. **Respect button hierarchy** — gradient → tonal → outline → ghost. Each level signals less commitment.
 
 ---
 
