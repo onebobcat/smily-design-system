@@ -37,9 +37,29 @@ const tokens = {
     body: "'Open Sans', sans-serif",
   },
   radii: {
-    sm: "5px",
-    md: "6px",
-    lg: "8px",
+    xs:   "2.5px",
+    sm:   "5px",
+    md:   "10px",
+    lg:   "20px",
+    xl:   "40px",
+    pill: "1000px",
+  },
+  spacing: {
+    0: "0px",
+    1: "2px",
+    2: "4px",
+    3: "8px",
+    4: "12px",
+    5: "16px",
+    6: "20px",
+    7: "24px",
+    8: "32px",
+  },
+  shadows: {
+    card:       "0px 2px 9px rgba(98, 112, 147, 0.14)",
+    cardStrong: "2px 4px 20px rgba(0, 0, 0, 0.10)",
+    cardWide:   "0px 4px 40px rgba(0, 0, 0, 0.10)",
+    inner:      "inset -1px 0px 12px rgba(0, 0, 0, 0.04)",
   },
 };
 
