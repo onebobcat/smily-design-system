@@ -1243,17 +1243,63 @@ function InAppIntercept({ title, question, onSubmit, onDismiss, onClose }) {
   );
 }
 
-// ─── TABS ─────────────────────────────────────────────────────────────────────
+// ─── ACCORDION ───────────────────────────────────────────────────────────────
 
-const TABS = ["Colors", "Typography", "Buttons", "Inputs", "Dialogs", "Navigation", "Cards", "Labels", "Infographics", "Tabs", "Pagination", "Tooltip", "Intercept"];
+function Accordion({ title, defaultOpen = false, children }) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div style={{
+      background: tokens.colors.white,
+      borderRadius: tokens.radii.lg,
+      boxShadow: tokens.shadows.card,
+      marginBottom: "12px",
+      overflow: "hidden",
+    }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "18px 24px",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          borderBottom: open ? `1px solid ${tokens.colors.gray100}` : "none",
+          transition: "background 0.15s",
+        }}
+        onMouseEnter={e => e.currentTarget.style.background = tokens.colors.gray50}
+        onMouseLeave={e => e.currentTarget.style.background = "none"}
+      >
+        <span style={{
+          fontFamily: tokens.fonts.heading,
+          fontWeight: 700,
+          fontSize: "15px",
+          color: tokens.colors.headingColor,
+        }}>{title}</span>
+        <svg
+          width="16" height="16" viewBox="0 0 16 16" fill="none"
+          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0 }}
+        >
+          <path d="M4 6L8 10L12 6" stroke={tokens.colors.gray400} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+      {open && (
+        <div style={{ padding: "24px" }}>
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // ─── MAIN APP ─────────────────────────────────────────────────────────────────
 
 export default function SmilyDesignSystem() {
-  const [activeTab, setActiveTab] = useState("Colors");
   const [inputVal, setInputVal] = useState("");
   const [inputVal2, setInputVal2] = useState("Hello world");
-  const [openDialog, setOpenDialog] = useState(null); // "default" | "delete" | "success" | null
+  const [openDialog, setOpenDialog] = useState(null);
   const [demoTab, setDemoTab] = useState("Overview");
   const [demoPillTab, setDemoPillTab] = useState("Monthly");
   const [showIntercept, setShowIntercept] = useState(true);
@@ -1298,7 +1344,7 @@ export default function SmilyDesignSystem() {
             </h1>
           </div>
           <p style={{ fontFamily: tokens.fonts.body, fontSize: "12px", color: tokens.colors.gray500, margin: "4px 0 0 42px" }}>
-            Component Library — Colors · Typography · Buttons · Inputs
+            13 components · Colors · Typography · Buttons · Inputs · Dialogs · Navigation · Cards · Labels · Infographics · Tabs · Pagination · Tooltip · Intercept
           </p>
         </div>
         <div style={{ display: "flex", gap: "6px" }}>
@@ -1307,41 +1353,11 @@ export default function SmilyDesignSystem() {
         </div>
       </div>
 
-      {/* Tabs */}
-      <div style={{
-        background: "white",
-        borderBottom: `1px solid ${tokens.colors.gray100}`,
-        padding: "0 32px",
-        display: "flex",
-        gap: "0",
-      }}>
-        {TABS.map(tab => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            style={{
-              background: "none",
-              border: "none",
-              borderBottom: activeTab === tab ? `2px solid ${tokens.colors.primary}` : "2px solid transparent",
-              padding: "12px 20px",
-              fontFamily: tokens.fonts.body,
-              fontSize: "14px",
-              fontWeight: activeTab === tab ? 600 : 400,
-              color: activeTab === tab ? tokens.colors.primary : tokens.colors.gray500,
-              cursor: "pointer",
-              transition: "color 0.15s",
-              marginBottom: "-1px",
-            }}
-          >{tab}</button>
-        ))}
-      </div>
-
-      {/* Content */}
+      {/* Accordions */}
       <div style={{ padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
 
         {/* COLORS */}
-        {activeTab === "Colors" && (
-          <div>
+        <Accordion title="🎨 Colors" defaultOpen={true}>
             <Section title="Brand">
               <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
@@ -1397,12 +1413,10 @@ export default function SmilyDesignSystem() {
                 ))}
               </div>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* TYPOGRAPHY */}
-        {activeTab === "Typography" && (
-          <div>
+        <Accordion title="📝 Typography">
             <Section title="Typefaces">
               <div style={{ display: "flex", gap: "32px" }}>
                 <div>
@@ -1449,12 +1463,10 @@ export default function SmilyDesignSystem() {
                 </div>
               ))}
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* BUTTONS */}
-        {activeTab === "Buttons" && (
-          <div>
+        <Accordion title="🔘 Buttons">
             <Section title="Solid (Primary)">
               <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                 <div>
@@ -1511,12 +1523,10 @@ export default function SmilyDesignSystem() {
                 <ButtonText>Text</ButtonText>
               </div>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* INPUTS */}
-        {activeTab === "Inputs" && (
-          <div>
+        <Accordion title="📥 Inputs">
             <Section title="Input States">
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
                 <div>
@@ -1571,12 +1581,10 @@ export default function SmilyDesignSystem() {
                 </tbody>
               </table>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* DIALOGS */}
-        {activeTab === "Dialogs" && (
-          <div>
+        <Accordion title="💬 Dialogs">
             {openDialog && (
               <DialogModal onClose={() => setOpenDialog(null)}>
                 <Dialog
@@ -1665,12 +1673,10 @@ export default function SmilyDesignSystem() {
                 </div>
               </div>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* NAVIGATION DRAWER */}
-        {activeTab === "Navigation" && (
-          <div>
+        <Accordion title="🧭 Navigation">
             <Section title="Navigation Drawer">
               <div style={{ display: "flex", gap: 32, alignItems: "flex-start", flexWrap: "wrap" }}>
                 <NavDrawer />
@@ -1718,12 +1724,10 @@ export default function SmilyDesignSystem() {
                 ))}
               </div>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* LABELS */}
-        {activeTab === "Labels" && (
-          <div>
+        <Accordion title="🏷 Labels">
             <Section title="Section Block">
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "flex-start" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8, width: 220 }}>
@@ -1778,12 +1782,10 @@ export default function SmilyDesignSystem() {
                 Use <strong>BreakdownRow</strong> for flat line items. Use <strong>BreakdownGroup</strong> to wrap collapsible sub-items — click the row header to expand/collapse. Always end a breakdown list with a <code>variant="total"</code> row.
               </div>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* INFOGRAPHICS */}
-        {activeTab === "Infographics" && (
-          <div>
+        <Accordion title="📊 Infographics">
             <Section title="Price Breakdown Chart">
               <div style={{ display: "flex", gap: 48, flexWrap: "wrap", alignItems: "flex-start" }}>
                 <div style={{ width: 360 }}>
@@ -1831,12 +1833,10 @@ export default function SmilyDesignSystem() {
                 ))}
               </div>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* TABS */}
-        {activeTab === "Tabs" && (
-          <div>
+        <Accordion title="🗂 Tabs">
             <Section title="Underline Tabs (default)">
               <div style={{ background: tokens.colors.white, borderRadius: tokens.radii.md, padding: "24px", boxShadow: tokens.shadows.card }}>
                 <TabBar
@@ -1881,12 +1881,10 @@ export default function SmilyDesignSystem() {
                 ))}
               </div>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* PAGINATION */}
-        {activeTab === "Pagination" && (
-          <div>
+        <Accordion title="📄 Pagination">
             <Section title="Default Pagination">
               <Pagination current={3} total={8} />
             </Section>
@@ -1918,12 +1916,10 @@ export default function SmilyDesignSystem() {
                 ))}
               </div>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* TOOLTIP */}
-        {activeTab === "Tooltip" && (
-          <div>
+        <Accordion title="💡 Tooltip">
             <Section title="Placements">
               <div style={{ display: "flex", gap: "40px", flexWrap: "wrap", alignItems: "center", padding: "20px 0" }}>
                 {["top", "bottom", "left", "right"].map(placement => (
@@ -1983,12 +1979,10 @@ export default function SmilyDesignSystem() {
                 ))}
               </div>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* IN-APP INTERCEPT */}
-        {activeTab === "Intercept" && (
-          <div>
+        <Accordion title="🎯 In-app Intercept">
             <Section title="Live Example — click Submit or Skip to interact">
               <div style={{ display: "flex", gap: "32px", flexWrap: "wrap", alignItems: "flex-start" }}>
                 <div>
@@ -2067,12 +2061,10 @@ export default function SmilyDesignSystem() {
                 </tbody>
               </table>
             </Section>
-          </div>
-        )}
+        </Accordion>
 
         {/* CARDS */}
-        {activeTab === "Cards" && (
-          <div>
+        <Accordion title="🃏 Cards">
             <Section title="Informational Cards (Text)">
               <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                 {Object.entries(CARD_PURPOSES).map(([key, cfg]) => (
@@ -2120,8 +2112,7 @@ export default function SmilyDesignSystem() {
                 </tbody>
               </table>
             </Section>
-          </div>
-        )}
+        </Accordion>
       </div>
     </div>
   );
