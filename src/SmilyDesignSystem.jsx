@@ -1244,15 +1244,18 @@ function InAppIntercept({ title, question, onSubmit, onDismiss, onClose }) {
 }
 
 // ─── ACCORDION ───────────────────────────────────────────────────────────────
+// Matches Figma DS node 2971-2205 — component key 7afec5b11ac9c3d87fd4739ff410f970ec7c932e
+// Flat white card, 1px gray-200 border, no shadow, border-radius md (10px)
+// Header: title left + chevron right, border-bottom when open
 
 function Accordion({ title, defaultOpen = false, children }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
     <div style={{
       background: tokens.colors.white,
-      borderRadius: tokens.radii.lg,
-      boxShadow: tokens.shadows.card,
-      marginBottom: "12px",
+      borderRadius: tokens.radii.md,
+      border: `1px solid ${tokens.colors.gray200}`,
+      marginBottom: "8px",
       overflow: "hidden",
     }}>
       <button
@@ -1262,31 +1265,32 @@ function Accordion({ title, defaultOpen = false, children }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "18px 24px",
+          padding: "14px 20px",
           background: "none",
           border: "none",
-          cursor: "pointer",
           borderBottom: open ? `1px solid ${tokens.colors.gray100}` : "none",
+          cursor: "pointer",
           transition: "background 0.15s",
         }}
         onMouseEnter={e => e.currentTarget.style.background = tokens.colors.gray50}
         onMouseLeave={e => e.currentTarget.style.background = "none"}
       >
         <span style={{
-          fontFamily: tokens.fonts.heading,
-          fontWeight: 700,
-          fontSize: "15px",
+          fontFamily: tokens.fonts.body,
+          fontWeight: 600,
+          fontSize: "14px",
           color: tokens.colors.headingColor,
+          textAlign: "left",
         }}>{title}</span>
         <svg
           width="16" height="16" viewBox="0 0 16 16" fill="none"
-          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0 }}
+          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0, marginLeft: "12px" }}
         >
           <path d="M4 6L8 10L12 6" stroke={tokens.colors.gray400} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </button>
       {open && (
-        <div style={{ padding: "24px" }}>
+        <div style={{ padding: "20px" }}>
           {children}
         </div>
       )}

@@ -3,6 +3,24 @@
   "generatedAt": "2026-05-04T09:13:36.759Z",
   "components": [
     {
+      "key": "7afec5b11ac9c3d87fd4739ff410f970ec7c932e",
+      "name": "accordion",
+      "category": "layout",
+      "status": "stable",
+      "figmaNodeId": "2971-2205",
+      "figmaFileKey": "flMGdSqr1NNqKGK5jp9QtH",
+      "updatedAt": "2026-05-20T04:54:17Z",
+      "variants": [
+        { "property": "state", "values": ["collapsed", "expanded"] }
+      ],
+      "properties": [
+        { "name": "title", "type": "TEXT", "description": "Section heading shown in the header row" },
+        { "name": "defaultOpen", "type": "BOOLEAN", "description": "Whether the accordion starts expanded" }
+      ],
+      "description": "Collapsible section used to group form fields or content in settings pages. Header row has title on left, chevron on right. Flat white card with 1px border, no shadow. Divider separates header from body when open.",
+      "vercelShowcase": true
+    },
+    {
       "key": "195b567f87630463f072762740bb5db81338967c",
       "name": "status=second page",
       "category": "layout",
