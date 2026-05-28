@@ -896,9 +896,356 @@ function PriceBreakdownChart({ items = [], total }) {
   );
 }
 
+// ─── TAB BAR COMPONENT ───────────────────────────────────────────────────────
+
+function TabBar({ tabs, active, onChange, variant = "underline" }) {
+  if (variant === "pill") {
+    return (
+      <div style={{
+        display: "inline-flex",
+        background: tokens.colors.gray100,
+        borderRadius: tokens.radii.pill,
+        padding: "3px",
+        gap: "2px",
+      }}>
+        {tabs.map(tab => (
+          <button key={tab} onClick={() => onChange(tab)} style={{
+            padding: "7px 16px",
+            borderRadius: tokens.radii.pill,
+            border: "none",
+            cursor: "pointer",
+            fontFamily: tokens.fonts.body,
+            fontSize: "14px",
+            fontWeight: active === tab ? 600 : 400,
+            color: active === tab ? tokens.colors.headingColor : tokens.colors.gray500,
+            background: active === tab ? tokens.colors.white : "transparent",
+            boxShadow: active === tab ? tokens.shadows.card : "none",
+            transition: "all 0.15s",
+          }}>
+            {tab}
+          </button>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      display: "flex",
+      borderBottom: `1px solid ${tokens.colors.gray100}`,
+      gap: "0",
+    }}>
+      {tabs.map(tab => (
+        <button key={tab} onClick={() => onChange(tab)} style={{
+          padding: "10px 20px",
+          border: "none",
+          borderBottom: active === tab ? `2px solid ${tokens.colors.primary}` : "2px solid transparent",
+          marginBottom: "-1px",
+          cursor: "pointer",
+          fontFamily: tokens.fonts.body,
+          fontSize: "14px",
+          fontWeight: active === tab ? 600 : 400,
+          color: active === tab ? tokens.colors.primary : tokens.colors.gray500,
+          background: "transparent",
+          transition: "color 0.15s, border-color 0.15s",
+          whiteSpace: "nowrap",
+        }}>
+          {tab}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// ─── PAGINATION ───────────────────────────────────────────────────────────────
+
+function PaginationItem({ children, active, disabled, onClick, ellipsis }) {
+  if (ellipsis) return (
+    <div style={{
+      width: 36, height: 36,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontFamily: tokens.fonts.body, fontSize: "14px",
+      color: tokens.colors.gray400,
+    }}>…</div>
+  );
+  return (
+    <button onClick={onClick} disabled={disabled} style={{
+      width: 36, height: 36,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      borderRadius: tokens.radii.sm,
+      border: active ? "none" : `1px solid ${disabled ? tokens.colors.gray100 : tokens.colors.gray200}`,
+      cursor: disabled ? "not-allowed" : "pointer",
+      fontFamily: tokens.fonts.body,
+      fontSize: "14px",
+      fontWeight: active ? 600 : 400,
+      color: active ? tokens.colors.white : disabled ? tokens.colors.gray300 : tokens.colors.gray600,
+      background: active ? tokens.colors.primary : tokens.colors.white,
+      transition: "all 0.15s",
+    }}
+    onMouseEnter={e => { if (!active && !disabled) { e.currentTarget.style.borderColor = tokens.colors.primary; e.currentTarget.style.color = tokens.colors.primary; }}}
+    onMouseLeave={e => { if (!active && !disabled) { e.currentTarget.style.borderColor = tokens.colors.gray200; e.currentTarget.style.color = tokens.colors.gray600; }}}
+    >
+      {children}
+    </button>
+  );
+}
+
+function Pagination({ current = 3, total = 8, onChange }) {
+  const [page, setPage] = useState(current);
+  const go = (p) => { setPage(p); onChange?.(p); };
+
+  const ArrowLeft = () => (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+  const ArrowRight = () => (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+
+  // Build page list with ellipsis
+  const pages = [];
+  if (total <= 7) {
+    for (let i = 1; i <= total; i++) pages.push(i);
+  } else {
+    pages.push(1);
+    if (page > 3) pages.push("...");
+    for (let i = Math.max(2, page - 1); i <= Math.min(total - 1, page + 1); i++) pages.push(i);
+    if (page < total - 2) pages.push("...");
+    pages.push(total);
+  }
+
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+      <PaginationItem disabled={page === 1} onClick={() => go(page - 1)}>
+        <ArrowLeft />
+      </PaginationItem>
+      {pages.map((p, i) =>
+        p === "..." ? <PaginationItem key={`ellipsis-${i}`} ellipsis /> :
+        <PaginationItem key={p} active={p === page} onClick={() => go(p)}>{p}</PaginationItem>
+      )}
+      <PaginationItem disabled={page === total} onClick={() => go(page + 1)}>
+        <ArrowRight />
+      </PaginationItem>
+    </div>
+  );
+}
+
+// ─── TOOLTIP ─────────────────────────────────────────────────────────────────
+
+function Tooltip({ content, placement = "top", children }) {
+  const [visible, setVisible] = useState(false);
+
+  const placements = {
+    top:    { bottom: "calc(100% + 8px)", left: "50%", transform: "translateX(-50%)" },
+    bottom: { top: "calc(100% + 8px)",    left: "50%", transform: "translateX(-50%)" },
+    left:   { right: "calc(100% + 8px)",  top: "50%",  transform: "translateY(-50%)" },
+    right:  { left: "calc(100% + 8px)",   top: "50%",  transform: "translateY(-50%)" },
+  };
+
+  const arrowStyles = {
+    top:    { bottom: "-4px", left: "50%", transform: "translateX(-50%) rotate(45deg)" },
+    bottom: { top: "-4px",    left: "50%", transform: "translateX(-50%) rotate(45deg)" },
+    left:   { right: "-4px",  top: "50%",  transform: "translateY(-50%) rotate(45deg)" },
+    right:  { left: "-4px",   top: "50%",  transform: "translateY(-50%) rotate(45deg)" },
+  };
+
+  return (
+    <div style={{ position: "relative", display: "inline-flex" }}
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+    >
+      {children}
+      {visible && (
+        <div style={{
+          position: "absolute",
+          ...placements[placement],
+          background: tokens.colors.gray900,
+          color: tokens.colors.white,
+          padding: "6px 10px",
+          borderRadius: tokens.radii.sm,
+          fontSize: "12px",
+          fontFamily: tokens.fonts.body,
+          fontWeight: 400,
+          whiteSpace: "nowrap",
+          zIndex: 100,
+          boxShadow: tokens.shadows.cardStrong,
+          pointerEvents: "none",
+        }}>
+          {content}
+          <div style={{
+            position: "absolute",
+            width: 8, height: 8,
+            background: tokens.colors.gray900,
+            ...arrowStyles[placement],
+          }} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── IN-APP INTERCEPT ────────────────────────────────────────────────────────
+// Rules from learnings.json L001–L007:
+// - No status icon, no title divider
+// - X close always visible
+// - One open-ended question + free-text area only
+// - Submit → Secondary (tonal), Dismiss → Ghost/text
+// - Trigger at moment of user action
+
+function InAppIntercept({ title, question, onSubmit, onDismiss, onClose }) {
+  const [answer, setAnswer] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = () => {
+    setSubmitted(true);
+    onSubmit?.(answer);
+  };
+
+  const CloseIcon = () => (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+
+  if (submitted) {
+    return (
+      <div style={{
+        background: tokens.colors.white,
+        borderRadius: tokens.radii.lg,
+        boxShadow: tokens.shadows.cardStrong,
+        width: 360,
+        padding: "24px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "8px",
+        textAlign: "center",
+      }}>
+        <div style={{ fontSize: "28px" }}>🎉</div>
+        <div style={{ fontFamily: tokens.fonts.heading, fontWeight: 700, fontSize: "16px", color: tokens.colors.headingColor }}>
+          Thank you!
+        </div>
+        <div style={{ fontFamily: tokens.fonts.body, fontSize: "14px", color: tokens.colors.bodyColor }}>
+          Your feedback helps us improve.
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      background: tokens.colors.white,
+      borderRadius: tokens.radii.lg,
+      boxShadow: tokens.shadows.cardStrong,
+      width: 360,
+      padding: "20px 24px 24px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "16px",
+    }}>
+      {/* Header — no status icon, no divider (L001, L002) */}
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "8px" }}>
+        <div style={{
+          fontFamily: tokens.fonts.heading,
+          fontWeight: 700,
+          fontSize: "16px",
+          color: tokens.colors.headingColor,
+          lineHeight: 1.3,
+        }}>
+          {title}
+        </div>
+        {/* X always visible (L005) */}
+        <button onClick={onClose} style={{
+          background: "transparent", border: "none", cursor: "pointer",
+          color: tokens.colors.gray400, padding: "2px", flexShrink: 0,
+          display: "flex", alignItems: "center",
+          borderRadius: tokens.radii.xs,
+        }}
+        onMouseEnter={e => e.currentTarget.style.color = tokens.colors.gray700}
+        onMouseLeave={e => e.currentTarget.style.color = tokens.colors.gray400}
+        >
+          <CloseIcon />
+        </button>
+      </div>
+
+      {/* Single open-ended question + text area (L007) */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        <label style={{
+          fontFamily: tokens.fonts.body,
+          fontSize: "14px",
+          color: tokens.colors.gray700,
+          fontWeight: 400,
+        }}>
+          {question}
+        </label>
+        <textarea
+          value={answer}
+          onChange={e => setAnswer(e.target.value)}
+          placeholder="Share your thoughts…"
+          rows={3}
+          style={{
+            width: "100%",
+            padding: "10px 12px",
+            borderRadius: tokens.radii.sm,
+            border: `1px solid ${tokens.colors.gray200}`,
+            background: tokens.colors.gray50,
+            fontFamily: tokens.fonts.body,
+            fontSize: "14px",
+            color: tokens.colors.dark,
+            resize: "vertical",
+            outline: "none",
+            boxSizing: "border-box",
+          }}
+          onFocus={e => e.target.style.borderColor = tokens.colors.primary}
+          onBlur={e => e.target.style.borderColor = tokens.colors.gray200}
+        />
+      </div>
+
+      {/* Footer — tonal submit, ghost dismiss (L003, L004) */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "4px" }}>
+        <button onClick={onDismiss} style={{
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          fontFamily: tokens.fonts.body,
+          fontSize: "14px",
+          fontWeight: 600,
+          color: tokens.colors.primary,
+          padding: "10px 4px",
+          textDecoration: "none",
+        }}
+        onMouseEnter={e => e.currentTarget.style.textDecoration = "underline"}
+        onMouseLeave={e => e.currentTarget.style.textDecoration = "none"}
+        >
+          Skip
+        </button>
+        <button onClick={handleSubmit} style={{
+          background: `rgba(29, 200, 202, 0.12)`,
+          border: "none",
+          cursor: "pointer",
+          fontFamily: tokens.fonts.body,
+          fontSize: "14px",
+          fontWeight: 600,
+          color: tokens.colors.primary,
+          padding: "10px 20px",
+          borderRadius: tokens.radii.sm,
+        }}
+        onMouseEnter={e => e.currentTarget.style.background = "rgba(29, 200, 202, 0.2)"}
+        onMouseLeave={e => e.currentTarget.style.background = "rgba(29, 200, 202, 0.12)"}
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ─── TABS ─────────────────────────────────────────────────────────────────────
 
-const TABS = ["Colors", "Typography", "Buttons", "Inputs", "Dialogs", "Navigation", "Cards", "Labels", "Infographics"];
+const TABS = ["Colors", "Typography", "Buttons", "Inputs", "Dialogs", "Navigation", "Cards", "Labels", "Infographics", "Tabs", "Pagination", "Tooltip", "Intercept"];
 
 // ─── MAIN APP ─────────────────────────────────────────────────────────────────
 
@@ -907,6 +1254,9 @@ export default function SmilyDesignSystem() {
   const [inputVal, setInputVal] = useState("");
   const [inputVal2, setInputVal2] = useState("Hello world");
   const [openDialog, setOpenDialog] = useState(null); // "default" | "delete" | "success" | null
+  const [demoTab, setDemoTab] = useState("Overview");
+  const [demoPillTab, setDemoPillTab] = useState("Monthly");
+  const [showIntercept, setShowIntercept] = useState(true);
 
   return (
     <div style={{
@@ -1480,6 +1830,242 @@ export default function SmilyDesignSystem() {
                   </div>
                 ))}
               </div>
+            </Section>
+          </div>
+        )}
+
+        {/* TABS */}
+        {activeTab === "Tabs" && (
+          <div>
+            <Section title="Underline Tabs (default)">
+              <div style={{ background: tokens.colors.white, borderRadius: tokens.radii.md, padding: "24px", boxShadow: tokens.shadows.card }}>
+                <TabBar
+                  tabs={["Overview", "Bookings", "Reviews", "Settings"]}
+                  active={demoTab}
+                  onChange={setDemoTab}
+                  variant="underline"
+                />
+                <div style={{ padding: "20px 4px 0", fontFamily: tokens.fonts.body, fontSize: "14px", color: tokens.colors.bodyColor }}>
+                  Content for <strong>{demoTab}</strong> tab
+                </div>
+              </div>
+            </Section>
+
+            <Section title="Pill Tabs">
+              <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                <TabBar
+                  tabs={["Monthly", "Weekly", "Daily"]}
+                  active={demoPillTab}
+                  onChange={setDemoPillTab}
+                  variant="pill"
+                />
+                <TabBar
+                  tabs={["All", "Confirmed", "Pending", "Cancelled"]}
+                  active="All"
+                  onChange={() => {}}
+                  variant="pill"
+                />
+              </div>
+            </Section>
+
+            <Section title="Usage Rules">
+              <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+                {[
+                  ["Underline", "Main page-level navigation within a screen. Sits on a white card."],
+                  ["Pill", "Filters and toggles inside a card or panel. Sits on gray-50."],
+                ].map(([label, desc]) => (
+                  <div key={label} style={{ flex: "1 1 200px", background: tokens.colors.gray50, borderRadius: tokens.radii.md, padding: "16px", border: `1px solid ${tokens.colors.gray100}` }}>
+                    <div style={{ fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: "13px", color: tokens.colors.headingColor, marginBottom: "6px" }}>{label}</div>
+                    <div style={{ fontFamily: tokens.fonts.body, fontSize: "13px", color: tokens.colors.bodyColor }}>{desc}</div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          </div>
+        )}
+
+        {/* PAGINATION */}
+        {activeTab === "Pagination" && (
+          <div>
+            <Section title="Default Pagination">
+              <Pagination current={3} total={8} />
+            </Section>
+
+            <Section title="First Page">
+              <Pagination current={1} total={8} />
+            </Section>
+
+            <Section title="Last Page">
+              <Pagination current={8} total={8} />
+            </Section>
+
+            <Section title="Short (≤ 7 pages — no ellipsis)">
+              <Pagination current={3} total={5} />
+            </Section>
+
+            <Section title="Anatomy">
+              <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+                {[
+                  ["Prev / Next", "Chevron buttons. Disabled at boundary pages."],
+                  ["Active page", `Solid ${tokens.colors.primary} fill, white text.`],
+                  ["Inactive page", "White bg, gray-200 border. Hover → teal border."],
+                  ["Ellipsis", "Gray-400 '…', not interactive."],
+                ].map(([label, desc]) => (
+                  <div key={label} style={{ flex: "1 1 180px", background: tokens.colors.gray50, borderRadius: tokens.radii.md, padding: "14px", border: `1px solid ${tokens.colors.gray100}` }}>
+                    <div style={{ fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: "13px", color: tokens.colors.headingColor, marginBottom: "4px" }}>{label}</div>
+                    <div style={{ fontFamily: tokens.fonts.body, fontSize: "12px", color: tokens.colors.bodyColor }}>{desc}</div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          </div>
+        )}
+
+        {/* TOOLTIP */}
+        {activeTab === "Tooltip" && (
+          <div>
+            <Section title="Placements">
+              <div style={{ display: "flex", gap: "40px", flexWrap: "wrap", alignItems: "center", padding: "20px 0" }}>
+                {["top", "bottom", "left", "right"].map(placement => (
+                  <div key={placement} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+                    <Tooltip content={`Tooltip — ${placement}`} placement={placement}>
+                      <button style={{
+                        padding: "8px 16px", borderRadius: tokens.radii.sm,
+                        border: `1px solid ${tokens.colors.gray200}`, background: tokens.colors.white,
+                        fontFamily: tokens.fonts.body, fontSize: "13px", color: tokens.colors.gray600,
+                        cursor: "pointer",
+                      }}>
+                        Hover ({placement})
+                      </button>
+                    </Tooltip>
+                  </div>
+                ))}
+              </div>
+            </Section>
+
+            <Section title="In context">
+              <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+                <span style={{ fontFamily: tokens.fonts.body, fontSize: "14px", color: tokens.colors.bodyColor }}>Channel sync status</span>
+                <Tooltip content="Last synced 3 minutes ago" placement="top">
+                  <div style={{
+                    width: 18, height: 18, borderRadius: "50%",
+                    background: tokens.colors.gray200, cursor: "help",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontFamily: tokens.fonts.body, fontSize: "11px", fontWeight: 600,
+                    color: tokens.colors.gray500,
+                  }}>?</div>
+                </Tooltip>
+                <Tooltip content="This action cannot be undone" placement="right">
+                  <button style={{
+                    padding: "6px 12px", borderRadius: tokens.radii.sm,
+                    border: "none", background: "#fef3f2",
+                    fontFamily: tokens.fonts.body, fontSize: "13px", color: "#7b2921",
+                    cursor: "pointer", fontWeight: 600,
+                  }}>Delete rental</button>
+                </Tooltip>
+              </div>
+            </Section>
+
+            <Section title="Spec">
+              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                {[
+                  ["Background", tokens.colors.gray900],
+                  ["Text", tokens.colors.white],
+                  ["Font size", "12px / Open Sans Regular"],
+                  ["Padding", "6px 10px"],
+                  ["Border radius", tokens.radii.sm],
+                  ["Offset from trigger", "8px"],
+                ].map(([label, val]) => (
+                  <div key={label} style={{ background: tokens.colors.gray50, border: `1px solid ${tokens.colors.gray100}`, borderRadius: tokens.radii.md, padding: "12px 16px" }}>
+                    <div style={{ fontFamily: tokens.fonts.body, fontSize: "11px", color: tokens.colors.gray400, marginBottom: "2px" }}>{label}</div>
+                    <div style={{ fontFamily: tokens.fonts.body, fontSize: "13px", fontWeight: 600, color: tokens.colors.headingColor }}>{val}</div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          </div>
+        )}
+
+        {/* IN-APP INTERCEPT */}
+        {activeTab === "Intercept" && (
+          <div>
+            <Section title="Live Example — click Submit or Skip to interact">
+              <div style={{ display: "flex", gap: "32px", flexWrap: "wrap", alignItems: "flex-start" }}>
+                <div>
+                  {showIntercept ? (
+                    <InAppIntercept
+                      title="Why are you switching plans?"
+                      question="What's the main reason you're making this change?"
+                      onSubmit={() => setTimeout(() => setShowIntercept(false), 1200)}
+                      onDismiss={() => setShowIntercept(false)}
+                      onClose={() => setShowIntercept(false)}
+                    />
+                  ) : (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "flex-start" }}>
+                      <div style={{ fontFamily: tokens.fonts.body, fontSize: "14px", color: tokens.colors.bodyColor }}>Intercept dismissed.</div>
+                      <button onClick={() => setShowIntercept(true)} style={{
+                        padding: "8px 16px", borderRadius: tokens.radii.sm, border: "none",
+                        background: "rgba(29,200,202,0.12)", color: tokens.colors.primary,
+                        fontFamily: tokens.fonts.body, fontSize: "14px", fontWeight: 600, cursor: "pointer",
+                      }}>Reset demo</button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </Section>
+
+            <Section title="Design Rules (from learnings.json)">
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                {[
+                  ["L001", "No status icon", "Icons signal system state (error/warning/success). A feedback intercept has no system state."],
+                  ["L002", "No title divider", "Removing the divider reduces visual weight — signals lighter than a blocking dialog."],
+                  ["L003", "Dismiss → Ghost/Text button", "Ghost 'Skip' signals lower commitment than an outline button."],
+                  ["L004", "Submit → Secondary (tonal)", "Tonal is prominent without competing with the host page's Primary CTA."],
+                  ["L005", "X close always visible", "Primary dismiss affordance. Never hide it."],
+                  ["L006", "Trigger at moment of action", "Signal quality is highest when reason is captured exactly when the user acts."],
+                  ["L007", "One question + free text only", "No multi-step, no rating scales. Single question = lower friction = higher completion."],
+                ].map(([id, rule, reason]) => (
+                  <div key={id} style={{
+                    display: "flex", gap: "12px", alignItems: "flex-start",
+                    padding: "12px 16px", background: tokens.colors.white,
+                    borderRadius: tokens.radii.md, border: `1px solid ${tokens.colors.gray100}`,
+                  }}>
+                    <span style={{ fontFamily: tokens.fonts.body, fontSize: "11px", fontWeight: 600, color: tokens.colors.primary, background: "rgba(29,200,202,0.1)", padding: "2px 6px", borderRadius: tokens.radii.xs, whiteSpace: "nowrap" }}>{id}</span>
+                    <div>
+                      <div style={{ fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: "13px", color: tokens.colors.headingColor }}>{rule}</div>
+                      <div style={{ fontFamily: tokens.fonts.body, fontSize: "12px", color: tokens.colors.bodyColor, marginTop: "2px" }}>{reason}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+
+            <Section title="Dialogs vs Intercepts">
+              <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: tokens.fonts.body, fontSize: "13px" }}>
+                <thead>
+                  <tr style={{ background: tokens.colors.gray50 }}>
+                    {["Property", "Blocking Dialog", "In-app Intercept"].map(h => (
+                      <th key={h} style={{ padding: "10px 14px", textAlign: "left", color: tokens.colors.gray500, fontWeight: 600, borderBottom: `1px solid ${tokens.colors.gray100}` }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["Status icon",          "✅ Yes", "❌ No"],
+                    ["Title divider",        "✅ Yes", "❌ No"],
+                    ["Primary gradient CTA", "✅ Yes", "❌ No"],
+                    ["Submit button",        "Primary (gradient)", "Secondary (tonal)"],
+                    ["Dismiss button",       "Outline", "Ghost / Text"],
+                    ["Close X",             "Optional", "Always visible"],
+                  ].map(([prop, dialog, intercept]) => (
+                    <tr key={prop} style={{ borderBottom: `1px solid ${tokens.colors.gray50}` }}>
+                      <td style={{ padding: "10px 14px", color: tokens.colors.gray700, fontWeight: 500 }}>{prop}</td>
+                      <td style={{ padding: "10px 14px", color: tokens.colors.bodyColor }}>{dialog}</td>
+                      <td style={{ padding: "10px 14px", color: tokens.colors.bodyColor }}>{intercept}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </Section>
           </div>
         )}
