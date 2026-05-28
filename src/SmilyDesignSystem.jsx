@@ -5,8 +5,8 @@ import { useState } from "react";
 const tokens = {
   colors: {
     // Brand
-    primary: "#09BDC3",
-    primaryGradient: "linear-gradient(82.58deg, #04969D 15.234%, #09BDC3 241.16%)",
+    primary: "#1DC8CA",
+    primaryGradient: "linear-gradient(82.58deg, #04969D 15.234%, #1DC8CA 241.16%)",
     secondary: "#FF27D7",
 
     // Status
