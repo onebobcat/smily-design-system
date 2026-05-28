@@ -1,6 +1,6 @@
-dsName: "Smily Design System"
+dsName: "Smily"
 figmaFileKey: "flMGdSqr1NNqKGK5jp9QtH"
-kbPath: "bridge-ds/knowledge-base"
+kbPath: "bridge-ds"
 cron:
   cadence: daily
   time: "06:00"

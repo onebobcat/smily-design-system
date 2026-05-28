@@ -1,36 +1,230 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-22T04:35:00Z",
-  "figmaFileKey": "flMGdSqr1NNqKGK5jp9QtH",
-  "note": "Text styles are encoded as Typography variables. Use the variables registry with collection='Typography' for font values.",
+  "generatedAt": "2026-05-04T09:13:36.759Z",
   "styles": [
-    {"key":"heading/xs","name":"heading/xs","fontFamily":"Sofia Pro","fontWeight":"SemiBold","fontSize":14,"lineHeight":125,"letterSpacing":-1},
-    {"key":"heading/sm","name":"heading/sm","fontFamily":"Sofia Pro","fontWeight":"SemiBold","fontSize":16,"lineHeight":125,"letterSpacing":-2},
-    {"key":"heading/md","name":"heading/md","fontFamily":"Sofia Pro","fontWeight":"SemiBold","fontSize":20,"lineHeight":125,"letterSpacing":-2},
-    {"key":"heading/lg","name":"heading/lg","fontFamily":"Sofia Pro","fontWeight":"SemiBold","fontSize":24,"lineHeight":125,"letterSpacing":-1},
-    {"key":"heading/xl","name":"heading/xl","fontFamily":"Sofia Pro","fontWeight":"SemiBold","fontSize":30,"lineHeight":125,"letterSpacing":-2},
-    {"key":"heading/2xl","name":"heading/2xl","fontFamily":"Sofia Pro","fontWeight":"SemiBold","fontSize":36,"lineHeight":125,"letterSpacing":-3},
-    {"key":"heading/3xl","name":"heading/3xl","fontFamily":"Sofia Pro","fontWeight":"SemiBold","fontSize":48,"lineHeight":125,"letterSpacing":-3},
-    {"key":"heading/4xl","name":"heading/4xl","fontFamily":"Sofia Pro","fontWeight":"SemiBold","fontSize":60,"lineHeight":125,"letterSpacing":-4},
-    {"key":"text/regular/xxs","name":"text/regular/xxs","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":10,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/xs","name":"text/regular/xs","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":12,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/xs-uppercase","name":"text/regular/xs-uppercase","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":12,"lineHeight":150,"letterSpacing":0,"textCase":"uppercase"},
-    {"key":"text/regular/sm","name":"text/regular/sm","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":14,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/sm-italic","name":"text/regular/sm-italic","fontFamily":"Open Sans","fontWeight":"Italic","fontSize":14,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/md","name":"text/regular/md","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":16,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/lg","name":"text/regular/lg","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":18,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/xl","name":"text/regular/xl","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":20,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/2xl","name":"text/regular/2xl","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":24,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/3xl","name":"text/regular/3xl","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":30,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/4xl","name":"text/regular/4xl","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":36,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/5xl","name":"text/regular/5xl","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":48,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/regular/6xl","name":"text/regular/6xl","fontFamily":"Open Sans","fontWeight":"Regular","fontSize":60,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/medium/xxs","name":"text/medium/xxs","fontFamily":"SF Pro","fontWeight":"Medium","fontSize":10,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/medium/xs","name":"text/medium/xs","fontFamily":"Open Sans","fontWeight":"SemiBold","fontSize":12,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/medium/sm","name":"text/medium/sm","fontFamily":"Open Sans","fontWeight":"SemiBold","fontSize":14,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/medium/md","name":"text/medium/md","fontFamily":"Open Sans","fontWeight":"SemiBold","fontSize":16,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/medium/lg","name":"text/medium/lg","fontFamily":"Open Sans","fontWeight":"SemiBold","fontSize":18,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/medium/xl","name":"text/medium/xl","fontFamily":"Open Sans","fontWeight":"SemiBold","fontSize":20,"lineHeight":150,"letterSpacing":0},
-    {"key":"text/medium/xxl","name":"text/medium/xxl","fontFamily":"Open Sans","fontWeight":"SemiBold","fontSize":24,"lineHeight":150,"letterSpacing":0}
+    {
+      "key": "2102b571ddd489946e657bb09cea163b65be09c8",
+      "name": "Heading/xl: 30px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "590ea995387e1ac55470d6301acd3191a6526b21",
+      "name": "Heading/2xl:36px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "705d04f642f24b76f645dc2010417079cffc54ad",
+      "name": "Heading/3xl:48px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "220a2ac78e8dcdf8f75df2dcef4555977c7e3499",
+      "name": "Text/Regular/4xl: 36px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "490e2e4f04e00287f6a2fdeb1abf09953d7343ae",
+      "name": "Text/Medium/xl",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "50ab907b6594144ada96e7a93f35eae8576010d8",
+      "name": "Text/Medium/md:16px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "dbcdae7988ad370f6a516c4765f7c4d0c8d0dfe8",
+      "name": "Text/Medium/lg:18px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "ccf099000e93218f03ff69b11231fc12e3783ba6",
+      "name": "Text/Medium/sm:14px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "7e6472098175e5da3074db7fb088396eb225bfc5",
+      "name": "Text/Medium/xxs:10px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "617a88558fcd5a5f8699de56c750a307dfb17e0b",
+      "name": "Text/Regular/sm:14px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "0bc5a6edc261ef35004580bada1b0ddc23b6254f",
+      "name": "Text/Medium/xs:12px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "fcf22429c94356ab02b510ecd57be5ab22b9a2a0",
+      "name": "Text/Regular/italic sm",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "a7a7142b3328e6da5cf29a6b4caab4fa680ba3f6",
+      "name": "Text/Regular/xxs:10px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "1cc559f9ba569b78798818cd66e40d2a2c240dae",
+      "name": "Text/Regular/xs:12px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "22a26e2198b6b5205edf81855de40659f41c806e",
+      "name": "Text/Regular/5xl: 48px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "0106fc798cef50acdcc74aa68ad94b047a7003be",
+      "name": "Text/Regular/6xl: 60px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "e4806ac42752010e9680158f3e18273fb3828ae7",
+      "name": "Heading/sm: 16px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "da95999381ac1780f170b75ec64bf2660784cfdc",
+      "name": "Heading/xs: 14px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "cfa8fd6b26669d4aca3fdbf400cfa44ef5b83dfb",
+      "name": "Heading/lg: 24px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "4f3d6c72cf16a13eb1f4f0bb2b2d3111d66bc13e",
+      "name": "Text/Regular/lg: 18px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "46e2ff54c5190907e357abc3e4a4244c0aef85fe",
+      "name": "Text/Regular/2xl: 24px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "2c0f25c1de21e294b4a70f2a2f8e92c3401f5810",
+      "name": "Text/Medium/xxl",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "21377d70fe7729a38465c4267f65201b3b11cddc",
+      "name": "Text/Regular/3xl: 30px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "b6b0f67029341e6c6dbbc2dad20e647298bd5791",
+      "name": "Text/Regular/md:16px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "1f77c61659bdc256a2fa3bdaf0db792fa449c029",
+      "name": "Heading/md: 20px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "4495bcd6bef4e8fe02fa52a38c241752037a39f4",
+      "name": "Text/Regular/xl: 20",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "86a8a7474dc9ecad76be67148f1c7d75bd2ed063",
+      "name": "Heading/4xl:60px",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    },
+    {
+      "key": "c72242eb2ea6a2510825787991645e2ac95da3ff",
+      "name": "Text/Regular/Uppercase xs",
+      "fontFamily": "Inter",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": 20
+    }
   ]
 }

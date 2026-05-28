@@ -1,0 +1,207 @@
+{
+  "version": 1,
+  "meta": {
+    "lastUpdated": "2026-05-27",
+    "dsName": "Smily"
+  },
+  "learnings": [
+    {
+      "id": "L001",
+      "scope": "contextual",
+      "context": {
+        "screenType": "in-app-intercept",
+        "component": "InAppIntercept",
+        "section": "header"
+      },
+      "signals": 1,
+      "rule": "In-app intercept hides the status icon. The icon is reserved for dialogs that communicate system state (error, warning, success). A feedback intercept has no system state to communicate — showing an icon adds false urgency.",
+      "change": { "property": "statusIcon.visible", "from": true, "to": false },
+      "history": [
+        { "date": "2026-05-05", "source": "manual-correction", "session": "switch-flow-design" }
+      ]
+    },
+    {
+      "id": "L002",
+      "scope": "contextual",
+      "context": {
+        "screenType": "in-app-intercept",
+        "component": "InAppIntercept",
+        "section": "header"
+      },
+      "signals": 1,
+      "rule": "In-app intercept hides the title divider. Removing the divider reduces visual weight and reinforces that the intercept is lighter than a blocking dialog.",
+      "change": { "property": "titleDivider.visible", "from": true, "to": false },
+      "history": [
+        { "date": "2026-05-05", "source": "manual-correction", "session": "switch-flow-design" }
+      ]
+    },
+    {
+      "id": "L003",
+      "scope": "contextual",
+      "context": {
+        "screenType": "in-app-intercept",
+        "component": "InAppIntercept",
+        "section": "footer"
+      },
+      "signals": 1,
+      "rule": "In-app intercept uses Tertiary bis (ghost/text) for the dismiss action and Secondary (tonal) for the submit action. Ghost Skip signals lower commitment than an outline button; tonal Submit is prominent without competing with the host page's Primary CTA.",
+      "change": { "property": "dismissButton.variant", "from": "Tertiary (outline)", "to": "Tertiary bis (ghost/text)" },
+      "history": [
+        { "date": "2026-05-05", "source": "manual-correction", "session": "switch-flow-design" }
+      ]
+    },
+    {
+      "id": "L004",
+      "scope": "contextual",
+      "context": {
+        "screenType": "in-app-intercept",
+        "component": "InAppIntercept",
+        "section": "footer"
+      },
+      "signals": 1,
+      "rule": "In-app intercept submit CTA uses Secondary (tonal) not Primary (gradient). Primary is reserved for the host page's own CTAs — using Secondary prevents the intercept from competing visually.",
+      "change": { "property": "submitButton.variant", "from": "Primary (gradient fill)", "to": "Secondary (tonal/solid)" },
+      "history": [
+        { "date": "2026-05-05", "source": "manual-correction", "session": "switch-flow-design" }
+      ]
+    },
+    {
+      "id": "L005",
+      "scope": "global",
+      "context": {
+        "screenType": "in-app-intercept",
+        "component": "InAppIntercept"
+      },
+      "signals": 1,
+      "rule": "The X close button is always visible on in-app intercepts. It is the primary dismiss affordance and the strongest visual differentiator from banners and tooltips. Never hide it.",
+      "change": { "property": "closeButton.visible", "from": "optional", "to": "always" },
+      "history": [
+        { "date": "2026-05-05", "source": "design-decision", "session": "switch-flow-design" }
+      ]
+    },
+    {
+      "id": "L006",
+      "scope": "global",
+      "context": {
+        "screenType": "in-app-intercept",
+        "component": "InAppIntercept"
+      },
+      "signals": 1,
+      "rule": "In-app intercepts fire at the exact moment of user action — not before and not after. Signal quality is highest when the reason is captured at the moment the user acts.",
+      "change": { "property": "trigger.timing", "from": "pre- or post-action", "to": "at-action" },
+      "history": [
+        { "date": "2026-05-05", "source": "design-decision", "session": "switch-flow-design" }
+      ]
+    },
+    {
+      "id": "L007",
+      "scope": "global",
+      "context": {
+        "screenType": "in-app-intercept",
+        "component": "InAppIntercept"
+      },
+      "signals": 1,
+      "rule": "In-app intercepts ask exactly one open-ended question with a free-text area. No multi-step, no rating scales, no chevrons. One question lowers friction and increases completion rate.",
+      "change": { "property": "questionFormat", "from": "multi-step or structured", "to": "single open-ended + text area" },
+      "history": [
+        { "date": "2026-05-05", "source": "design-decision", "session": "switch-flow-design" }
+      ]
+    },
+    {
+      "id": "L008",
+      "scope": "contextual",
+      "context": {
+        "screenType": "switch-flow",
+        "component": "flow",
+        "section": "screen-count"
+      },
+      "signals": 1,
+      "rule": "The pre-switch interstitial ('Before you switch...') is redundant when an in-app intercept is already in the flow. The intercept captures the same intent signal with less friction — remove the interstitial.",
+      "change": {
+        "property": "screen.count",
+        "from": "4 screens (banner + unsaved-changes + interstitial + survey)",
+        "to": "3 screens + destination (banner + unsaved-changes + intercept → new UI)"
+      },
+      "history": [
+        { "date": "2026-05-05", "source": "design-decision", "session": "switch-flow-design" }
+      ]
+    },
+    {
+      "id": "L009",
+      "scope": "contextual",
+      "context": {
+        "screenType": "confirmation-dialog",
+        "component": "Dialog",
+        "section": "body-rows"
+      },
+      "signals": 1,
+      "rule": "Financial subscription confirmation dialogs use exactly 4 summary rows: Property (which entity), Amount (price/period), Billing (when first charged), Commitment (lock-in duration). This set gives the user everything needed to confirm a financial commitment without cognitive overload.",
+      "change": {
+        "property": "confirmationRows",
+        "from": "variable / ad-hoc",
+        "to": "Property · Amount · Billing · Commitment"
+      },
+      "history": [
+        { "date": "2026-05-26", "source": "design-decision", "session": "smily-protect-purchase-flow" }
+      ]
+    },
+    {
+      "id": "L010",
+      "scope": "contextual",
+      "context": {
+        "screenType": "confirmation-dialog",
+        "component": "Dialog",
+        "section": "body-rows"
+      },
+      "signals": 1,
+      "rule": "Do not include portfolio-ordinal identifiers (e.g. 'Rental 21') in confirmation dialogs. Ordinals are pricing-tier context meaningful only in the pricing tooltip — they confuse users in a confirmation summary. Identify the entity by its display name (property/rental name) instead, or drop the row.",
+      "change": {
+        "property": "rentalRow.value",
+        "from": "Rental 21 (ordinal)",
+        "to": "dropped — entity already identified by Property row"
+      },
+      "history": [
+        { "date": "2026-05-26", "source": "manual-correction", "session": "smily-protect-purchase-flow" }
+      ]
+    },
+    {
+      "id": "L011",
+      "scope": "contextual",
+      "context": {
+        "screenType": "post-action-feedback",
+        "component": "Snackbar",
+        "section": "position"
+      },
+      "signals": 1,
+      "rule": "Success snackbar after a form submission is placed top-center, y=80px from the top of the viewport frame (below the browser chrome bar). It overlays the page content without blocking primary navigation.",
+      "change": {
+        "property": "snackbar.position",
+        "from": "unspecified",
+        "to": "top-center, y=80"
+      },
+      "history": [
+        { "date": "2026-05-26", "source": "design-decision", "session": "smily-protect-purchase-flow" }
+      ]
+    },
+    {
+      "id": "L012",
+      "scope": "contextual",
+      "context": {
+        "screenType": "booking-detail",
+        "component": "Subsection",
+        "section": "guest-stats"
+      },
+      "signals": 1,
+      "rule": "When a Subsection field displays a count value that warrants a badge (numeric frequency + icon, e.g. booking count), detach the Subsection and replace the body Text row with a `badge - outline` DS component. Use the `regular/users/crown` icon for booking count. The Subsection body slot only accepts plain text — badge/chip values require detachment.",
+      "change": {
+        "property": "bookings.body",
+        "from": "Subsection body text (plain '2 times')",
+        "to": "detached Subsection + badge-outline (crown icon + '2 times')"
+      },
+      "history": [
+        { "date": "2026-05-27", "source": "manual-correction", "session": "booking-detail-guest-details" }
+      ]
+    }
+  ],
+  "flags": []
+}
