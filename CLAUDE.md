@@ -319,17 +319,27 @@ Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Renta
 
 These rules were captured from real design sessions and corrections. Follow them precisely.
 
-### Buttons
-- **Primary gradient** (`linear-gradient`) is reserved for the host page's main CTA only. Never use it inside dialogs-over-content or in-app intercepts.
-- **Tonal / Secondary** is the correct button for submit actions inside intercepts and dialogs — it is prominent without competing with the page's own primary action.
-- **Ghost / Text** is the correct button for dismiss/skip actions — it signals lower commitment than an outline button.
+### In App Intercept
+- **statusIcon.visible**: In-app intercept hides the status icon. The icon is reserved for dialogs that communicate system state (error, warning, success). A feedback intercept has no system state to communicate — showing an icon adds false urgency.
+- **titleDivider.visible**: In-app intercept hides the title divider. Removing the divider reduces visual weight and reinforces that the intercept is lighter than a blocking dialog.
+- **dismissButton.variant**: In-app intercept uses Tertiary bis (ghost/text) for the dismiss action and Secondary (tonal) for the submit action. Ghost Skip signals lower commitment than an outline button; tonal Submit is prominent without competing with the host page's Primary CTA.
+- **submitButton.variant**: In-app intercept submit CTA uses Secondary (tonal) not Primary (gradient). Primary is reserved for the host page's own CTAs — using Secondary prevents the intercept from competing visually.
+- **closeButton.visible**: The X close button is always visible on in-app intercepts. It is the primary dismiss affordance and the strongest visual differentiator from banners and tooltips. Never hide it.
+- **trigger.timing**: In-app intercepts fire at the exact moment of user action — not before and not after. Signal quality is highest when the reason is captured at the moment the user acts.
+- **questionFormat**: In-app intercepts ask exactly one open-ended question with a free-text area. No multi-step, no rating scales, no chevrons. One question lowers friction and increases completion rate.
 
-### In-app Intercepts (feedback, NPS, survey overlays)
-- **No status icon** — icons (error, warning, success) are reserved for system-state dialogs. A feedback intercept has no system state to communicate.
-- **No title divider** — removing the divider reduces visual weight and signals this is lighter than a blocking dialog.
-- **Close X button is always visible** — it is the primary dismiss affordance and must never be hidden.
-- **One open-ended question + free-text area only** — no multi-step flows, no rating scales, no chevrons. Single question = lower friction = higher completion.
-- **Trigger timing: at the moment of user action** — not before, not after. Signal quality is highest when captured at the exact moment the user acts.
+### Switch Flow
+- **screen.count**: The pre-switch interstitial ('Before you switch...') is redundant when an in-app intercept is already in the flow. The intercept captures the same intent signal with less friction — remove the interstitial.
+
+### Confirmation Dialog
+- **confirmationRows**: Financial subscription confirmation dialogs use exactly 4 summary rows: Property (which entity), Amount (price/period), Billing (when first charged), Commitment (lock-in duration). This set gives the user everything needed to confirm a financial commitment without cognitive overload.
+- **rentalRow.value**: Do not include portfolio-ordinal identifiers (e.g. 'Rental 21') in confirmation dialogs. Ordinals are pricing-tier context meaningful only in the pricing tooltip — they confuse users in a confirmation summary. Identify the entity by its display name (property/rental name) instead, or drop the row.
+
+### Post Action Feedback
+- **snackbar.position**: Success snackbar after a form submission is placed top-center, y=80px from the top of the viewport frame (below the browser chrome bar). It overlays the page content without blocking primary navigation.
+
+### Booking Detail
+- **bookings.body**: When a Subsection field displays a count value that warrants a badge (numeric frequency + icon, e.g. booking count), detach the Subsection and replace the body Text row with a `badge - outline` DS component. Use the `regular/users/crown` icon for booking count. The Subsection body slot only accepts plain text — badge/chip values require detachment.
 
 ### Dialogs vs Intercepts
 | | Blocking Dialog | In-app Intercept |
@@ -341,7 +351,6 @@ These rules were captured from real design sessions and corrections. Follow them
 | Dismiss button style | Outline | Ghost / Text |
 | Close X | Optional | Always visible |
 
----
 
 ## 💡 Prototyping Tips
 

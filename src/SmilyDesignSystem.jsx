@@ -4,16 +4,19 @@ import { useState } from "react";
 
 const tokens = {
   colors: {
-    primary: "#1DC8CA",
-    primaryGradient: "linear-gradient(82.58deg, #08767D 15.234%, #1DC8CA 241.16%)",
-    secondary: "#FF01BB",
+    // Brand
+    primary: "#09BDC3",
+    primaryGradient: "linear-gradient(82.58deg, #04969D 15.234%, #09BDC3 241.16%)",
+    secondary: "#FF27D7",
+
     // Status
     success: "#3DB559",
     error: "#E74C3C",
     warning: "#FD8B07",
     info: "#199BD9",
-    // Grays
-    gray50: "#f6f7f9",
+
+    // Gray scale
+    gray50:  "#f6f7f9",
     gray100: "#ecedf2",
     gray200: "#d4d8e3",
     gray300: "#aeb6cb",
@@ -24,22 +27,42 @@ const tokens = {
     gray800: "#383f54",
     gray900: "#323748",
     gray950: "#212430",
-    // Base
-    white: "#FFFFFF",
-    black: "#000000",
+
     // Text
     headingColor: "#152536",
-    bodyColor: "#6B7176",
-    dark: "#343A40",
+    bodyColor:    "#6B7176",
+    dark:         "#343A40",
+    white:        "#FFFFFF",
   },
   fonts: {
+    // Figma DS: Sofia Pro — web prototype substitute: Mulish
     heading: "'Mulish', sans-serif",
-    body: "'Open Sans', sans-serif",
+    body:    "'Open Sans', sans-serif",
   },
   radii: {
-    sm: "5px",
-    md: "6px",
-    lg: "8px",
+    xs:   "2.5px",
+    sm:   "5px",
+    md:   "10px",
+    lg:   "20px",
+    xl:   "40px",
+    pill: "1000px",
+  },
+  spacing: {
+    0: "0px",
+    1: "2px",
+    2: "4px",
+    3: "8px",
+    4: "12px",
+    5: "16px",
+    6: "20px",
+    7: "24px",
+    8: "32px",
+  },
+  shadows: {
+    card:       "0px 2px 9px rgba(0,0,0,0.10)",
+    cardStrong: "2px 4px 20px rgba(0,0,0,0.10)",
+    cardWide:   "0px 4px 40px rgba(0, 0, 0, 0.10)",
+    inner:      "inset -1px 0px 12px rgba(0, 0, 0, 0.04)",
   },
 };
 
