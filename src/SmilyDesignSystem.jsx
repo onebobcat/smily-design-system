@@ -59,8 +59,8 @@ const tokens = {
     8: "32px",
   },
   shadows: {
-    card:       "0px 2px 9px rgba(0,0,0,0.10)",
-    cardStrong: "2px 4px 20px rgba(0,0,0,0.10)",
+    card:       "0px 2px 9px rgba(98, 112, 147, 0.14)",
+    cardStrong: "2px 4px 20px rgba(0, 0, 0, 0.10)",
     cardWide:   "0px 4px 40px rgba(0, 0, 0, 0.10)",
     inner:      "inset -1px 0px 12px rgba(0, 0, 0, 0.04)",
   },
@@ -785,9 +785,120 @@ function DiscoveryCard({ onClose }) {
   );
 }
 
+// ─── PRICING LABELS ──────────────────────────────────────────────────────────
+
+function LabelSection({ title, subtitle, variant = "default" }) {
+  const icon = variant === "check"
+    ? <span style={{ color: tokens.colors.primary, marginRight: 6, fontSize: 14, lineHeight: 1 }}>✓</span>
+    : variant === "info"
+    ? <span style={{ color: tokens.colors.gray400, marginRight: 6, fontSize: 14, lineHeight: 1 }}>ⓘ</span>
+    : null;
+  return (
+    <div style={{
+      background: "white", border: `1px solid ${tokens.colors.gray200}`,
+      borderRadius: tokens.radii.sm, padding: "12px 16px",
+      display: "flex", flexDirection: "column", gap: 4,
+    }}>
+      <div style={{ fontFamily: tokens.fonts.body, fontSize: 14, fontWeight: 600, color: tokens.colors.gray800, display: "flex", alignItems: "center" }}>
+        {icon}{title}
+      </div>
+      {subtitle && <div style={{ fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500 }}>{subtitle}</div>}
+    </div>
+  );
+}
+
+function LabelSubsection({ heading, body }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      <div style={{ fontFamily: tokens.fonts.heading, fontSize: 14, fontWeight: 700, color: tokens.colors.headingColor }}>{heading}</div>
+      <div style={{ fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.bodyColor }}>{body}</div>
+    </div>
+  );
+}
+
+function BreakdownRow({ label, amount, variant = "default", onClick }) {
+  const isChild = variant === "child";
+  const isTotal = variant === "total";
+  const hasChevron = variant === "collapsed" || variant === "expanded";
+  return (
+    <div
+      onClick={hasChevron ? onClick : undefined}
+      style={{
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: isChild ? "4px 0 4px 12px" : "8px 0",
+        cursor: hasChevron ? "pointer" : "default",
+        borderTop: isTotal ? `1px solid ${tokens.colors.gray200}` : "none",
+        marginTop: isTotal ? 4 : 0,
+      }}
+    >
+      <div style={{
+        fontFamily: tokens.fonts.body, fontSize: isChild ? 12 : 14,
+        fontWeight: isTotal ? 700 : 400,
+        color: isChild ? tokens.colors.gray400 : tokens.colors.gray700,
+        display: "flex", alignItems: "center", gap: 4,
+      }}>
+        {label}
+        {variant === "collapsed" && <span style={{ fontSize: 10 }}>▾</span>}
+        {variant === "expanded" && <span style={{ fontSize: 10 }}>▴</span>}
+      </div>
+      <div style={{
+        fontFamily: tokens.fonts.body, fontSize: isChild ? 12 : 14,
+        fontWeight: isTotal ? 700 : 400,
+        color: isChild ? tokens.colors.gray400 : tokens.colors.gray700,
+      }}>
+        {amount}
+      </div>
+    </div>
+  );
+}
+
+function BreakdownGroup({ label, amount, children, defaultOpen = true }) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div>
+      <BreakdownRow label={label} amount={amount} variant={open ? "expanded" : "collapsed"} onClick={() => setOpen(o => !o)} />
+      {open && (
+        <div style={{ borderLeft: `2px solid ${tokens.colors.gray100}`, marginLeft: 4, paddingLeft: 8 }}>
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── INFOGRAPHIC: PRICE BREAKDOWN ────────────────────────────────────────────
+
+function PriceBreakdownChart({ items = [], total }) {
+  const totalValue = items.reduce((sum, item) => sum + (item.value || 0), 0) || 1;
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%" }}>
+      <div style={{ display: "flex", height: 10, borderRadius: tokens.radii.pill, overflow: "hidden", width: "100%" }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ width: `${(item.value / totalValue) * 100}%`, background: item.color }} />
+        ))}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "9px 0", borderBottom: `1px solid ${tokens.colors.gray100}` }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ width: 10, height: 10, borderRadius: "50%", background: item.color, flexShrink: 0 }} />
+              <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray700 }}>{item.label}</span>
+            </div>
+            <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray700 }}>{item.amount}</span>
+          </div>
+        ))}
+        <div style={{ display: "flex", justifyContent: "space-between", padding: "12px 0 4px" }}>
+          <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, fontWeight: 700, color: tokens.colors.gray800 }}>Total</span>
+          <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, fontWeight: 700, color: tokens.colors.gray800 }}>{total}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── TABS ─────────────────────────────────────────────────────────────────────
 
-const TABS = ["Colors", "Typography", "Buttons", "Inputs", "Dialogs", "Navigation", "Cards"];
+const TABS = ["Colors", "Typography", "Buttons", "Inputs", "Dialogs", "Navigation", "Cards", "Labels", "Infographics"];
 
 // ─── MAIN APP ─────────────────────────────────────────────────────────────────
 
@@ -1252,6 +1363,119 @@ export default function SmilyDesignSystem() {
                     }}>
                       <Icon name="inbox" size={17} color={iconColor} />
                       <span style={{ fontFamily: tokens.fonts.body, fontSize: 13, fontWeight: weight, color }}> Inbox</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          </div>
+        )}
+
+        {/* LABELS */}
+        {activeTab === "Labels" && (
+          <div>
+            <Section title="Section Block">
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "flex-start" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, width: 220 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1 }}>Default</div>
+                  <LabelSection title="Section block" subtitle="2 nights" />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, width: 220 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1 }}>With check</div>
+                  <LabelSection title="Dates" subtitle="2 nights" variant="check" />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, width: 220 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1 }}>With info</div>
+                  <LabelSection title="Dates" subtitle="2 nights" variant="info" />
+                </div>
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 480 }}>
+                Used in booking detail sidebars to group related data (e.g. stay dates, guest count). The check variant confirms a validated field; the info variant signals an editable or expandable section.
+              </div>
+            </Section>
+
+            <Section title="Subsection">
+              <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "flex-start" }}>
+                <LabelSubsection heading="Heading 4" body="Supporting body text" />
+                <LabelSubsection heading="Check-in" body="Thu, 12 Jun 2025" />
+                <LabelSubsection heading="Guests" body="2 adults · 1 child" />
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 480 }}>
+                Lightweight heading+value pair. Use inside panels and cards to label individual data points — dates, guest counts, property names. Heading uses Mulish (Sofia Pro in Figma), value uses Open Sans.
+              </div>
+            </Section>
+
+            <Section title="Breakdown Row">
+              <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "flex-start" }}>
+                <div style={{ width: 280 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>Flat list</div>
+                  <BreakdownRow label="Accommodation" amount="€420.00" />
+                  <BreakdownRow label="Cleaning fee" amount="€60.00" />
+                  <BreakdownRow label="Tourist tax" amount="€14.00" />
+                  <BreakdownRow label="Total" amount="€494.00" variant="total" />
+                </div>
+                <div style={{ width: 280 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>With collapse</div>
+                  <BreakdownGroup label="Accommodation" amount="€420.00">
+                    <BreakdownRow label="Base rate (7 nights)" amount="€360.00" variant="child" />
+                    <BreakdownRow label="Weekend surcharge" amount="€60.00" variant="child" />
+                  </BreakdownGroup>
+                  <BreakdownRow label="Cleaning fee" amount="€60.00" />
+                  <BreakdownRow label="Total" amount="€480.00" variant="total" />
+                </div>
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 480 }}>
+                Use <strong>BreakdownRow</strong> for flat line items. Use <strong>BreakdownGroup</strong> to wrap collapsible sub-items — click the row header to expand/collapse. Always end a breakdown list with a <code>variant="total"</code> row.
+              </div>
+            </Section>
+          </div>
+        )}
+
+        {/* INFOGRAPHICS */}
+        {activeTab === "Infographics" && (
+          <div>
+            <Section title="Price Breakdown Chart">
+              <div style={{ display: "flex", gap: 48, flexWrap: "wrap", alignItems: "flex-start" }}>
+                <div style={{ width: 360 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1, marginBottom: 16 }}>Revenue split example</div>
+                  <PriceBreakdownChart
+                    items={[
+                      { label: "Accommodation", amount: "€420", value: 420, color: "#272B45" },
+                      { label: "Channel fees", amount: "€80", value: 80, color: tokens.colors.primary },
+                      { label: "Extras & add-ons", amount: "€240", value: 240, color: tokens.colors.secondary },
+                    ]}
+                    total="€740"
+                  />
+                </div>
+                <div style={{ width: 360 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1, marginBottom: 16 }}>Booking source split</div>
+                  <PriceBreakdownChart
+                    items={[
+                      { label: "Direct bookings", amount: "62%", value: 62, color: "#272B45" },
+                      { label: "Airbnb", amount: "25%", value: 25, color: tokens.colors.primary },
+                      { label: "Booking.com", amount: "13%", value: 13, color: tokens.colors.secondary },
+                    ]}
+                    total="100%"
+                  />
+                </div>
+              </div>
+              <div style={{ marginTop: 24, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Use for financial summaries, revenue splits, and channel distribution. The three brand colors (dark navy <code>#272B45</code>, teal <code>#1DC8CA</code>, pink <code>#FF01BB</code>) map to primary/secondary/tertiary categories. Pass <code>value</code> as a number for proportional bar widths; <code>amount</code> is the display string.
+              </div>
+            </Section>
+
+            <Section title="Color Reference">
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                {[
+                  { name: "Category 1 — Dark navy", hex: "#272B45" },
+                  { name: "Category 2 — Primary teal", hex: tokens.colors.primary },
+                  { name: "Category 3 — Secondary pink", hex: tokens.colors.secondary },
+                ].map(({ name, hex }) => (
+                  <div key={name} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", background: "white", border: `1px solid ${tokens.colors.gray100}`, borderRadius: tokens.radii.sm }}>
+                    <div style={{ width: 16, height: 16, borderRadius: "50%", background: hex, flexShrink: 0 }} />
+                    <div>
+                      <div style={{ fontFamily: tokens.fonts.body, fontSize: 13, fontWeight: 600, color: tokens.colors.gray700 }}>{name}</div>
+                      <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400 }}>{hex}</div>
                     </div>
                   </div>
                 ))}

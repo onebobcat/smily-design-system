@@ -138,9 +138,19 @@ function shadowColor(name) {
   return `rgba(${Math.round(r*255)},${Math.round(g*255)},${Math.round(b*255)},${(a ?? 1).toFixed(2)})`;
 }
 
+// Card shadow uses Smily's warm-gray tint (rgba(98,112,147,...)) not pure black.
+// Bridge stores raw RGBA floats that lose this nuance, so we assemble the
+// offset/blur from Bridge but keep the correct color value hardcoded here.
+const cardOffsetX  = shadowPx("shadow/card/offsetX");
+const cardOffsetY  = shadowPx("shadow/card/offsetY");
+const cardBlur     = shadowPx("shadow/card/blur");
+const csOffsetX    = shadowPx("shadow/card-strong/offsetX");
+const csOffsetY    = shadowPx("shadow/card-strong/offsetY");
+const csBlur       = shadowPx("shadow/card-strong/blur");
+
 const shadows = {
-  card:       `${shadowPx("shadow/card/offsetX")} ${shadowPx("shadow/card/offsetY")} ${shadowPx("shadow/card/blur")} ${shadowColor("shadow/card/color")}`,
-  cardStrong: `${shadowPx("shadow/card-strong/offsetX")} ${shadowPx("shadow/card-strong/offsetY")} ${shadowPx("shadow/card-strong/blur")} ${shadowColor("shadow/card-strong/color")}`,
+  card:       `${cardOffsetX} ${cardOffsetY} ${cardBlur} rgba(98, 112, 147, 0.14)`,
+  cardStrong: `${csOffsetX} ${csOffsetY} ${csBlur} rgba(0, 0, 0, 0.10)`,
   cardWide:   "0px 4px 40px rgba(0, 0, 0, 0.10)",
   inner:      "inset -1px 0px 12px rgba(0, 0, 0, 0.04)",
 };
