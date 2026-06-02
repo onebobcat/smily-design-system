@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-01T11:48:01.041Z",
+  "generatedAt": "2026-06-02T10:47:01.921Z",
   "components": [
     {
       "name": "Flags",
@@ -92,6 +92,50 @@
       "description": ""
     },
     {
+      "name": "Modal Date Picker",
+      "key": "3a898a52705508f610f5de1bad66cae84c9d61a7",
+      "id": "2994:7149",
+      "type": "COMPONENT_SET",
+      "variants": 3,
+      "page": "Date pickers",
+      "category": "layout",
+      "properties": {
+        "Headline#53001:0": "TEXT",
+        "Supporting text#53001:4": "TEXT",
+        "Supporting text (range)#53001:8": "TEXT",
+        "Headline (range)#53001:12": "TEXT",
+        "Type": "VARIANT(Day,Year,Full-screen (range))"
+      },
+      "description": "Dialog (modal). Use for high-focus interruptions that require user action before proceeding.\n\nWhen to use:\n• Confirmations: \"Are you sure you want to delete this?\"\n• Critical alerts: errors, destructive action warnings.\n• Short forms or quick inputs.\n\nWhen NOT to use:\n• Showing item detail → Sidebar instead.\n• Filtering/sorting → Sidebar instead.\n• Complex multi-step workflows → Full page instead.\n\nSave & error handling:\n• Partial failure: keep failed fields in Error state, apply Entered styling to saved fields, show error snackbar.\n• Full success: show success snackbar (\"Your changes have been saved\"), exit edit mode.\n• Never reset valid inputs after failure. Scroll to first error on long forms.\n\nCTA: action verb + object. \"Save changes\", \"Delete booking\" — not \"OK\" or \"Submit\"."
+    },
+    {
+      "name": "Top navigation bar",
+      "key": "53ced9cd3c999efa60a58be72729217f78d6386c",
+      "id": "3353:524",
+      "type": "COMPONENT_SET",
+      "variants": 5,
+      "page": "         Navigation • bar",
+      "category": "navigation",
+      "properties": {
+        "Breakpoint": "VARIANT(desktop,mobile)",
+        "Property 2": "VARIANT(back,default,standard,subpage)"
+      },
+      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
+    },
+    {
+      "name": "Snackbar",
+      "key": "5e2202fa8bdb604f8c078f1ddef076810d0d2a5b",
+      "id": "401:12958",
+      "type": "COMPONENT_SET",
+      "variants": 4,
+      "page": "Snackbar",
+      "category": "layout",
+      "properties": {
+        "Type": "VARIANT(error,success,neutral,info)"
+      },
+      "description": "Snackbar — transient feedback notification.\n\nWhen to show (Save & error handling pattern):\n• Success: \"Your changes have been saved\" — shown after all save requests succeed. Exit edit mode after display.\n• Error (partial failure): \"Some [entity] details couldn't be saved. Please fix the errors below.\" — shown when one or more models fail to save. Keep failed fields in Error state, apply Entered styling to saved fields.\n• Never show a success snackbar if any part of the save failed.\n\nCopy guidelines:\n• Success: \"Your changes have been saved.\"\n• Partial error: \"Some client details couldn't be saved. Please fix the errors below.\"\n• Field-level error: \"Email format is invalid.\" (field error, not snackbar)\n• Keep messaging actionable — tell the user what to do next.\n\nPlacement: bottom of the screen, above sticky footer if present. Auto-dismiss after ~4s. Provide a manual dismiss option."
+    },
+    {
       "name": "Tabs/ components",
       "key": "86223c4844ebef456666c9d987e5ea9e4151098e",
       "id": "1270:11654",
@@ -104,7 +148,47 @@
         "Count": "VARIANT(with count,without count)",
         "Trailing icon": "VARIANT(False,True)"
       },
-      "description": ""
+      "description": "Tabs.\n\nSpacing: 12px between tabs.\n\nNavigation IA:\n• Tabs represent operational scope within a section.\n• Tab labels are nouns (acceptable for navigational elements): \"Overview\", \"Bookings\", \"Settings\".\n• Avoid duplicating top-level navigation patterns inside tabs — tabs are for sub-sections only.\n\nSentence case. Use \"and\" not \"&\"."
+    },
+    {
+      "name": "badge - outline inverted",
+      "key": "88f537f463308555ed5700d623d37096134589d1",
+      "id": "3109:6098",
+      "type": "COMPONENT_SET",
+      "variants": 2,
+      "page": "Badges",
+      "category": "layout",
+      "properties": {
+        "Text#3549:547": "TEXT",
+        "icon": "VARIANT(false,true)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
+    },
+    {
+      "name": "row",
+      "key": "00bc29036dedff762ee718a6379f60aa65451cdc",
+      "id": "2976:3195",
+      "type": "COMPONENT_SET",
+      "variants": 4,
+      "page": "           Row",
+      "category": "layout",
+      "properties": {
+        "State": "VARIANT(default,highlighted,selected,hover)"
+      },
+      "description": "Table row.\n\nClickable cells in tables:\n• If the row itself is NOT clickable (action button at row end), it is acceptable to have clickable cells within the row.\n• If a row has a trailing action button, this provides a consistent interaction pattern and maintains accessibility.\n• Key principle: action buttons at row end ensure consistent experience and clearly separate navigation from data content.\n• Avoid having both a clickable row AND clickable cells — pick one interaction model per table.\n\nAccessibility: having action buttons at the end of rows (not inline within cells) ensures screen readers can identify interactive elements reliably."
+    },
+    {
+      "name": "right side panel",
+      "key": "e67803a0f8c3577def91b07e6605b1d13a494062",
+      "id": "4502:13672",
+      "type": "COMPONENT_SET",
+      "variants": 2,
+      "page": "Panel",
+      "category": "layout",
+      "properties": {
+        "Header": "VARIANT(fixed header,scrollable header)"
+      },
+      "description": "Right side panel (Sidebar / Drawer). Use to provide additional information, tools, or navigation without breaking the user's workflow.\n\nWhen to use a Sidebar:\n• Filtering / sorting — adjusting results without losing the list.\n• Detailed view — showing details of a selected item from a list.\n• Persistent tools — editing panels, document outlines.\n\nKey benefit: maintains user context. The user stays tethered to their current location.\n\nWhen NOT to use a Sidebar:\n• Critical confirmation or alert → Dialog instead.\n• Complex multi-step task → Full Page instead.\n\nComparison (Dialog vs Sidebar vs Full Page):\n• Dialog — very high focus, hides context, high intrusiveness. Best for confirmations.\n• Sidebar — medium focus, maintains context, low intrusiveness. Best for filtering and detail views.\n• Full Page — high focus, replaces context. Best for complex forms and multi-step workflows."
     },
     {
       "name": "progress bar",
@@ -189,19 +273,6 @@
       "description": ""
     },
     {
-      "name": "right side panel",
-      "key": "e67803a0f8c3577def91b07e6605b1d13a494062",
-      "id": "4502:13672",
-      "type": "COMPONENT_SET",
-      "variants": 2,
-      "page": "Panel",
-      "category": "layout",
-      "properties": {
-        "Header": "VARIANT(fixed header,scrollable header)"
-      },
-      "description": ""
-    },
-    {
       "name": "Partners",
       "key": "985904b509a3242f40e80e142180451b65377689",
       "id": "411:10415",
@@ -256,7 +327,7 @@
       "properties": {
         "type": "VARIANT(collapsed,default,pending selection,sub drawer selected,banner)"
       },
-      "description": ""
+      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
     },
     {
       "name": "cell content shortcut",
@@ -305,20 +376,6 @@
       "description": ""
     },
     {
-      "name": "badge - outline inverted",
-      "key": "88f537f463308555ed5700d623d37096134589d1",
-      "id": "3109:6098",
-      "type": "COMPONENT_SET",
-      "variants": 2,
-      "page": "Badges",
-      "category": "layout",
-      "properties": {
-        "Text#3549:547": "TEXT",
-        "icon": "VARIANT(false,true)"
-      },
-      "description": ""
-    },
-    {
       "name": "Message",
       "key": "29c99ed7b734480868a48cc9b1656507770ae46e",
       "id": "1545:389",
@@ -362,19 +419,6 @@
       "description": ""
     },
     {
-      "name": "Banner",
-      "key": "b39c3d63fb2fc4aeb8f850c37ceab109d6e92f64",
-      "id": "6067:3008",
-      "type": "COMPONENT_SET",
-      "variants": 5,
-      "page": "Banners",
-      "category": "layout",
-      "properties": {
-        "Style": "VARIANT(branded,neutral,pending,standard,warning)"
-      },
-      "description": ""
-    },
-    {
       "name": "rate calendar",
       "key": "9b3f03e35a1f98411dab33c61d2ed2bbc1d9df24",
       "id": "3662:5722",
@@ -384,21 +428,6 @@
       "category": "layout",
       "properties": {
         "state": "VARIANT(default,selected/hover,unavailable,blank,end,Variant6,today,start)"
-      },
-      "description": ""
-    },
-    {
-      "name": "Components/Pagination-Prev",
-      "key": "1199288bc880ad8976f99829991702a9f613e550",
-      "id": "376:11932",
-      "type": "COMPONENT_SET",
-      "variants": 6,
-      "page": "Pagination",
-      "category": "layout",
-      "properties": {
-        "Size": "VARIANT(medium,small)",
-        "State": "VARIANT(normal,disabled)",
-        "Hovered": "VARIANT(true,false)"
       },
       "description": ""
     },
@@ -414,6 +443,21 @@
         "Text#3549:544": "TEXT",
         "size": "VARIANT(m)",
         "icon": "VARIANT(true,false)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
+    },
+    {
+      "name": "Components/Pagination-Prev",
+      "key": "1199288bc880ad8976f99829991702a9f613e550",
+      "id": "376:11932",
+      "type": "COMPONENT_SET",
+      "variants": 6,
+      "page": "Pagination",
+      "category": "layout",
+      "properties": {
+        "Size": "VARIANT(medium,small)",
+        "State": "VARIANT(normal,disabled)",
+        "Hovered": "VARIANT(true,false)"
       },
       "description": ""
     },
@@ -492,7 +536,7 @@
         "Text#3549:550": "TEXT",
         "Type": "VARIANT(text,card/row - delivered,outline custom,card/row - new,card/row - seen)"
       },
-      "description": ""
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
     },
     {
       "name": "Cards/informational",
@@ -591,7 +635,7 @@
         "divider": "VARIANT(False,True)",
         "Type": "VARIANT(Positive,Negative)"
       },
-      "description": ""
+      "description": "Button usage guidelines.\n\nCTA copy rules:\n• Always use verb + object: \"Create rental\", \"Save changes\", \"Send invitation\", \"Delete booking\".\n• Never use nouns alone: \"New rental\" → use \"Create rental\" instead.\n• Nouns are acceptable only for tabs, nav items, and filter chips (navigation, not action).\n• Always use \"and\" not \"&\". Sentence case only.\n\nIcon placement:\n• Left of text (default) — matches reading flow, reinforces hierarchy.\n• Right of text — for directional/forward actions (Next →, More options ▾).\n• Icon-only — only when space is limited AND icon is universally understood (trash, add, edit, settings).\n\nSpacing: icon ↔ text = 4px. Icon size = 20px. Buttons or tabs = 12px gap. Between components = 16px."
     },
     {
       "name": "Section",
@@ -669,7 +713,7 @@
         "Divider": "VARIANT(False,True)",
         "Type": "VARIANT(Positive,Negative,Secondary,Informational,Danger)"
       },
-      "description": ""
+      "description": "Button usage guidelines.\n\nCTA copy rules:\n• Always use verb + object: \"Create rental\", \"Save changes\", \"Send invitation\", \"Delete booking\".\n• Never use nouns alone: \"New rental\" → use \"Create rental\" instead.\n• Nouns are acceptable only for tabs, nav items, and filter chips (navigation, not action).\n• Always use \"and\" not \"&\". Sentence case only.\n\nIcon placement:\n• Left of text (default) — matches reading flow, reinforces hierarchy.\n• Right of text — for directional/forward actions (Next →, More options ▾).\n• Icon-only — only when space is limited AND icon is universally understood (trash, add, edit, settings).\n\nSpacing: icon ↔ text = 4px. Icon size = 20px. Buttons or tabs = 12px gap. Between components = 16px."
     },
     {
       "name": "divider",
@@ -697,7 +741,7 @@
       "properties": {
         "Type": "VARIANT(crosslink,current page,no link)"
       },
-      "description": ""
+      "description": "Breadcrumb navigation.\n\nNavigation IA:\n• Shows user's location within the application hierarchy.\n• Breadcrumbs represent operational scope — each level reflects where settings or data \"live\".\n• System-level: account → channel → rental → booking (most specific).\n• Help users navigate between inherited settings levels without losing context.\n\nLabels: sentence case, nouns acceptable (navigational element). Use \"and\" not \"&\"."
     },
     {
       "name": "menu item",
@@ -743,19 +787,6 @@
       "description": ""
     },
     {
-      "name": "row",
-      "key": "00bc29036dedff762ee718a6379f60aa65451cdc",
-      "id": "2976:3195",
-      "type": "COMPONENT_SET",
-      "variants": 4,
-      "page": "           Row",
-      "category": "layout",
-      "properties": {
-        "State": "VARIANT(default,highlighted,selected,hover)"
-      },
-      "description": ""
-    },
-    {
       "name": "Navigation tab",
       "key": "f6e37c53608e06aba3ad42ad600434b8f464c4e8",
       "id": "1276:12995",
@@ -766,7 +797,7 @@
       "properties": {
         "State": "VARIANT(Active,Inactive)"
       },
-      "description": ""
+      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
     },
     {
       "name": "Dropdown building blocks",
@@ -778,20 +809,6 @@
       "category": "layout",
       "properties": {
         "Property 1": "VARIANT(defaut,search,Create,simple)"
-      },
-      "description": ""
-    },
-    {
-      "name": "Top navigation bar",
-      "key": "53ced9cd3c999efa60a58be72729217f78d6386c",
-      "id": "3353:524",
-      "type": "COMPONENT_SET",
-      "variants": 5,
-      "page": "         Navigation • bar",
-      "category": "navigation",
-      "properties": {
-        "Breakpoint": "VARIANT(desktop,mobile)",
-        "Property 2": "VARIANT(back,default,standard,subpage)"
       },
       "description": ""
     },
@@ -846,7 +863,7 @@
       "properties": {
         "Property 1": "VARIANT(completed,confirmed,inactive,miscellanous,tentative)"
       },
-      "description": ""
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
     },
     {
       "name": "Dropdown",
@@ -881,7 +898,7 @@
         "Divider": "VARIANT(False,True)",
         "Styling": "VARIANT(Crosslink,Simple)"
       },
-      "description": ""
+      "description": "Text button (link-style). Secondary action, visually subordinate to primary CTA.\n\nColor — always match the surface, not the sentiment:\n• Positive (teal) — default, white/neutral backgrounds. Most common (73 instances).\n• Informational (blue) — inside informational banners/cards (blue-50 background).\n• Secondary (gray) — muted surfaces only, use sparingly (3 instances).\n• Warning (red) — destructive/irreversible actions only. Never on neutral surfaces (5 instances).\n\nTwo sub-patterns:\n• Navigation — trailing edit/pencil icon. Takes user to a related management screen.\n• Expand/collapse — trailing chevron-down icon. Reveals inline detail without navigating away.\n\nPlacement: right-aligned in form section, vertically centered next to the relevant field group."
     },
     {
       "name": "Input Date Picker",
@@ -911,36 +928,6 @@
         "Type": "VARIANT(season calendar)"
       },
       "description": "Date pickers let users select a date, or a range of dates.\n\n🛠 Additional options \nDays/Years - edit the states of the days/years by selecting the individual day/year and editing the variant properties.\n\nMenu button - edit menu button states by selecting and editing variant properties."
-    },
-    {
-      "name": "Modal Date Picker",
-      "key": "3a898a52705508f610f5de1bad66cae84c9d61a7",
-      "id": "2994:7149",
-      "type": "COMPONENT_SET",
-      "variants": 3,
-      "page": "Date pickers",
-      "category": "layout",
-      "properties": {
-        "Headline#53001:0": "TEXT",
-        "Supporting text#53001:4": "TEXT",
-        "Supporting text (range)#53001:8": "TEXT",
-        "Headline (range)#53001:12": "TEXT",
-        "Type": "VARIANT(Day,Year,Full-screen (range))"
-      },
-      "description": "Date pickers let users select a date, or a range of dates.\n\n🛠 Additional options \nDays/Years - edit the states of the days/years by selecting the individual day/year and editing the variant properties.\n\nMenu button - edit menu button states by selecting and editing variant properties."
-    },
-    {
-      "name": "Snackbar",
-      "key": "5e2202fa8bdb604f8c078f1ddef076810d0d2a5b",
-      "id": "401:12958",
-      "type": "COMPONENT_SET",
-      "variants": 4,
-      "page": "Snackbar",
-      "category": "layout",
-      "properties": {
-        "Type": "VARIANT(error,success,neutral,info)"
-      },
-      "description": ""
     },
     {
       "name": "season calendar",
@@ -1004,6 +991,20 @@
       "description": ""
     },
     {
+      "name": "Dialog",
+      "key": "bef5dfebc5194cb7a2d3794373c28e71b06dd679",
+      "id": "2401:10692",
+      "type": "COMPONENT_SET",
+      "variants": 7,
+      "page": "Dialogs",
+      "category": "overlay",
+      "properties": {
+        "Type": "VARIANT(default,delete,back button,success,discovery)",
+        "variations": "VARIANT(enter confirmation,long,short,default,page)"
+      },
+      "description": "Dialog (modal). Use for high-focus interruptions that require user action before proceeding.\n\nWhen to use:\n• Confirmations: \"Are you sure you want to delete this?\"\n• Critical alerts: errors, destructive action warnings.\n• Short forms or quick inputs.\n\nWhen NOT to use:\n• Showing item detail → Sidebar instead.\n• Filtering/sorting → Sidebar instead.\n• Complex multi-step workflows → Full page instead.\n\nSave & error handling:\n• Partial failure: keep failed fields in Error state, apply Entered styling to saved fields, show error snackbar.\n• Full success: show success snackbar (\"Your changes have been saved\"), exit edit mode.\n• Never reset valid inputs after failure. Scroll to first error on long forms.\n\nCTA: action verb + object. \"Save changes\", \"Delete booking\" — not \"OK\" or \"Submit\"."
+    },
+    {
       "name": "dot",
       "key": "05c7975ee70c875499b65bde4b33a90202ccbfd8",
       "id": "1477:1627",
@@ -1031,20 +1032,6 @@
         "State": "VARIANT(normal,disabled)"
       },
       "description": "分页, Пейджинг\nA long list can be divided into several pages using Pagination, and only one page will be loaded at a time."
-    },
-    {
-      "name": "Dialog",
-      "key": "bef5dfebc5194cb7a2d3794373c28e71b06dd679",
-      "id": "2401:10692",
-      "type": "COMPONENT_SET",
-      "variants": 7,
-      "page": "Dialogs",
-      "category": "overlay",
-      "properties": {
-        "Type": "VARIANT(default,delete,back button,success,discovery)",
-        "variations": "VARIANT(enter confirmation,long,short,default,page)"
-      },
-      "description": ""
     },
     {
       "name": "Components/Pagination-Next",
@@ -1105,24 +1092,94 @@
       "description": ""
     },
     {
-      "name": "LayoutBlocks/vertical×4",
-      "key": "37380fdeb9ed3cd60f6a9738abe0aa49a2241db9",
-      "id": "1262:9854",
+      "name": "LayoutBlocks/horizontal×1",
+      "key": "7477e2d0b1e3f4043ca9b44109db59539cdac4a1",
+      "id": "1262:9796",
       "type": "COMPONENT",
       "page": "Building blocks",
       "category": "layout",
       "properties": {},
-      "description": "↓ Vertical Layout Blocks x4"
+      "description": "-> Horizontal Layout Blocks x1"
     },
     {
-      "name": "LayoutBlocks/horizontal×2-2",
-      "key": "f94188bb4acce7f8e83e658f0d661991d9364113",
-      "id": "1262:9787",
+      "name": "LayoutBlocks/vertical×1",
+      "key": "7a170938a3c1285207d7229fcc26bc1f70079aba",
+      "id": "1262:9876",
       "type": "COMPONENT",
       "page": "Building blocks",
       "category": "layout",
       "properties": {},
-      "description": "-> Horizontal Layout Blocks x2 - ⭯ Nested 2"
+      "description": "↓ Vertical Layout Blocks x1"
+    },
+    {
+      "name": "Icon for jira",
+      "key": "29b6196b5f0f07a9b92b40edfc7da656e50e59f5",
+      "id": "3613:12679",
+      "type": "COMPONENT",
+      "page": "Smily Logo",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "LayoutBlocks/base",
+      "key": "878f4c7483fa540473c57a1582789c325ae8da36",
+      "id": "1262:9878",
+      "type": "COMPONENT",
+      "page": "Building blocks",
+      "category": "layout",
+      "properties": {},
+      "description": "⇄ Base Swap Block\n↑ Swap me with another ◇ component instance or ↓ Vertical / -> Horizontal Layout Blocks\n🛈 Tips: To swap this instance to a new one:\n- Open Assets tab or press Shift + i to search for component.\n- Press & Hold: Ctrl + Alt then ⛶ Drag & Drop component instance to this base block to quick replace"
+    },
+    {
+      "name": "Dropzone",
+      "key": "1342466252a21716dd6cba7b4aa83c3c9ce4c873",
+      "id": "6370:2407",
+      "type": "COMPONENT",
+      "page": "Dropzone",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "infographic/ price breakdown",
+      "key": "93300e05825470cb3495f2854b4aacd8957b0568",
+      "id": "6305:258",
+      "type": "COMPONENT",
+      "page": "Infographics",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Text/ Placeholder",
+      "key": "f1f984d2e8ce2c92641e1660e1537485dd6ebbfb",
+      "id": "2429:14767",
+      "type": "COMPONENT",
+      "page": "Placeholder",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Overlay",
+      "key": "893438f6d9515458a3af4fe13cf16d74533f5fc5",
+      "id": "144:5918",
+      "type": "COMPONENT",
+      "page": "Overlay",
+      "category": "overlay",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Top navigation bar",
+      "key": "6dee263ee15967b2038c99a0f7c8d6b3351f7bcf",
+      "id": "6861:100887",
+      "type": "COMPONENT",
+      "page": "Navigation",
+      "category": "navigation",
+      "properties": {},
+      "description": ""
     },
     {
       "name": "LayoutBlocks/vertical×9",
@@ -1133,26 +1190,6 @@
       "category": "layout",
       "properties": {},
       "description": "↓ Vertical Layout Blocks x9"
-    },
-    {
-      "name": "LayoutBlocks/horizontal×3-1",
-      "key": "3923056e23a1f9f6601254e52b0eb535c9f6b97c",
-      "id": "1262:9779",
-      "type": "COMPONENT",
-      "page": "Building blocks",
-      "category": "layout",
-      "properties": {},
-      "description": "-> Horizontal Layout Blocks x3 - ⭯ Nested 1"
-    },
-    {
-      "name": "LayoutBlocks/horizontal×7",
-      "key": "3be6ef2050eb18fc99d98b86cc48c8efd729b136",
-      "id": "1262:9748",
-      "type": "COMPONENT",
-      "page": "Building blocks",
-      "category": "layout",
-      "properties": {},
-      "description": "-> Horizontal Layout Blocks x7"
     },
     {
       "name": "LayoutBlocks/vertical×2-2",
@@ -1203,6 +1240,36 @@
       "category": "layout",
       "properties": {},
       "description": "-> Horizontal Layout Blocks x5"
+    },
+    {
+      "name": "LayoutBlocks/vertical×4",
+      "key": "37380fdeb9ed3cd60f6a9738abe0aa49a2241db9",
+      "id": "1262:9854",
+      "type": "COMPONENT",
+      "page": "Building blocks",
+      "category": "layout",
+      "properties": {},
+      "description": "↓ Vertical Layout Blocks x4"
+    },
+    {
+      "name": "LayoutBlocks/horizontal×3-1",
+      "key": "3923056e23a1f9f6601254e52b0eb535c9f6b97c",
+      "id": "1262:9779",
+      "type": "COMPONENT",
+      "page": "Building blocks",
+      "category": "layout",
+      "properties": {},
+      "description": "-> Horizontal Layout Blocks x3 - ⭯ Nested 1"
+    },
+    {
+      "name": "LayoutBlocks/horizontal×7",
+      "key": "3be6ef2050eb18fc99d98b86cc48c8efd729b136",
+      "id": "1262:9748",
+      "type": "COMPONENT",
+      "page": "Building blocks",
+      "category": "layout",
+      "properties": {},
+      "description": "-> Horizontal Layout Blocks x7"
     },
     {
       "name": "LayoutBlocks/vertical×6",
@@ -1265,36 +1332,6 @@
       "description": "-> Horizontal Layout Blocks x6"
     },
     {
-      "name": "LayoutBlocks/horizontal×10",
-      "key": "fcb19ee5a10c8b6c8a5ed9bb3b66b45e9e0a2797",
-      "id": "1262:9718",
-      "type": "COMPONENT",
-      "page": "Building blocks",
-      "category": "layout",
-      "properties": {},
-      "description": "-> Horizontal Layout Blocks x10"
-    },
-    {
-      "name": "LayoutBlocks/horizontal×1",
-      "key": "7477e2d0b1e3f4043ca9b44109db59539cdac4a1",
-      "id": "1262:9796",
-      "type": "COMPONENT",
-      "page": "Building blocks",
-      "category": "layout",
-      "properties": {},
-      "description": "-> Horizontal Layout Blocks x1"
-    },
-    {
-      "name": "LayoutBlocks/vertical×1",
-      "key": "7a170938a3c1285207d7229fcc26bc1f70079aba",
-      "id": "1262:9876",
-      "type": "COMPONENT",
-      "page": "Building blocks",
-      "category": "layout",
-      "properties": {},
-      "description": "↓ Vertical Layout Blocks x1"
-    },
-    {
       "name": "LayoutBlocks/horizontal×4-1",
       "key": "7cfb1c47238fca1ba121d5a9b30696e8a683d649",
       "id": "1262:9769",
@@ -1313,6 +1350,16 @@
       "category": "layout",
       "properties": {},
       "description": "↓ Vertical Layout Blocks x10"
+    },
+    {
+      "name": "Subsection",
+      "key": "89fc5db1feaff4b9e0026a75e18f3aad719b8811",
+      "id": "3240:3572",
+      "type": "COMPONENT",
+      "page": "Labels",
+      "category": "layout",
+      "properties": {},
+      "description": ""
     },
     {
       "name": "LayoutBlocks/vertical×2-1",
@@ -1355,14 +1402,44 @@
       "description": "↓ Vertical Layout Blocks x2"
     },
     {
-      "name": "LayoutBlocks/vertical×8",
-      "key": "fefbbd3143fbcb5161e02d92404442f73b94ba5d",
-      "id": "1262:9819",
+      "name": "breadcrumbs block",
+      "key": "b3b7da60ba2db67220f0e8df2839e6bdf2784484",
+      "id": "973:3041",
       "type": "COMPONENT",
-      "page": "Building blocks",
+      "page": "Breadcrumbs",
       "category": "layout",
       "properties": {},
-      "description": "↓ Vertical Layout Blocks x8"
+      "description": ""
+    },
+    {
+      "name": "Dialog/back button/short",
+      "key": "b4b92bd858ebc5be072f9222ef5f8e017c3358af",
+      "id": "3354:10995",
+      "type": "COMPONENT",
+      "page": "retired dialogs",
+      "category": "overlay",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "In-app intercept",
+      "key": "b72cd572ff8dc08b9c793ef668c64a6f23b3451d",
+      "id": "6634:13898",
+      "type": "COMPONENT",
+      "page": "In-app intercept",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "wizard",
+      "key": "db81a6973107a32c2c22f44d625c21cfea271829",
+      "id": "4110:5580",
+      "type": "COMPONENT",
+      "page": "Wizard",
+      "category": "layout",
+      "properties": {},
+      "description": ""
     },
     {
       "name": "LayoutBlocks/horizontal×4",
@@ -1375,6 +1452,46 @@
       "description": "-> Horizontal Layout Blocks x4"
     },
     {
+      "name": "LayoutBlocks/horizontal×2-2",
+      "key": "f94188bb4acce7f8e83e658f0d661991d9364113",
+      "id": "1262:9787",
+      "type": "COMPONENT",
+      "page": "Building blocks",
+      "category": "layout",
+      "properties": {},
+      "description": "-> Horizontal Layout Blocks x2 - ⭯ Nested 2"
+    },
+    {
+      "name": "Dialog/default/short",
+      "key": "fc73bab763fab298b24b553917b1444054ef9ef0",
+      "id": "0:3430",
+      "type": "COMPONENT",
+      "page": "retired dialogs",
+      "category": "overlay",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "LayoutBlocks/horizontal×10",
+      "key": "fcb19ee5a10c8b6c8a5ed9bb3b66b45e9e0a2797",
+      "id": "1262:9718",
+      "type": "COMPONENT",
+      "page": "Building blocks",
+      "category": "layout",
+      "properties": {},
+      "description": "-> Horizontal Layout Blocks x10"
+    },
+    {
+      "name": "LayoutBlocks/vertical×8",
+      "key": "fefbbd3143fbcb5161e02d92404442f73b94ba5d",
+      "id": "1262:9819",
+      "type": "COMPONENT",
+      "page": "Building blocks",
+      "category": "layout",
+      "properties": {},
+      "description": "↓ Vertical Layout Blocks x8"
+    },
+    {
       "name": "LayoutBlocks/vertical×5",
       "key": "ffa810b74d6e97e032d4fe9193ba8b4788e50fb5",
       "id": "1262:9843",
@@ -1383,76 +1500,6 @@
       "category": "layout",
       "properties": {},
       "description": "↓ Vertical Layout Blocks x5"
-    },
-    {
-      "name": "Icon for jira",
-      "key": "29b6196b5f0f07a9b92b40edfc7da656e50e59f5",
-      "id": "3613:12679",
-      "type": "COMPONENT",
-      "page": "Smily Logo",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "LayoutBlocks/base",
-      "key": "878f4c7483fa540473c57a1582789c325ae8da36",
-      "id": "1262:9878",
-      "type": "COMPONENT",
-      "page": "Building blocks",
-      "category": "layout",
-      "properties": {},
-      "description": "⇄ Base Swap Block\n↑ Swap me with another ◇ component instance or ↓ Vertical / -> Horizontal Layout Blocks\n🛈 Tips: To swap this instance to a new one:\n- Open Assets tab or press Shift + i to search for component.\n- Press & Hold: Ctrl + Alt then ⛶ Drag & Drop component instance to this base block to quick replace"
-    },
-    {
-      "name": "Dropzone",
-      "key": "1342466252a21716dd6cba7b4aa83c3c9ce4c873",
-      "id": "6370:2407",
-      "type": "COMPONENT",
-      "page": "Dropzone",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "Subsection",
-      "key": "89fc5db1feaff4b9e0026a75e18f3aad719b8811",
-      "id": "3240:3572",
-      "type": "COMPONENT",
-      "page": "Labels",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "infographic/ price breakdown",
-      "key": "93300e05825470cb3495f2854b4aacd8957b0568",
-      "id": "6305:258",
-      "type": "COMPONENT",
-      "page": "Infographics",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "Text/ Placeholder",
-      "key": "f1f984d2e8ce2c92641e1660e1537485dd6ebbfb",
-      "id": "2429:14767",
-      "type": "COMPONENT",
-      "page": "Placeholder",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "Overlay",
-      "key": "893438f6d9515458a3af4fe13cf16d74533f5fc5",
-      "id": "144:5918",
-      "type": "COMPONENT",
-      "page": "Overlay",
-      "category": "overlay",
-      "properties": {},
-      "description": ""
     },
     {
       "name": "table building block",
@@ -1471,36 +1518,6 @@
       "type": "COMPONENT",
       "page": "Calendars",
       "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "filter area",
-      "key": "b951c5224187397f5650d26e7b4c6d362da6e330",
-      "id": "1728:29990",
-      "type": "COMPONENT",
-      "page": "Filters",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "wizard",
-      "key": "db81a6973107a32c2c22f44d625c21cfea271829",
-      "id": "4110:5580",
-      "type": "COMPONENT",
-      "page": "Wizard",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "Dialog/default/short",
-      "key": "fc73bab763fab298b24b553917b1444054ef9ef0",
-      "id": "0:3430",
-      "type": "COMPONENT",
-      "page": "retired dialogs",
-      "category": "overlay",
       "properties": {},
       "description": ""
     },
@@ -1535,21 +1552,21 @@
       "description": ""
     },
     {
-      "name": "Documentation",
-      "key": "3688da1a33c31030e9d32a855669b883fcda33f9",
-      "id": "6651:52652",
-      "type": "COMPONENT",
-      "page": "Documenting",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
       "name": "Tabs/mobile",
       "key": "3708ecf04d0b60dff528360c4f4d16bbfccbce64",
       "id": "1270:11626",
       "type": "COMPONENT",
       "page": "Tabs",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Documentation",
+      "key": "3688da1a33c31030e9d32a855669b883fcda33f9",
+      "id": "6651:52652",
+      "type": "COMPONENT",
+      "page": "Documenting",
       "category": "layout",
       "properties": {},
       "description": ""
@@ -1575,21 +1592,21 @@
       "description": ""
     },
     {
-      "name": "Tooltip/Rich",
-      "key": "7f49068490cc75fa607922bed87fcb9f24acd085",
-      "id": "783:7134",
-      "type": "COMPONENT",
-      "page": "Tooltip",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
       "name": "section",
       "key": "800bcf39eddfbe5604c6d34d47a0e8d4d39fa480",
       "id": "188:3600",
       "type": "COMPONENT",
       "page": "Requests for change",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Tooltip/Rich",
+      "key": "7f49068490cc75fa607922bed87fcb9f24acd085",
+      "id": "783:7134",
+      "type": "COMPONENT",
+      "page": "Tooltip",
       "category": "layout",
       "properties": {},
       "description": ""
@@ -1630,36 +1647,6 @@
       "id": "1264:10476",
       "type": "COMPONENT",
       "page": "Filters",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "breadcrumbs block",
-      "key": "b3b7da60ba2db67220f0e8df2839e6bdf2784484",
-      "id": "973:3041",
-      "type": "COMPONENT",
-      "page": "Breadcrumbs",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "Dialog/back button/short",
-      "key": "b4b92bd858ebc5be072f9222ef5f8e017c3358af",
-      "id": "3354:10995",
-      "type": "COMPONENT",
-      "page": "retired dialogs",
-      "category": "overlay",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "In-app intercept",
-      "key": "b72cd572ff8dc08b9c793ef668c64a6f23b3451d",
-      "id": "6634:13898",
-      "type": "COMPONENT",
-      "page": "In-app intercept",
       "category": "layout",
       "properties": {},
       "description": ""
