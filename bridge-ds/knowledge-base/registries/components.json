@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-04T10:05:27.948Z",
+  "generatedAt": "2026-06-05T10:02:40.277Z",
   "components": [
     {
       "name": "Flags",
@@ -305,12 +305,12 @@
       "key": "1bd804439fba6d00e07a34e006c6d048dd820797",
       "id": "2511:2303",
       "type": "COMPONENT_SET",
-      "variants": 22,
+      "variants": 26,
       "page": "Calendars",
       "category": "layout",
       "properties": {
         "Property 1": "VARIANT(Cell,header)",
-        "Property 2": "VARIANT(weekday,confirmed,weekday + day of date,weekend + day of date,tentative,blocked,weekdend,hover,loading)",
+        "Property 2": "VARIANT(weekday,confirmed,weekday + day of date,weekend + day of date,tentative,blocked,weekdend,hover,loading,unavailable)",
         "State": "VARIANT(Default,selected,value,hover,test 2)",
         "Size": "VARIANT(Default,small)"
       },
