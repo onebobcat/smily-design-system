@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-07T09:25:05.943Z",
+  "generatedAt": "2026-06-08T11:08:53.616Z",
   "components": [
     {
       "name": "Flags",
@@ -311,7 +311,7 @@
       "properties": {
         "Property 1": "VARIANT(Cell,header)",
         "Property 2": "VARIANT(weekday,confirmed,weekday + day of date,weekend + day of date,tentative,blocked,weekdend,hover,loading,unavailable)",
-        "State": "VARIANT(Default,selected,value,hover,test 2)",
+        "State": "VARIANT(Default,focused,value,test 2)",
         "Size": "VARIANT(Default,small)"
       },
       "description": ""
