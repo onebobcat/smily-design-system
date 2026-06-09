@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-08T11:08:53.616Z",
+  "generatedAt": "2026-06-09T09:56:09.091Z",
   "components": [
     {
       "name": "Flags",
@@ -301,6 +301,19 @@
       "description": "Date pickers let users select a date, or a range of dates.\n\n🛠 Additional options \nDays/Years - edit the states of the days/years by selecting the individual day/year and editing the variant properties.\n\nMenu button - edit menu button states by selecting and editing variant properties."
     },
     {
+      "name": "Navigation drawer",
+      "key": "533290e0d6fdefa5feef8d6a6b447e9459dcb735",
+      "id": "3611:12514",
+      "type": "COMPONENT_SET",
+      "variants": 5,
+      "page": "         Navigation • drawer",
+      "category": "navigation",
+      "properties": {
+        "type": "VARIANT(collapsed,default,pending selection,sub drawer selected,banner)"
+      },
+      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
+    },
+    {
       "name": "Multi-rental calendar",
       "key": "1bd804439fba6d00e07a34e006c6d048dd820797",
       "id": "2511:2303",
@@ -315,19 +328,6 @@
         "Size": "VARIANT(Default,small)"
       },
       "description": ""
-    },
-    {
-      "name": "Navigation drawer",
-      "key": "533290e0d6fdefa5feef8d6a6b447e9459dcb735",
-      "id": "3611:12514",
-      "type": "COMPONENT_SET",
-      "variants": 5,
-      "page": "         Navigation • drawer",
-      "category": "navigation",
-      "properties": {
-        "type": "VARIANT(collapsed,default,pending selection,sub drawer selected,banner)"
-      },
-      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
     },
     {
       "name": "cell content shortcut",
