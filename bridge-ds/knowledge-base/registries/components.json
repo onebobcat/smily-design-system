@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-12T10:23:22.200Z",
+  "generatedAt": "2026-06-13T09:25:30.747Z",
   "components": [
     {
       "name": "Flags",
@@ -508,6 +508,19 @@
       "description": ""
     },
     {
+      "name": "Badge -activity status",
+      "key": "9f3554df6fc24bd1c11c08ab3d76a3cd9436062a",
+      "id": "6806:28404",
+      "type": "COMPONENT_SET",
+      "variants": 6,
+      "page": "Badges",
+      "category": "layout",
+      "properties": {
+        "Property 1": "VARIANT(completed,confirmed,inactive,miscellanous,tentative,rejected)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
+    },
+    {
       "name": "badge - example",
       "key": "b46b7c98527674df2665377a7b9b15327ef03fd1",
       "id": "3549:3676",
@@ -698,7 +711,7 @@
       "key": "834105a8c67699d40dd8a8f05becb8d1d8e620a7",
       "id": "186:7918",
       "type": "COMPONENT_SET",
-      "variants": 325,
+      "variants": 195,
       "page": "Buttons",
       "category": "layout",
       "properties": {
@@ -711,7 +724,7 @@
         "Leading icon": "VARIANT(False,True)",
         "Trailing icon": "VARIANT(False,True)",
         "Divider": "VARIANT(False,True)",
-        "Type": "VARIANT(Positive,Negative,Secondary,Informational,Danger)"
+        "Type": "VARIANT(Positive,Negative,Informational)"
       },
       "description": "Button usage guidelines.\n\nCTA copy rules:\n• Always use verb + object: \"Create rental\", \"Save changes\", \"Send invitation\", \"Delete booking\".\n• Never use nouns alone: \"New rental\" → use \"Create rental\" instead.\n• Nouns are acceptable only for tabs, nav items, and filter chips (navigation, not action).\n• Always use \"and\" not \"&\". Sentence case only.\n\nIcon placement:\n• Left of text (default) — matches reading flow, reinforces hierarchy.\n• Right of text — for directional/forward actions (Next →, More options ▾).\n• Icon-only — only when space is limited AND icon is universally understood (trash, add, edit, settings).\n\nSpacing: icon ↔ text = 4px. Icon size = 20px. Buttons or tabs = 12px gap. Between components = 16px."
     },
@@ -851,19 +864,6 @@
         "Property 1": "VARIANT(close,open)"
       },
       "description": ""
-    },
-    {
-      "name": "Badge -activity status",
-      "key": "9f3554df6fc24bd1c11c08ab3d76a3cd9436062a",
-      "id": "6806:28404",
-      "type": "COMPONENT_SET",
-      "variants": 5,
-      "page": "Badges",
-      "category": "layout",
-      "properties": {
-        "Property 1": "VARIANT(completed,confirmed,inactive,miscellanous,tentative)"
-      },
-      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
     },
     {
       "name": "Dropdown",
