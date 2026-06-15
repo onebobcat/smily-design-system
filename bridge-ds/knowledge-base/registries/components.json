@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-14T09:46:38.747Z",
+  "generatedAt": "2026-06-15T12:30:17.633Z",
   "components": [
     {
       "name": "Flags",
@@ -35,21 +35,6 @@
         "Size": "VARIANT(large,small)"
       },
       "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
-    },
-    {
-      "name": "badge - solid inverted",
-      "key": "5c2fb621d54eadba901f24575514334255f94138",
-      "id": "3109:5955",
-      "type": "COMPONENT_SET",
-      "variants": 8,
-      "page": "Badges",
-      "category": "layout",
-      "properties": {
-        "size": "VARIANT(m,Payout,Expense,Rent,Fees & services)",
-        "icon": "VARIANT(false,true)",
-        "Theme": "VARIANT(orange,information,success,error,magic,brand,new)"
-      },
-      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
     },
     {
       "name": "Keyboards",
@@ -92,37 +77,6 @@
       "description": ""
     },
     {
-      "name": "Modal Date Picker",
-      "key": "3a898a52705508f610f5de1bad66cae84c9d61a7",
-      "id": "2994:7149",
-      "type": "COMPONENT_SET",
-      "variants": 3,
-      "page": "Date pickers",
-      "category": "layout",
-      "properties": {
-        "Headline#53001:0": "TEXT",
-        "Supporting text#53001:4": "TEXT",
-        "Supporting text (range)#53001:8": "TEXT",
-        "Headline (range)#53001:12": "TEXT",
-        "Type": "VARIANT(Day,Year,Full-screen (range))"
-      },
-      "description": "Dialog (modal). Use for high-focus interruptions that require user action before proceeding.\n\nWhen to use:\n• Confirmations: \"Are you sure you want to delete this?\"\n• Critical alerts: errors, destructive action warnings.\n• Short forms or quick inputs.\n\nWhen NOT to use:\n• Showing item detail → Sidebar instead.\n• Filtering/sorting → Sidebar instead.\n• Complex multi-step workflows → Full page instead.\n\nSave & error handling:\n• Partial failure: keep failed fields in Error state, apply Entered styling to saved fields, show error snackbar.\n• Full success: show success snackbar (\"Your changes have been saved\"), exit edit mode.\n• Never reset valid inputs after failure. Scroll to first error on long forms.\n\nCTA: action verb + object. \"Save changes\", \"Delete booking\" — not \"OK\" or \"Submit\"."
-    },
-    {
-      "name": "Top navigation bar",
-      "key": "53ced9cd3c999efa60a58be72729217f78d6386c",
-      "id": "3353:524",
-      "type": "COMPONENT_SET",
-      "variants": 5,
-      "page": "         Navigation • bar",
-      "category": "navigation",
-      "properties": {
-        "Breakpoint": "VARIANT(desktop,mobile)",
-        "Property 2": "VARIANT(back,default,standard,subpage)"
-      },
-      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
-    },
-    {
       "name": "Snackbar",
       "key": "5e2202fa8bdb604f8c078f1ddef076810d0d2a5b",
       "id": "401:12958",
@@ -163,32 +117,6 @@
         "icon": "VARIANT(false,true)"
       },
       "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
-    },
-    {
-      "name": "row",
-      "key": "00bc29036dedff762ee718a6379f60aa65451cdc",
-      "id": "2976:3195",
-      "type": "COMPONENT_SET",
-      "variants": 4,
-      "page": "           Row",
-      "category": "layout",
-      "properties": {
-        "State": "VARIANT(default,highlighted,selected,hover)"
-      },
-      "description": "Table row.\n\nClickable cells in tables:\n• If the row itself is NOT clickable (action button at row end), it is acceptable to have clickable cells within the row.\n• If a row has a trailing action button, this provides a consistent interaction pattern and maintains accessibility.\n• Key principle: action buttons at row end ensure consistent experience and clearly separate navigation from data content.\n• Avoid having both a clickable row AND clickable cells — pick one interaction model per table.\n\nAccessibility: having action buttons at the end of rows (not inline within cells) ensures screen readers can identify interactive elements reliably."
-    },
-    {
-      "name": "right side panel",
-      "key": "e67803a0f8c3577def91b07e6605b1d13a494062",
-      "id": "4502:13672",
-      "type": "COMPONENT_SET",
-      "variants": 2,
-      "page": "Panel",
-      "category": "layout",
-      "properties": {
-        "Header": "VARIANT(fixed header,scrollable header)"
-      },
-      "description": "Right side panel (Sidebar / Drawer). Use to provide additional information, tools, or navigation without breaking the user's workflow.\n\nWhen to use a Sidebar:\n• Filtering / sorting — adjusting results without losing the list.\n• Detailed view — showing details of a selected item from a list.\n• Persistent tools — editing panels, document outlines.\n\nKey benefit: maintains user context. The user stays tethered to their current location.\n\nWhen NOT to use a Sidebar:\n• Critical confirmation or alert → Dialog instead.\n• Complex multi-step task → Full Page instead.\n\nComparison (Dialog vs Sidebar vs Full Page):\n• Dialog — very high focus, hides context, high intrusiveness. Best for confirmations.\n• Sidebar — medium focus, maintains context, low intrusiveness. Best for filtering and detail views.\n• Full Page — high focus, replaces context. Best for complex forms and multi-step workflows."
     },
     {
       "name": "progress bar",
@@ -237,25 +165,11 @@
       "description": ""
     },
     {
-      "name": "Toggle",
-      "key": "447c73315831745a89161914bf7cf13d0f4d2ca0",
-      "id": "372:7911",
-      "type": "COMPONENT_SET",
-      "variants": 4,
-      "page": "Toggle",
-      "category": "layout",
-      "properties": {
-        "Toggle": "VARIANT(true,false)",
-        "Text": "VARIANT(true,false)"
-      },
-      "description": ""
-    },
-    {
       "name": "Button - Tonal",
       "key": "47851772163dfc990dcd98ff80ce0159735cfdd5",
       "id": "377:12354",
       "type": "COMPONENT_SET",
-      "variants": 240,
+      "variants": 230,
       "page": "Buttons",
       "category": "layout",
       "properties": {
@@ -301,19 +215,6 @@
       "description": "Date pickers let users select a date, or a range of dates.\n\n🛠 Additional options \nDays/Years - edit the states of the days/years by selecting the individual day/year and editing the variant properties.\n\nMenu button - edit menu button states by selecting and editing variant properties."
     },
     {
-      "name": "Navigation drawer",
-      "key": "533290e0d6fdefa5feef8d6a6b447e9459dcb735",
-      "id": "3611:12514",
-      "type": "COMPONENT_SET",
-      "variants": 5,
-      "page": "         Navigation • drawer",
-      "category": "navigation",
-      "properties": {
-        "type": "VARIANT(collapsed,default,pending selection,sub drawer selected,banner)"
-      },
-      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
-    },
-    {
       "name": "Multi-rental calendar",
       "key": "1bd804439fba6d00e07a34e006c6d048dd820797",
       "id": "2511:2303",
@@ -356,22 +257,6 @@
         "Leading icon": "VARIANT(False,True)",
         "Trailing icon": "VARIANT(True,False)",
         "Type": "VARIANT(Heading 4,Body,Small body,Heading 3 (dialogs),Heading 1,Heading 2,Explanation)"
-      },
-      "description": ""
-    },
-    {
-      "name": "checkbox",
-      "key": "bf5c77ce0017a9754632a645e0a3f2bbe043e667",
-      "id": "240:11678",
-      "type": "COMPONENT_SET",
-      "variants": 12,
-      "page": "Checkbox",
-      "category": "layout",
-      "properties": {
-        "State": "VARIANT(disabled,enabled,error)",
-        "Type": "VARIANT(empty,filled)",
-        "Style": "VARIANT(Text,Filled)",
-        "with description": "VARIANT(True,False)"
       },
       "description": ""
     },
@@ -508,50 +393,6 @@
       "description": ""
     },
     {
-      "name": "Badge -activity status",
-      "key": "9f3554df6fc24bd1c11c08ab3d76a3cd9436062a",
-      "id": "6806:28404",
-      "type": "COMPONENT_SET",
-      "variants": 6,
-      "page": "Badges",
-      "category": "layout",
-      "properties": {
-        "Property 1": "VARIANT(completed,confirmed,inactive,miscellanous,tentative,rejected)"
-      },
-      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
-    },
-    {
-      "name": "badge - example",
-      "key": "b46b7c98527674df2665377a7b9b15327ef03fd1",
-      "id": "3549:3676",
-      "type": "COMPONENT_SET",
-      "variants": 10,
-      "page": "Badges",
-      "category": "layout",
-      "properties": {
-        "Text#3588:0": "TEXT",
-        "type": "VARIANT(cancelled,informative,pending,success,new solid inverted,new solid,solid,error)",
-        "status": "VARIANT(m,cancelled/unavailable,confirmed,tentative)",
-        "Property 3": "VARIANT(False)",
-        "Size": "VARIANT(l,default)"
-      },
-      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
-    },
-    {
-      "name": "Badge - custom",
-      "key": "75dbe30c442443159c0148126311133236729878",
-      "id": "3109:6029",
-      "type": "COMPONENT_SET",
-      "variants": 5,
-      "page": "Badges",
-      "category": "layout",
-      "properties": {
-        "Text#3549:550": "TEXT",
-        "Type": "VARIANT(text,card/row - delivered,outline custom,card/row - new,card/row - seen)"
-      },
-      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
-    },
-    {
       "name": "Cards/informational",
       "key": "552b4fe938d5d15c03032b4fd1ec4d51bae5d9f9",
       "id": "6369:28280",
@@ -580,19 +421,6 @@
       "description": ""
     },
     {
-      "name": "Breakdown group",
-      "key": "eaef978fba1be8b936bc9195f5c2670fc70ce548",
-      "id": "6028:5139",
-      "type": "COMPONENT_SET",
-      "variants": 2,
-      "page": "Labels",
-      "category": "layout",
-      "properties": {
-        "Level": "VARIANT(first level,second level)"
-      },
-      "description": ""
-    },
-    {
       "name": "header",
       "key": "dfb9d724b8d6c6a4f33d6296c6bab60708b8532d",
       "id": "1638:5438",
@@ -608,47 +436,6 @@
         "alignement": "VARIANT(Left,Right)"
       },
       "description": ""
-    },
-    {
-      "name": "Building Blocks/Local M3 calendar cell",
-      "key": "61b477bbbfbb024206a23c7c093506d6216dd2d6",
-      "id": "2994:7689",
-      "type": "COMPONENT_SET",
-      "variants": 21,
-      "page": "Date pickers",
-      "category": "layout",
-      "properties": {
-        "Extra Right#3:0": "BOOLEAN",
-        "Extra Left#3:10": "BOOLEAN",
-        "Start Range#5:0": "BOOLEAN",
-        "End Range#5:13": "BOOLEAN",
-        "Date#2473:0": "TEXT",
-        "Type": "VARIANT(Default,Today,Selected,Selected (Middle),Null,Prev/Next)",
-        "State": "VARIANT(Enabled,Hovered,Focused,Pressed,Disabled,past day)"
-      },
-      "description": "Day cell"
-    },
-    {
-      "name": "Button - Solid",
-      "key": "2d9f90d8a9cac247e6ed24e0f7094b34f3e53d6d",
-      "id": "238:665",
-      "type": "COMPONENT_SET",
-      "variants": 240,
-      "page": "Buttons",
-      "category": "layout",
-      "properties": {
-        "leading icon#3549:412": "INSTANCE_SWAP",
-        "Text#3549:473": "TEXT",
-        "trailing icon#3551:206": "INSTANCE_SWAP",
-        "Role": "VARIANT(Primary,Secondary,Informational,Danger)",
-        "State": "VARIANT(Default,Disabled,Hover,Active,Focused,Loading)",
-        "Size": "VARIANT(M,S)",
-        "Leading icon": "VARIANT(False,True)",
-        "Trailing icon": "VARIANT(False,True)",
-        "divider": "VARIANT(False,True)",
-        "Type": "VARIANT(Positive,Negative)"
-      },
-      "description": "Button usage guidelines.\n\nCTA copy rules:\n• Always use verb + object: \"Create rental\", \"Save changes\", \"Send invitation\", \"Delete booking\".\n• Never use nouns alone: \"New rental\" → use \"Create rental\" instead.\n• Nouns are acceptable only for tabs, nav items, and filter chips (navigation, not action).\n• Always use \"and\" not \"&\". Sentence case only.\n\nIcon placement:\n• Left of text (default) — matches reading flow, reinforces hierarchy.\n• Right of text — for directional/forward actions (Next →, More options ▾).\n• Icon-only — only when space is limited AND icon is universally understood (trash, add, edit, settings).\n\nSpacing: icon ↔ text = 4px. Icon size = 20px. Buttons or tabs = 12px gap. Between components = 16px."
     },
     {
       "name": "Section",
@@ -707,11 +494,26 @@
       "description": ""
     },
     {
+      "name": "divider",
+      "key": "c69862a9bc101567543dcc5af1c31e1604ba91f2",
+      "id": "576:2819",
+      "type": "COMPONENT_SET",
+      "variants": 16,
+      "page": "Divider",
+      "category": "layout",
+      "properties": {
+        "direction": "VARIANT(horizontal,vertical,none)",
+        "type": "VARIANT(full-width,inset,middle-inset,with subhead,dot,OR)",
+        "Color": "VARIANT(Dark,Light,default)"
+      },
+      "description": ""
+    },
+    {
       "name": "Button - Outline",
       "key": "834105a8c67699d40dd8a8f05becb8d1d8e620a7",
       "id": "186:7918",
       "type": "COMPONENT_SET",
-      "variants": 195,
+      "variants": 180,
       "page": "Buttons",
       "category": "layout",
       "properties": {
@@ -729,21 +531,6 @@
       "description": "Button usage guidelines.\n\nCTA copy rules:\n• Always use verb + object: \"Create rental\", \"Save changes\", \"Send invitation\", \"Delete booking\".\n• Never use nouns alone: \"New rental\" → use \"Create rental\" instead.\n• Nouns are acceptable only for tabs, nav items, and filter chips (navigation, not action).\n• Always use \"and\" not \"&\". Sentence case only.\n\nIcon placement:\n• Left of text (default) — matches reading flow, reinforces hierarchy.\n• Right of text — for directional/forward actions (Next →, More options ▾).\n• Icon-only — only when space is limited AND icon is universally understood (trash, add, edit, settings).\n\nSpacing: icon ↔ text = 4px. Icon size = 20px. Buttons or tabs = 12px gap. Between components = 16px."
     },
     {
-      "name": "divider",
-      "key": "c69862a9bc101567543dcc5af1c31e1604ba91f2",
-      "id": "576:2819",
-      "type": "COMPONENT_SET",
-      "variants": 16,
-      "page": "Divider",
-      "category": "layout",
-      "properties": {
-        "direction": "VARIANT(horizontal,vertical,none)",
-        "type": "VARIANT(full-width,inset,middle-inset,with subhead,dot,OR)",
-        "Color": "VARIANT(Dark,Light,default)"
-      },
-      "description": ""
-    },
-    {
       "name": "breadcrumbs",
       "key": "f8a31cb2cb2102f639ba49982599e4680ea8a636",
       "id": "3320:3401",
@@ -755,6 +542,111 @@
         "Type": "VARIANT(crosslink,current page,no link)"
       },
       "description": "Breadcrumb navigation.\n\nNavigation IA:\n• Shows user's location within the application hierarchy.\n• Breadcrumbs represent operational scope — each level reflects where settings or data \"live\".\n• System-level: account → channel → rental → booking (most specific).\n• Help users navigate between inherited settings levels without losing context.\n\nLabels: sentence case, nouns acceptable (navigational element). Use \"and\" not \"&\"."
+    },
+    {
+      "name": "Toggle",
+      "key": "447c73315831745a89161914bf7cf13d0f4d2ca0",
+      "id": "372:7911",
+      "type": "COMPONENT_SET",
+      "variants": 4,
+      "page": "Toggle",
+      "category": "layout",
+      "properties": {
+        "Toggle": "VARIANT(true,false)",
+        "Text": "VARIANT(true,false)"
+      },
+      "description": ""
+    },
+    {
+      "name": "Modal Date Picker",
+      "key": "3a898a52705508f610f5de1bad66cae84c9d61a7",
+      "id": "2994:7149",
+      "type": "COMPONENT_SET",
+      "variants": 3,
+      "page": "Date pickers",
+      "category": "layout",
+      "properties": {
+        "Headline#53001:0": "TEXT",
+        "Supporting text#53001:4": "TEXT",
+        "Supporting text (range)#53001:8": "TEXT",
+        "Headline (range)#53001:12": "TEXT",
+        "Type": "VARIANT(Day,Year,Full-screen (range))"
+      },
+      "description": "Dialog (modal). Use for high-focus interruptions that require user action before proceeding.\n\nWhen to use:\n• Confirmations: \"Are you sure you want to delete this?\"\n• Critical alerts: errors, destructive action warnings.\n• Short forms or quick inputs.\n\nWhen NOT to use:\n• Showing item detail → Sidebar instead.\n• Filtering/sorting → Sidebar instead.\n• Complex multi-step workflows → Full page instead.\n\nSave & error handling:\n• Partial failure: keep failed fields in Error state, apply Entered styling to saved fields, show error snackbar.\n• Full success: show success snackbar (\"Your changes have been saved\"), exit edit mode.\n• Never reset valid inputs after failure. Scroll to first error on long forms.\n\nCTA: action verb + object. \"Save changes\", \"Delete booking\" — not \"OK\" or \"Submit\"."
+    },
+    {
+      "name": "Top navigation bar",
+      "key": "53ced9cd3c999efa60a58be72729217f78d6386c",
+      "id": "3353:524",
+      "type": "COMPONENT_SET",
+      "variants": 5,
+      "page": "         Navigation • bar",
+      "category": "navigation",
+      "properties": {
+        "Breakpoint": "VARIANT(desktop,mobile)",
+        "Property 2": "VARIANT(back,default,standard,subpage)"
+      },
+      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
+    },
+    {
+      "name": "Navigation tab",
+      "key": "f6e37c53608e06aba3ad42ad600434b8f464c4e8",
+      "id": "1276:12995",
+      "type": "COMPONENT_SET",
+      "variants": 2,
+      "page": "         Navigation • bar",
+      "category": "navigation",
+      "properties": {
+        "State": "VARIANT(Active,Inactive)"
+      },
+      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
+    },
+    {
+      "name": "Badge - custom",
+      "key": "75dbe30c442443159c0148126311133236729878",
+      "id": "3109:6029",
+      "type": "COMPONENT_SET",
+      "variants": 5,
+      "page": "Badges",
+      "category": "layout",
+      "properties": {
+        "Text#3549:550": "TEXT",
+        "Type": "VARIANT(text,card/row - delivered,outline custom,card/row - new,card/row - seen)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
+    },
+    {
+      "name": "badge - example",
+      "key": "b46b7c98527674df2665377a7b9b15327ef03fd1",
+      "id": "3549:3676",
+      "type": "COMPONENT_SET",
+      "variants": 10,
+      "page": "Badges",
+      "category": "layout",
+      "properties": {
+        "Text#3588:0": "TEXT",
+        "type": "VARIANT(cancelled,informative,pending,success,new solid inverted,new solid,solid,error)",
+        "status": "VARIANT(m,cancelled/unavailable,confirmed,tentative)",
+        "Property 3": "VARIANT(False)",
+        "Size": "VARIANT(l,default)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
+    },
+    {
+      "name": "checkbox",
+      "key": "bf5c77ce0017a9754632a645e0a3f2bbe043e667",
+      "id": "240:11678",
+      "type": "COMPONENT_SET",
+      "variants": 12,
+      "page": "Checkbox",
+      "category": "layout",
+      "properties": {
+        "State": "VARIANT(disabled,enabled,error)",
+        "Type": "VARIANT(empty,filled)",
+        "Style": "VARIANT(Text,Filled)",
+        "with description": "VARIANT(True,False)"
+      },
+      "description": ""
     },
     {
       "name": "menu item",
@@ -770,6 +662,146 @@
         "badge area": "VARIANT(False,True)"
       },
       "description": ""
+    },
+    {
+      "name": "Breakdown group",
+      "key": "eaef978fba1be8b936bc9195f5c2670fc70ce548",
+      "id": "6028:5139",
+      "type": "COMPONENT_SET",
+      "variants": 2,
+      "page": "Labels",
+      "category": "layout",
+      "properties": {
+        "Level": "VARIANT(first level,second level)"
+      },
+      "description": ""
+    },
+    {
+      "name": "Button - Solid",
+      "key": "2d9f90d8a9cac247e6ed24e0f7094b34f3e53d6d",
+      "id": "238:665",
+      "type": "COMPONENT_SET",
+      "variants": 240,
+      "page": "Buttons",
+      "category": "layout",
+      "properties": {
+        "leading icon#3549:412": "INSTANCE_SWAP",
+        "Text#3549:473": "TEXT",
+        "trailing icon#3551:206": "INSTANCE_SWAP",
+        "Role": "VARIANT(Primary,Secondary,Informational,Danger)",
+        "State": "VARIANT(Default,Disabled,Hover,Active,Focused,Loading)",
+        "Size": "VARIANT(M,S)",
+        "Leading icon": "VARIANT(False,True)",
+        "Trailing icon": "VARIANT(False,True)",
+        "divider": "VARIANT(False,True)",
+        "Type": "VARIANT(Positive,Negative)"
+      },
+      "description": "Button usage guidelines.\n\nCTA copy rules:\n• Always use verb + object: \"Create rental\", \"Save changes\", \"Send invitation\", \"Delete booking\".\n• Never use nouns alone: \"New rental\" → use \"Create rental\" instead.\n• Nouns are acceptable only for tabs, nav items, and filter chips (navigation, not action).\n• Always use \"and\" not \"&\". Sentence case only.\n\nIcon placement:\n• Left of text (default) — matches reading flow, reinforces hierarchy.\n• Right of text — for directional/forward actions (Next →, More options ▾).\n• Icon-only — only when space is limited AND icon is universally understood (trash, add, edit, settings).\n\nSpacing: icon ↔ text = 4px. Icon size = 20px. Buttons or tabs = 12px gap. Between components = 16px."
+    },
+    {
+      "name": "Badge -activity status",
+      "key": "9f3554df6fc24bd1c11c08ab3d76a3cd9436062a",
+      "id": "6806:28404",
+      "type": "COMPONENT_SET",
+      "variants": 6,
+      "page": "Badges",
+      "category": "layout",
+      "properties": {
+        "Property 1": "VARIANT(completed,confirmed,inactive,miscellanous,tentative,rejected)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
+    },
+    {
+      "name": "Building Blocks/Local M3 calendar cell",
+      "key": "61b477bbbfbb024206a23c7c093506d6216dd2d6",
+      "id": "2994:7689",
+      "type": "COMPONENT_SET",
+      "variants": 21,
+      "page": "Date pickers",
+      "category": "layout",
+      "properties": {
+        "Extra Right#3:0": "BOOLEAN",
+        "Extra Left#3:10": "BOOLEAN",
+        "Start Range#5:0": "BOOLEAN",
+        "End Range#5:13": "BOOLEAN",
+        "Date#2473:0": "TEXT",
+        "Type": "VARIANT(Default,Today,Selected,Selected (Middle),Null,Prev/Next)",
+        "State": "VARIANT(Enabled,Hovered,Focused,Pressed,Disabled,past day)"
+      },
+      "description": "Day cell"
+    },
+    {
+      "name": "row",
+      "key": "00bc29036dedff762ee718a6379f60aa65451cdc",
+      "id": "2976:3195",
+      "type": "COMPONENT_SET",
+      "variants": 4,
+      "page": "           Row",
+      "category": "layout",
+      "properties": {
+        "State": "VARIANT(default,highlighted,selected,hover)"
+      },
+      "description": "Table row.\n\nClickable cells in tables:\n• If the row itself is NOT clickable (action button at row end), it is acceptable to have clickable cells within the row.\n• If a row has a trailing action button, this provides a consistent interaction pattern and maintains accessibility.\n• Key principle: action buttons at row end ensure consistent experience and clearly separate navigation from data content.\n• Avoid having both a clickable row AND clickable cells — pick one interaction model per table.\n\nAccessibility: having action buttons at the end of rows (not inline within cells) ensures screen readers can identify interactive elements reliably."
+    },
+    {
+      "name": "Navigation drawer",
+      "key": "533290e0d6fdefa5feef8d6a6b447e9459dcb735",
+      "id": "3611:12514",
+      "type": "COMPONENT_SET",
+      "variants": 5,
+      "page": "         Navigation • drawer",
+      "category": "navigation",
+      "properties": {
+        "type": "VARIANT(collapsed,default,pending selection,sub drawer selected,banner)"
+      },
+      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
+    },
+    {
+      "name": "badge - solid inverted",
+      "key": "5c2fb621d54eadba901f24575514334255f94138",
+      "id": "3109:5955",
+      "type": "COMPONENT_SET",
+      "variants": 8,
+      "page": "Badges",
+      "category": "layout",
+      "properties": {
+        "size": "VARIANT(m,Payout,Expense,Rent,Fees & services)",
+        "icon": "VARIANT(false,true)",
+        "Theme": "VARIANT(orange,information,success,error,magic,brand,new)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
+    },
+    {
+      "name": "season calendar",
+      "key": "7168eab3982218520f68363afa6745e07a929f53",
+      "id": "3330:3315",
+      "type": "COMPONENT_SET",
+      "variants": 24,
+      "page": "Calendars",
+      "category": "layout",
+      "properties": {
+        "Extra Right#3:0": "BOOLEAN",
+        "Extra Left#3:10": "BOOLEAN",
+        "Start Range#5:0": "BOOLEAN",
+        "End Range#5:13": "BOOLEAN",
+        "Date#2473:0": "TEXT",
+        "Type": "VARIANT(Default,Today,Selected,Selected (Middle),Null,Prev/Next,Season)",
+        "State": "VARIANT(Enabled,Hovered,Focused,Pressed,Disabled,past day,start,end)"
+      },
+      "description": "Day cell"
+    },
+    {
+      "name": "right side panel",
+      "key": "e67803a0f8c3577def91b07e6605b1d13a494062",
+      "id": "4502:13672",
+      "type": "COMPONENT_SET",
+      "variants": 2,
+      "page": "Panel",
+      "category": "layout",
+      "properties": {
+        "Header": "VARIANT(fixed header,scrollable header)"
+      },
+      "description": "Right side panel (Sidebar / Drawer). Use to provide additional information, tools, or navigation without breaking the user's workflow.\n\nWhen to use a Sidebar:\n• Filtering / sorting — adjusting results without losing the list.\n• Detailed view — showing details of a selected item from a list.\n• Persistent tools — editing panels, document outlines.\n\nKey benefit: maintains user context. The user stays tethered to their current location.\n\nWhen NOT to use a Sidebar:\n• Critical confirmation or alert → Dialog instead.\n• Complex multi-step task → Full Page instead.\n\nComparison (Dialog vs Sidebar vs Full Page):\n• Dialog — very high focus, hides context, high intrusiveness. Best for confirmations.\n• Sidebar — medium focus, maintains context, low intrusiveness. Best for filtering and detail views.\n• Full Page — high focus, replaces context. Best for complex forms and multi-step workflows."
     },
     {
       "name": "Cards/entity",
@@ -798,19 +830,6 @@
         "Platform": "VARIANT(airbnb colored,booking blue,booking white,expedia,vrbo,airbnb black and white)"
       },
       "description": ""
-    },
-    {
-      "name": "Navigation tab",
-      "key": "f6e37c53608e06aba3ad42ad600434b8f464c4e8",
-      "id": "1276:12995",
-      "type": "COMPONENT_SET",
-      "variants": 2,
-      "page": "         Navigation • bar",
-      "category": "navigation",
-      "properties": {
-        "State": "VARIANT(Active,Inactive)"
-      },
-      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
     },
     {
       "name": "Dropdown building blocks",
@@ -901,6 +920,19 @@
       "description": "Text button (link-style). Secondary action, visually subordinate to primary CTA.\n\nColor — always match the surface, not the sentiment:\n• Positive (teal) — default, white/neutral backgrounds. Most common (73 instances).\n• Informational (blue) — inside informational banners/cards (blue-50 background).\n• Secondary (gray) — muted surfaces only, use sparingly (3 instances).\n• Warning (red) — destructive/irreversible actions only. Never on neutral surfaces (5 instances).\n\nTwo sub-patterns:\n• Navigation — trailing edit/pencil icon. Takes user to a related management screen.\n• Expand/collapse — trailing chevron-down icon. Reveals inline detail without navigating away.\n\nPlacement: right-aligned in form section, vertically centered next to the relevant field group."
     },
     {
+      "name": "season calendar",
+      "key": "2a7cdd76633f309c0456e4d052623b0af6d31732",
+      "id": "3330:3176",
+      "type": "COMPONENT_SET",
+      "variants": 1,
+      "page": "Calendars",
+      "category": "layout",
+      "properties": {
+        "Type": "VARIANT(season calendar)"
+      },
+      "description": "Date pickers let users select a date, or a range of dates.\n\n🛠 Additional options \nDays/Years - edit the states of the days/years by selecting the individual day/year and editing the variant properties.\n\nMenu button - edit menu button states by selecting and editing variant properties."
+    },
+    {
       "name": "Input Date Picker",
       "key": "2a4a98d4604d342be5101e389c9c8a02b800f7ec",
       "id": "3330:3286",
@@ -915,38 +947,6 @@
         "Type": "VARIANT(Single Input,Range)"
       },
       "description": "Date pickers let users select a date, or a range of dates.\n\n🛠 Additional options \nFields - edit the states of the fields by selecting the individual field and editing the variant properties."
-    },
-    {
-      "name": "season calendar",
-      "key": "2a7cdd76633f309c0456e4d052623b0af6d31732",
-      "id": "3330:3176",
-      "type": "COMPONENT_SET",
-      "variants": 1,
-      "page": "Calendars",
-      "category": "layout",
-      "properties": {
-        "Type": "VARIANT(season calendar)"
-      },
-      "description": "Date pickers let users select a date, or a range of dates.\n\n🛠 Additional options \nDays/Years - edit the states of the days/years by selecting the individual day/year and editing the variant properties.\n\nMenu button - edit menu button states by selecting and editing variant properties."
-    },
-    {
-      "name": "season calendar",
-      "key": "7168eab3982218520f68363afa6745e07a929f53",
-      "id": "3330:3315",
-      "type": "COMPONENT_SET",
-      "variants": 24,
-      "page": "Calendars",
-      "category": "layout",
-      "properties": {
-        "Extra Right#3:0": "BOOLEAN",
-        "Extra Left#3:10": "BOOLEAN",
-        "Start Range#5:0": "BOOLEAN",
-        "End Range#5:13": "BOOLEAN",
-        "Date#2473:0": "TEXT",
-        "Type": "VARIANT(Default,Today,Selected,Selected (Middle),Null,Prev/Next,Season)",
-        "State": "VARIANT(Enabled,Hovered,Focused,Pressed,Disabled,past day,start,end)"
-      },
-      "description": "Day cell"
     },
     {
       "name": "Pagination/simple",
@@ -1092,6 +1092,86 @@
       "description": ""
     },
     {
+      "name": "filter and search area/Variant3",
+      "key": "ce1b8d1e49b1b4304126b86f917783fee1f8fb14",
+      "id": "7094:14261",
+      "type": "COMPONENT",
+      "page": "Filters",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Top navigation bar",
+      "key": "6dee263ee15967b2038c99a0f7c8d6b3351f7bcf",
+      "id": "6861:100887",
+      "type": "COMPONENT",
+      "page": "Navigation",
+      "category": "navigation",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Subsection",
+      "key": "89fc5db1feaff4b9e0026a75e18f3aad719b8811",
+      "id": "3240:3572",
+      "type": "COMPONENT",
+      "page": "Labels",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "table building block",
+      "key": "9c8a3ef7dfe75b2d6cbbe280a6b37a4ab6bbd152",
+      "id": "3442:660",
+      "type": "COMPONENT",
+      "page": "Table",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Dialog/back button/short",
+      "key": "b4b92bd858ebc5be072f9222ef5f8e017c3358af",
+      "id": "3354:10995",
+      "type": "COMPONENT",
+      "page": "retired dialogs",
+      "category": "overlay",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "In-app intercept",
+      "key": "b72cd572ff8dc08b9c793ef668c64a6f23b3451d",
+      "id": "6634:13898",
+      "type": "COMPONENT",
+      "page": "In-app intercept",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "wizard",
+      "key": "db81a6973107a32c2c22f44d625c21cfea271829",
+      "id": "4110:5580",
+      "type": "COMPONENT",
+      "page": "Wizard",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Dialog/default/short",
+      "key": "fc73bab763fab298b24b553917b1444054ef9ef0",
+      "id": "0:3430",
+      "type": "COMPONENT",
+      "page": "retired dialogs",
+      "category": "overlay",
+      "properties": {},
+      "description": ""
+    },
+    {
       "name": "LayoutBlocks/horizontal×1",
       "key": "7477e2d0b1e3f4043ca9b44109db59539cdac4a1",
       "id": "1262:9796",
@@ -1168,16 +1248,6 @@
       "type": "COMPONENT",
       "page": "Overlay",
       "category": "overlay",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "Top navigation bar",
-      "key": "6dee263ee15967b2038c99a0f7c8d6b3351f7bcf",
-      "id": "6861:100887",
-      "type": "COMPONENT",
-      "page": "Navigation",
-      "category": "navigation",
       "properties": {},
       "description": ""
     },
@@ -1352,16 +1422,6 @@
       "description": "↓ Vertical Layout Blocks x10"
     },
     {
-      "name": "Subsection",
-      "key": "89fc5db1feaff4b9e0026a75e18f3aad719b8811",
-      "id": "3240:3572",
-      "type": "COMPONENT",
-      "page": "Labels",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
       "name": "LayoutBlocks/vertical×2-1",
       "key": "8a1282a9070f53b5353dc94c8fce8abd30a9cb5f",
       "id": "1262:9870",
@@ -1412,36 +1472,6 @@
       "description": ""
     },
     {
-      "name": "Dialog/back button/short",
-      "key": "b4b92bd858ebc5be072f9222ef5f8e017c3358af",
-      "id": "3354:10995",
-      "type": "COMPONENT",
-      "page": "retired dialogs",
-      "category": "overlay",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "In-app intercept",
-      "key": "b72cd572ff8dc08b9c793ef668c64a6f23b3451d",
-      "id": "6634:13898",
-      "type": "COMPONENT",
-      "page": "In-app intercept",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
-      "name": "wizard",
-      "key": "db81a6973107a32c2c22f44d625c21cfea271829",
-      "id": "4110:5580",
-      "type": "COMPONENT",
-      "page": "Wizard",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
       "name": "LayoutBlocks/horizontal×4",
       "key": "e5b2484883adff8f70826c303f0334350487a14b",
       "id": "1262:9774",
@@ -1460,16 +1490,6 @@
       "category": "layout",
       "properties": {},
       "description": "-> Horizontal Layout Blocks x2 - ⭯ Nested 2"
-    },
-    {
-      "name": "Dialog/default/short",
-      "key": "fc73bab763fab298b24b553917b1444054ef9ef0",
-      "id": "0:3430",
-      "type": "COMPONENT",
-      "page": "retired dialogs",
-      "category": "overlay",
-      "properties": {},
-      "description": ""
     },
     {
       "name": "LayoutBlocks/horizontal×10",
@@ -1500,16 +1520,6 @@
       "category": "layout",
       "properties": {},
       "description": "↓ Vertical Layout Blocks x5"
-    },
-    {
-      "name": "table building block",
-      "key": "9c8a3ef7dfe75b2d6cbbe280a6b37a4ab6bbd152",
-      "id": "3442:660",
-      "type": "COMPONENT",
-      "page": "Table",
-      "category": "layout",
-      "properties": {},
-      "description": ""
     },
     {
       "name": "monthly calendar",
@@ -1552,21 +1562,21 @@
       "description": ""
     },
     {
-      "name": "Tabs/mobile",
-      "key": "3708ecf04d0b60dff528360c4f4d16bbfccbce64",
-      "id": "1270:11626",
-      "type": "COMPONENT",
-      "page": "Tabs",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
       "name": "Documentation",
       "key": "3688da1a33c31030e9d32a855669b883fcda33f9",
       "id": "6651:52652",
       "type": "COMPONENT",
       "page": "Documenting",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Tabs/mobile",
+      "key": "3708ecf04d0b60dff528360c4f4d16bbfccbce64",
+      "id": "1270:11626",
+      "type": "COMPONENT",
+      "page": "Tabs",
       "category": "layout",
       "properties": {},
       "description": ""
