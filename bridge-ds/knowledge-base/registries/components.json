@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T12:30:17.633Z",
+  "generatedAt": "2026-06-16T11:23:13.672Z",
   "components": [
     {
       "name": "Flags",
@@ -819,6 +819,20 @@
       "description": ""
     },
     {
+      "name": "Dialog",
+      "key": "bef5dfebc5194cb7a2d3794373c28e71b06dd679",
+      "id": "2401:10692",
+      "type": "COMPONENT_SET",
+      "variants": 7,
+      "page": "Dialogs",
+      "category": "overlay",
+      "properties": {
+        "Type": "VARIANT(default,delete,back button,success,discovery)",
+        "variations": "VARIANT(enter confirmation,long,short,default,page)"
+      },
+      "description": "Dialog (modal). Use for high-focus interruptions that require user action before proceeding.\n\nWhen to use:\n• Confirmations: \"Are you sure you want to delete this?\"\n• Critical alerts: errors, destructive action warnings.\n• Short forms or quick inputs.\n\nWhen NOT to use:\n• Showing item detail → Sidebar instead.\n• Filtering/sorting → Sidebar instead.\n• Complex multi-step workflows → Full page instead.\n\nSave & error handling:\n• Partial failure: keep failed fields in Error state, apply Entered styling to saved fields, show error snackbar.\n• Full success: show success snackbar (\"Your changes have been saved\"), exit edit mode.\n• Never reset valid inputs after failure. Scroll to first error on long forms.\n\nCTA: action verb + object. \"Save changes\", \"Delete booking\" — not \"OK\" or \"Submit\"."
+    },
+    {
       "name": "Preferred partner",
       "key": "cb180624e6f3fe7f631f890591ebb7043c6ced10",
       "id": "829:8468",
@@ -989,20 +1003,6 @@
         "State": "VARIANT(normal,hover,disabled)"
       },
       "description": ""
-    },
-    {
-      "name": "Dialog",
-      "key": "bef5dfebc5194cb7a2d3794373c28e71b06dd679",
-      "id": "2401:10692",
-      "type": "COMPONENT_SET",
-      "variants": 7,
-      "page": "Dialogs",
-      "category": "overlay",
-      "properties": {
-        "Type": "VARIANT(default,delete,back button,success,discovery)",
-        "variations": "VARIANT(enter confirmation,long,short,default,page)"
-      },
-      "description": "Dialog (modal). Use for high-focus interruptions that require user action before proceeding.\n\nWhen to use:\n• Confirmations: \"Are you sure you want to delete this?\"\n• Critical alerts: errors, destructive action warnings.\n• Short forms or quick inputs.\n\nWhen NOT to use:\n• Showing item detail → Sidebar instead.\n• Filtering/sorting → Sidebar instead.\n• Complex multi-step workflows → Full page instead.\n\nSave & error handling:\n• Partial failure: keep failed fields in Error state, apply Entered styling to saved fields, show error snackbar.\n• Full success: show success snackbar (\"Your changes have been saved\"), exit edit mode.\n• Never reset valid inputs after failure. Scroll to first error on long forms.\n\nCTA: action verb + object. \"Save changes\", \"Delete booking\" — not \"OK\" or \"Submit\"."
     },
     {
       "name": "dot",
