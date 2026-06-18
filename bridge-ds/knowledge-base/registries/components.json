@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-17T11:08:16.677Z",
+  "generatedAt": "2026-06-18T10:39:45.595Z",
   "components": [
     {
       "name": "Flags",
@@ -791,19 +791,6 @@
       "description": "Day cell"
     },
     {
-      "name": "right side panel",
-      "key": "e67803a0f8c3577def91b07e6605b1d13a494062",
-      "id": "4502:13672",
-      "type": "COMPONENT_SET",
-      "variants": 2,
-      "page": "Panel",
-      "category": "layout",
-      "properties": {
-        "Header": "VARIANT(fixed header,scrollable header)"
-      },
-      "description": "Right side panel (Sidebar / Drawer). Use to provide additional information, tools, or navigation without breaking the user's workflow.\n\nWhen to use a Sidebar:\n• Filtering / sorting — adjusting results without losing the list.\n• Detailed view — showing details of a selected item from a list.\n• Persistent tools — editing panels, document outlines.\n\nKey benefit: maintains user context. The user stays tethered to their current location.\n\nWhen NOT to use a Sidebar:\n• Critical confirmation or alert → Dialog instead.\n• Complex multi-step task → Full Page instead.\n\nComparison (Dialog vs Sidebar vs Full Page):\n• Dialog — very high focus, hides context, high intrusiveness. Best for confirmations.\n• Sidebar — medium focus, maintains context, low intrusiveness. Best for filtering and detail views.\n• Full Page — high focus, replaces context. Best for complex forms and multi-step workflows."
-    },
-    {
       "name": "Cards/entity",
       "key": "2c71fb69cececb0d27ec415b1781258697705454",
       "id": "6369:28484",
@@ -910,6 +897,19 @@
         "State": "VARIANT(enabled,disabled,hovered,selected,selection within,Subcategory)"
       },
       "description": ""
+    },
+    {
+      "name": "right side panel",
+      "key": "e67803a0f8c3577def91b07e6605b1d13a494062",
+      "id": "4502:13672",
+      "type": "COMPONENT_SET",
+      "variants": 2,
+      "page": "Panel",
+      "category": "layout",
+      "properties": {
+        "Header": "VARIANT(fixed header,scrollable header)"
+      },
+      "description": "Right side panel (Sidebar / Drawer). Use to provide additional information, tools, or navigation without breaking the user's workflow.\n\nWhen to use a Sidebar:\n• Filtering / sorting — adjusting results without losing the list.\n• Detailed view — showing details of a selected item from a list.\n• Persistent tools — editing panels, document outlines.\n\nKey benefit: maintains user context. The user stays tethered to their current location.\n\nWhen NOT to use a Sidebar:\n• Critical confirmation or alert → Dialog instead.\n• Complex multi-step task → Full Page instead.\n\nComparison (Dialog vs Sidebar vs Full Page):\n• Dialog — very high focus, hides context, high intrusiveness. Best for confirmations.\n• Sidebar — medium focus, maintains context, low intrusiveness. Best for filtering and detail views.\n• Full Page — high focus, replaces context. Best for complex forms and multi-step workflows."
     },
     {
       "name": "Button - Text",
