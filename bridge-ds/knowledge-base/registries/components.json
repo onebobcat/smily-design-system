@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-18T10:39:45.595Z",
+  "generatedAt": "2026-06-19T10:47:15.625Z",
   "components": [
     {
       "name": "Flags",
@@ -1112,16 +1112,6 @@
       "description": ""
     },
     {
-      "name": "Subsection",
-      "key": "89fc5db1feaff4b9e0026a75e18f3aad719b8811",
-      "id": "3240:3572",
-      "type": "COMPONENT",
-      "page": "Labels",
-      "category": "layout",
-      "properties": {},
-      "description": ""
-    },
-    {
       "name": "table building block",
       "key": "9c8a3ef7dfe75b2d6cbbe280a6b37a4ab6bbd152",
       "id": "3442:660",
@@ -1687,6 +1677,16 @@
       "id": "4197:2105",
       "type": "COMPONENT",
       "page": "Buttons",
+      "category": "layout",
+      "properties": {},
+      "description": ""
+    },
+    {
+      "name": "Subsection",
+      "key": "89fc5db1feaff4b9e0026a75e18f3aad719b8811",
+      "id": "3240:3572",
+      "type": "COMPONENT",
+      "page": "Labels",
       "category": "layout",
       "properties": {},
       "description": ""
