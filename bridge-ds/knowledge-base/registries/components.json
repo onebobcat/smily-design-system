@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-22T12:15:39.376Z",
+  "generatedAt": "2026-06-23T09:54:29.938Z",
   "components": [
     {
       "name": "Flags",
@@ -14,27 +14,6 @@
         "Property 1": "VARIANT(Czech,English,France,Spain)"
       },
       "description": ""
-    },
-    {
-      "name": "Input field",
-      "key": "faf9322c819684984b49b25a6cf73ffc5cbc9ad1",
-      "id": "240:6996",
-      "type": "COMPONENT_SET",
-      "variants": 42,
-      "page": "Input fields",
-      "category": "layout",
-      "properties": {
-        "Unit suffix#4637:49": "BOOLEAN",
-        "Helper Text#4637:98": "TEXT",
-        "Currency prefix#4644:0": "BOOLEAN",
-        "Has Secondary Right Icon#4644:55": "BOOLEAN",
-        "Has Right Icon#4644:111": "BOOLEAN",
-        "Has Left Icon#4644:167": "BOOLEAN",
-        "State": "VARIANT(Enabled placeholder,Hover,Focused,Entered,Error,Disabled,Locked)",
-        "Type": "VARIANT(numeric,text,search,select)",
-        "Size": "VARIANT(large,small)"
-      },
-      "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
     },
     {
       "name": "Keyboards",
@@ -992,11 +971,11 @@
       "key": "bef5dfebc5194cb7a2d3794373c28e71b06dd679",
       "id": "2401:10692",
       "type": "COMPONENT_SET",
-      "variants": 9,
+      "variants": 10,
       "page": "Dialogs",
       "category": "overlay",
       "properties": {
-        "Type": "VARIANT(default,delete,back button,success,discovery,right side panel)",
+        "Type": "VARIANT(default,delete,back button,success,discovery,right side panel,warning)",
         "variations": "VARIANT(enter confirmation,long,short,default,page,fixed header,scrollable header)"
       },
       "description": "Dialog (modal). Use for high-focus interruptions that require user action before proceeding.\n\nWhen to use:\n• Confirmations: \"Are you sure you want to delete this?\"\n• Critical alerts: errors, destructive action warnings.\n• Short forms or quick inputs.\n\nWhen NOT to use:\n• Showing item detail → Sidebar instead.\n• Filtering/sorting → Sidebar instead.\n• Complex multi-step workflows → Full page instead.\n\nSave & error handling:\n• Partial failure: keep failed fields in Error state, apply Entered styling to saved fields, show error snackbar.\n• Full success: show success snackbar (\"Your changes have been saved\"), exit edit mode.\n• Never reset valid inputs after failure. Scroll to first error on long forms.\n\nCTA: action verb + object. \"Save changes\", \"Delete booking\" — not \"OK\" or \"Submit\".\n\nSide panels are used when content on the primary page is useful and so that user stays in context"
@@ -1077,6 +1056,27 @@
         "with description": "VARIANT(True,False)"
       },
       "description": ""
+    },
+    {
+      "name": "Input field",
+      "key": "faf9322c819684984b49b25a6cf73ffc5cbc9ad1",
+      "id": "240:6996",
+      "type": "COMPONENT_SET",
+      "variants": 42,
+      "page": "Input fields",
+      "category": "layout",
+      "properties": {
+        "Unit suffix#4637:49": "BOOLEAN",
+        "Helper Text#4637:98": "TEXT",
+        "Currency prefix#4644:0": "BOOLEAN",
+        "Has Secondary Right Icon#4644:55": "BOOLEAN",
+        "Has Right Icon#4644:111": "BOOLEAN",
+        "Has Left Icon#4644:167": "BOOLEAN",
+        "State": "VARIANT(Enabled placeholder,Hover,Focused,Entered,Error,Disabled,Locked)",
+        "Type": "VARIANT(numeric,text,search,select)",
+        "Size": "VARIANT(large,small)"
+      },
+      "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
     },
     {
       "name": "Bottom navigation bar",
