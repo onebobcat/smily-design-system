@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-23T09:54:29.938Z",
+  "generatedAt": "2026-06-24T09:41:05.085Z",
   "components": [
     {
       "name": "Flags",
@@ -1011,7 +1011,7 @@
       "key": "834105a8c67699d40dd8a8f05becb8d1d8e620a7",
       "id": "186:7918",
       "type": "COMPONENT_SET",
-      "variants": 150,
+      "variants": 155,
       "page": "Buttons",
       "category": "layout",
       "properties": {
@@ -1023,8 +1023,9 @@
         "Size": "VARIANT(M,S)",
         "Leading icon": "VARIANT(False,True)",
         "Trailing icon": "VARIANT(False,True)",
-        "Divider": "VARIANT(False,True)",
-        "Type": "VARIANT(Positive,Negative,Informational)"
+        "Type": "VARIANT(Positive,Negative,Informational)",
+        "Trailing divider": "VARIANT(False,True)",
+        "Leading divider": "VARIANT(False,True)"
       },
       "description": "Button usage guidelines.\n\nCTA copy rules:\n• Always use verb + object: \"Create rental\", \"Save changes\", \"Send invitation\", \"Delete booking\".\n• Never use nouns alone: \"New rental\" → use \"Create rental\" instead.\n• Nouns are acceptable only for tabs, nav items, and filter chips (navigation, not action).\n• Always use \"and\" not \"&\". Sentence case only.\n\nIcon placement:\n• Left of text (default) — matches reading flow, reinforces hierarchy.\n• Right of text — for directional/forward actions (Next →, More options ▾).\n• Icon-only — only when space is limited AND icon is universally understood (trash, add, edit, settings).\n\nSpacing: icon ↔ text = 4px. Icon size = 20px. Buttons or tabs = 12px gap. Between components = 16px."
     },
@@ -1062,20 +1063,10 @@
       "key": "faf9322c819684984b49b25a6cf73ffc5cbc9ad1",
       "id": "240:6996",
       "type": "COMPONENT_SET",
-      "variants": 42,
+      "variants": 54,
       "page": "Input fields",
       "category": "layout",
-      "properties": {
-        "Unit suffix#4637:49": "BOOLEAN",
-        "Helper Text#4637:98": "TEXT",
-        "Currency prefix#4644:0": "BOOLEAN",
-        "Has Secondary Right Icon#4644:55": "BOOLEAN",
-        "Has Right Icon#4644:111": "BOOLEAN",
-        "Has Left Icon#4644:167": "BOOLEAN",
-        "State": "VARIANT(Enabled placeholder,Hover,Focused,Entered,Error,Disabled,Locked)",
-        "Type": "VARIANT(numeric,text,search,select)",
-        "Size": "VARIANT(large,small)"
-      },
+      "properties": {},
       "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
     },
     {
