@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-24T09:41:05.085Z",
+  "generatedAt": "2026-06-25T09:33:41.701Z",
   "components": [
     {
       "name": "Flags",
@@ -1068,6 +1068,24 @@
       "category": "layout",
       "properties": {},
       "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
+    },
+    {
+      "name": "Filters and search desktop NEW ",
+      "key": "c909b4c7ef015d6a0928d8def56e966a6116810c",
+      "id": "7171:1118",
+      "type": "COMPONENT_SET",
+      "variants": 9,
+      "page": "Filters",
+      "category": "layout",
+      "properties": {
+        "Search": "VARIANT(None,AI,Plain)",
+        "Filters": "VARIANT(Inline,None,Button)",
+        "Legend": "VARIANT(False,True)",
+        "Action": "VARIANT(None,CTA,Export)",
+        "Active row": "VARIANT(False,True)",
+        "State": "VARIANT(Default)"
+      },
+      "description": "Filter Bar — Desktop\nStandardized filter bar for all list and calendar pages. Use this component set as the single source of truth for filter bar layouts on desktop.\n\nLAYOUT RULES\n• Elements are always top-aligned (prevents misalignment when horizontal scroll is triggered on narrow viewports)\n• ≤3 filter buttons: show inline as pills\n• ≥4 filter buttons: hide overflow behind a dropdown / \"Filters\" button\n\nICON\n• Filter trigger uses the Font Awesome 6 funnel icon for consistent scaling\n\nCLEAR FILTERS\n• The \"Clear filters\" / \"Clear all\" action is a secondary text button — not red/destructive. It should not compete visually with primary actions.\n\nACTIVE STATE NOTE (known issue — separate ticket)\n• When filters are active, the Filters button changes from outline to tonal (filled teal). This outline→tonal transition is inconsistent with other button patterns and will be addressed in a dedicated redesign ticket. Do not introduce custom workarounds in the meantime.\n\nRELATED COMPONENTS\n• Search Input / AI — for hover placeholder and focus interaction states\n• Filter trigger icon: Font Awesome 6 \"filter\" (funnel)"
     },
     {
       "name": "Bottom navigation bar",
