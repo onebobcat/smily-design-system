@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-28T09:20:00.458Z",
+  "generatedAt": "2026-06-29T11:11:52.625Z",
   "components": [
     {
       "name": "Flags",
@@ -731,28 +731,6 @@
       "description": ""
     },
     {
-      "name": "Button - Text",
-      "key": "8271be4b86d7dd63888bf052ddd8265fd6499169",
-      "id": "316:3569",
-      "type": "COMPONENT_SET",
-      "variants": 210,
-      "page": "Buttons",
-      "category": "layout",
-      "properties": {
-        "Text#3549:223": "TEXT",
-        "leading icon#4904:0": "BOOLEAN",
-        "trailing icon#4904:121": "BOOLEAN",
-        "Action": "VARIANT(Tertiary bis)",
-        "State": "VARIANT(Default,Disabled,Hover,Active,Focused,Loading)",
-        "Type": "VARIANT(Positive,Warning,Secondary,Informational)",
-        "Leading icon": "VARIANT(False,True)",
-        "Trailing icon": "VARIANT(False,True)",
-        "Divider": "VARIANT(False,True)",
-        "Styling": "VARIANT(Crosslink,Simple)"
-      },
-      "description": "Text button (link-style). Secondary action, visually subordinate to primary CTA.\n\nColor — always match the surface, not the sentiment:\n• Positive (teal) — default, white/neutral backgrounds. Most common (73 instances).\n• Informational (blue) — inside informational banners/cards (blue-50 background).\n• Secondary (gray) — muted surfaces only, use sparingly (3 instances).\n• Warning (red) — destructive/irreversible actions only. Never on neutral surfaces (5 instances).\n\nTwo sub-patterns:\n• Navigation — trailing edit/pencil icon. Takes user to a related management screen.\n• Expand/collapse — trailing chevron-down icon. Reveals inline detail without navigating away.\n\nPlacement: right-aligned in form section, vertically centered next to the relevant field group."
-    },
-    {
       "name": "Input Date Picker",
       "key": "2a4a98d4604d342be5101e389c9c8a02b800f7ec",
       "id": "3330:3286",
@@ -1086,6 +1064,28 @@
         "State": "VARIANT(Default)"
       },
       "description": "Filter Bar — Desktop\nStandardized filter bar for all list and calendar pages. Use this component set as the single source of truth for filter bar layouts on desktop.\n\nLAYOUT RULES\n• Elements are always top-aligned (prevents misalignment when horizontal scroll is triggered on narrow viewports)\n• ≤3 filter buttons: show inline as pills\n• ≥4 filter buttons: hide overflow behind a dropdown / \"Filters\" button\n\nICON\n• Filter trigger uses the Font Awesome 6 funnel icon for consistent scaling\n\nCLEAR FILTERS\n• The \"Clear filters\" / \"Clear all\" action is a secondary text button — not red/destructive. It should not compete visually with primary actions.\n\nACTIVE STATE NOTE (known issue — separate ticket)\n• When filters are active, the Filters button changes from outline to tonal (filled teal). This outline→tonal transition is inconsistent with other button patterns and will be addressed in a dedicated redesign ticket. Do not introduce custom workarounds in the meantime.\n\nRELATED COMPONENTS\n• Search Input / AI — for hover placeholder and focus interaction states\n• Filter trigger icon: Font Awesome 6 \"filter\" (funnel)"
+    },
+    {
+      "name": "Button - Text",
+      "key": "8271be4b86d7dd63888bf052ddd8265fd6499169",
+      "id": "316:3569",
+      "type": "COMPONENT_SET",
+      "variants": 175,
+      "page": "Buttons",
+      "category": "layout",
+      "properties": {
+        "Text#3549:223": "TEXT",
+        "leading icon#4904:0": "BOOLEAN",
+        "trailing icon#4904:121": "BOOLEAN",
+        "Action": "VARIANT(Tertiary bis)",
+        "State": "VARIANT(Default,Disabled,Hover,Loading,Active)",
+        "Type": "VARIANT(Positive,Warning,Secondary,Informational)",
+        "Leading icon": "VARIANT(False,True)",
+        "Trailing icon": "VARIANT(False,True)",
+        "Divider": "VARIANT(False,True)",
+        "Styling": "VARIANT(Crosslink,Simple)"
+      },
+      "description": "Text button (link-style). Secondary action, visually subordinate to primary CTA.\n\nColor — always match the surface, not the sentiment:\n• Positive (teal) — default, white/neutral backgrounds. Most common (73 instances).\n• Informational (blue) — inside informational banners/cards (blue-50 background).\n• Secondary (gray) — muted surfaces only, use sparingly (3 instances).\n• Warning (red) — destructive/irreversible actions only. Never on neutral surfaces (5 instances).\n\nTwo sub-patterns:\n• Navigation — trailing edit/pencil icon. Takes user to a related management screen.\n• Expand/collapse — trailing chevron-down icon. Reveals inline detail without navigating away.\n\nPlacement: right-aligned in form section, vertically centered next to the relevant field group."
     },
     {
       "name": "Bottom navigation bar",
