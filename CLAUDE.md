@@ -341,6 +341,19 @@ These rules were captured from real design sessions and corrections. Follow them
 ### Booking Detail
 - **bookings.body**: When a Subsection field displays a count value that warrants a badge (numeric frequency + icon, e.g. booking count), detach the Subsection and replace the body Text row with a `badge - outline` DS component. Use the `regular/users/crown` icon for booking count. The Subsection body slot only accepts plain text — badge/chip values require detachment.
 
+### Any
+- **button.label**: All button CTAs use action verb + object: "Create rental", "Save changes", "Delete booking". Nouns are acceptable only for navigational elements (tabs, menu items, filter chips) that navigate rather than act.
+- **copy.ampersand**: Always use "and" instead of "&" in all UI copy. The ampersand reduces readability and is ambiguous for property managers in legal/professional contexts (e.g., rental agreements).
+- **copy.casing**: Sentence case everywhere — labels, button text, headings, helper text. Never title case for UI copy.
+- **overlayType**: Use a Dialog for confirmations, critical alerts, and short tasks. Use a Sidebar (right side panel) when the user needs to maintain context with the background. Use a Full Page for complex multi-step workflows. Never use a dialog for complex forms or wizards.
+- **badge.colorSemantics**: Color semantics: Green=Completed/Success, Blue=Upcoming/Scheduled/Partial, Yellow=Pending/Warning, Red=Danger/Overdue/Action required, Grey=Incomplete/Inactive/Expected, Purple=Secured/AI features.
+- **spacing.defaults**: Default spacing: 16px between components. 12px between buttons or tabs. Spacing within a component is variable for visual balance; 12px for button groups within a component.
+- **table.clickableCells**: In tables: if rows have a trailing action button, cells within that row can be made clickable without breaking accessibility. Avoid having both a clickable row AND clickable cells — pick one interaction model per table.
+- **destructiveButton.confirmationRequired**: Destructive / Delete button always requires a confirmation dialog before executing. CTA must use action verb + object: "Delete booking", "Remove rental" — never just "Delete".
+
+### Form
+- **form.saveErrorBehavior**: On partial save failure: keep failed fields in Error state and apply Entered styling to successfully saved fields. Never reset valid inputs after a failed save. Show error snackbar alongside field-level error messages.
+
 ### Dialogs vs Intercepts
 | | Blocking Dialog | In-app Intercept |
 |---|---|---|
