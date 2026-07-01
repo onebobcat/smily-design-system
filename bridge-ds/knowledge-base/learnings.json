@@ -15,9 +15,17 @@
       },
       "signals": 1,
       "rule": "In-app intercept hides the status icon. The icon is reserved for dialogs that communicate system state (error, warning, success). A feedback intercept has no system state to communicate — showing an icon adds false urgency.",
-      "change": { "property": "statusIcon.visible", "from": true, "to": false },
+      "change": {
+        "property": "statusIcon.visible",
+        "from": true,
+        "to": false
+      },
       "history": [
-        { "date": "2026-05-05", "source": "manual-correction", "session": "switch-flow-design" }
+        {
+          "date": "2026-05-05",
+          "source": "manual-correction",
+          "session": "switch-flow-design"
+        }
       ]
     },
     {
@@ -30,9 +38,17 @@
       },
       "signals": 1,
       "rule": "In-app intercept hides the title divider. Removing the divider reduces visual weight and reinforces that the intercept is lighter than a blocking dialog.",
-      "change": { "property": "titleDivider.visible", "from": true, "to": false },
+      "change": {
+        "property": "titleDivider.visible",
+        "from": true,
+        "to": false
+      },
       "history": [
-        { "date": "2026-05-05", "source": "manual-correction", "session": "switch-flow-design" }
+        {
+          "date": "2026-05-05",
+          "source": "manual-correction",
+          "session": "switch-flow-design"
+        }
       ]
     },
     {
@@ -45,9 +61,17 @@
       },
       "signals": 1,
       "rule": "In-app intercept uses Tertiary bis (ghost/text) for the dismiss action and Secondary (tonal) for the submit action. Ghost Skip signals lower commitment than an outline button; tonal Submit is prominent without competing with the host page's Primary CTA.",
-      "change": { "property": "dismissButton.variant", "from": "Tertiary (outline)", "to": "Tertiary bis (ghost/text)" },
+      "change": {
+        "property": "dismissButton.variant",
+        "from": "Tertiary (outline)",
+        "to": "Tertiary bis (ghost/text)"
+      },
       "history": [
-        { "date": "2026-05-05", "source": "manual-correction", "session": "switch-flow-design" }
+        {
+          "date": "2026-05-05",
+          "source": "manual-correction",
+          "session": "switch-flow-design"
+        }
       ]
     },
     {
@@ -60,9 +84,17 @@
       },
       "signals": 1,
       "rule": "In-app intercept submit CTA uses Secondary (tonal) not Primary (gradient). Primary is reserved for the host page's own CTAs — using Secondary prevents the intercept from competing visually.",
-      "change": { "property": "submitButton.variant", "from": "Primary (gradient fill)", "to": "Secondary (tonal/solid)" },
+      "change": {
+        "property": "submitButton.variant",
+        "from": "Primary (gradient fill)",
+        "to": "Secondary (tonal/solid)"
+      },
       "history": [
-        { "date": "2026-05-05", "source": "manual-correction", "session": "switch-flow-design" }
+        {
+          "date": "2026-05-05",
+          "source": "manual-correction",
+          "session": "switch-flow-design"
+        }
       ]
     },
     {
@@ -74,9 +106,17 @@
       },
       "signals": 1,
       "rule": "The X close button is always visible on in-app intercepts. It is the primary dismiss affordance and the strongest visual differentiator from banners and tooltips. Never hide it.",
-      "change": { "property": "closeButton.visible", "from": "optional", "to": "always" },
+      "change": {
+        "property": "closeButton.visible",
+        "from": "optional",
+        "to": "always"
+      },
       "history": [
-        { "date": "2026-05-05", "source": "design-decision", "session": "switch-flow-design" }
+        {
+          "date": "2026-05-05",
+          "source": "design-decision",
+          "session": "switch-flow-design"
+        }
       ]
     },
     {
@@ -88,9 +128,17 @@
       },
       "signals": 1,
       "rule": "In-app intercepts fire at the exact moment of user action — not before and not after. Signal quality is highest when the reason is captured at the moment the user acts.",
-      "change": { "property": "trigger.timing", "from": "pre- or post-action", "to": "at-action" },
+      "change": {
+        "property": "trigger.timing",
+        "from": "pre- or post-action",
+        "to": "at-action"
+      },
       "history": [
-        { "date": "2026-05-05", "source": "design-decision", "session": "switch-flow-design" }
+        {
+          "date": "2026-05-05",
+          "source": "design-decision",
+          "session": "switch-flow-design"
+        }
       ]
     },
     {
@@ -102,9 +150,17 @@
       },
       "signals": 1,
       "rule": "In-app intercepts ask exactly one open-ended question with a free-text area. No multi-step, no rating scales, no chevrons. One question lowers friction and increases completion rate.",
-      "change": { "property": "questionFormat", "from": "multi-step or structured", "to": "single open-ended + text area" },
+      "change": {
+        "property": "questionFormat",
+        "from": "multi-step or structured",
+        "to": "single open-ended + text area"
+      },
       "history": [
-        { "date": "2026-05-05", "source": "design-decision", "session": "switch-flow-design" }
+        {
+          "date": "2026-05-05",
+          "source": "design-decision",
+          "session": "switch-flow-design"
+        }
       ]
     },
     {
@@ -123,7 +179,11 @@
         "to": "3 screens + destination (banner + unsaved-changes + intercept → new UI)"
       },
       "history": [
-        { "date": "2026-05-05", "source": "design-decision", "session": "switch-flow-design" }
+        {
+          "date": "2026-05-05",
+          "source": "design-decision",
+          "session": "switch-flow-design"
+        }
       ]
     },
     {
@@ -142,7 +202,11 @@
         "to": "Property · Amount · Billing · Commitment"
       },
       "history": [
-        { "date": "2026-05-26", "source": "design-decision", "session": "smily-protect-purchase-flow" }
+        {
+          "date": "2026-05-26",
+          "source": "design-decision",
+          "session": "smily-protect-purchase-flow"
+        }
       ]
     },
     {
@@ -161,7 +225,11 @@
         "to": "dropped — entity already identified by Property row"
       },
       "history": [
-        { "date": "2026-05-26", "source": "manual-correction", "session": "smily-protect-purchase-flow" }
+        {
+          "date": "2026-05-26",
+          "source": "manual-correction",
+          "session": "smily-protect-purchase-flow"
+        }
       ]
     },
     {
@@ -180,7 +248,11 @@
         "to": "top-center, y=80"
       },
       "history": [
-        { "date": "2026-05-26", "source": "design-decision", "session": "smily-protect-purchase-flow" }
+        {
+          "date": "2026-05-26",
+          "source": "design-decision",
+          "session": "smily-protect-purchase-flow"
+        }
       ]
     },
     {
@@ -199,7 +271,209 @@
         "to": "detached Subsection + badge-outline (crown icon + '2 times')"
       },
       "history": [
-        { "date": "2026-05-27", "source": "manual-correction", "session": "booking-detail-guest-details" }
+        {
+          "date": "2026-05-27",
+          "source": "manual-correction",
+          "session": "booking-detail-guest-details"
+        }
+      ]
+    },
+    {
+      "id": "L013",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "Button"
+      },
+      "signals": 1,
+      "rule": "All button CTAs use action verb + object: \"Create rental\", \"Save changes\", \"Delete booking\". Nouns are acceptable only for navigational elements (tabs, menu items, filter chips) that navigate rather than act.",
+      "change": {
+        "property": "button.label",
+        "from": "noun (e.g. \"New rental\")",
+        "to": "verb+object (e.g. \"Create rental\")"
+      },
+      "history": [
+        {
+          "date": "2026-05-29",
+          "source": "design-pattern-sync",
+          "session": "notion-ds-sync"
+        }
+      ]
+    },
+    {
+      "id": "L014",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "any"
+      },
+      "signals": 1,
+      "rule": "Always use \"and\" instead of \"&\" in all UI copy. The ampersand reduces readability and is ambiguous for property managers in legal/professional contexts (e.g., rental agreements).",
+      "change": {
+        "property": "copy.ampersand",
+        "from": "&",
+        "to": "and"
+      },
+      "history": [
+        {
+          "date": "2026-05-29",
+          "source": "design-pattern-sync",
+          "session": "notion-ds-sync"
+        }
+      ]
+    },
+    {
+      "id": "L015",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "any"
+      },
+      "signals": 1,
+      "rule": "Sentence case everywhere — labels, button text, headings, helper text. Never title case for UI copy.",
+      "change": {
+        "property": "copy.casing",
+        "from": "title case",
+        "to": "sentence case"
+      },
+      "history": [
+        {
+          "date": "2026-05-29",
+          "source": "design-pattern-sync",
+          "session": "notion-ds-sync"
+        }
+      ]
+    },
+    {
+      "id": "L016",
+      "scope": "global",
+      "context": {
+        "screenType": "form",
+        "component": "any"
+      },
+      "signals": 1,
+      "rule": "On partial save failure: keep failed fields in Error state and apply Entered styling to successfully saved fields. Never reset valid inputs after a failed save. Show error snackbar alongside field-level error messages.",
+      "change": {
+        "property": "form.saveErrorBehavior",
+        "from": "reset all fields or show generic error",
+        "to": "Error state on failed fields, Entered state on saved fields + error snackbar"
+      },
+      "history": [
+        {
+          "date": "2026-05-29",
+          "source": "design-pattern-sync",
+          "session": "notion-ds-sync"
+        }
+      ]
+    },
+    {
+      "id": "L017",
+      "scope": "contextual",
+      "context": {
+        "screenType": "any",
+        "component": "Dialog"
+      },
+      "signals": 1,
+      "rule": "Use a Dialog for confirmations, critical alerts, and short tasks. Use a Sidebar (right side panel) when the user needs to maintain context with the background. Use a Full Page for complex multi-step workflows. Never use a dialog for complex forms or wizards.",
+      "change": {
+        "property": "overlayType",
+        "from": "dialog for all overlays",
+        "to": "dialog|sidebar|fullPage based on task complexity"
+      },
+      "history": [
+        {
+          "date": "2026-05-29",
+          "source": "design-pattern-sync",
+          "session": "notion-ds-sync"
+        }
+      ]
+    },
+    {
+      "id": "L018",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "Badge"
+      },
+      "signals": 1,
+      "rule": "Color semantics: Green=Completed/Success, Blue=Upcoming/Scheduled/Partial, Yellow=Pending/Warning, Red=Danger/Overdue/Action required, Grey=Incomplete/Inactive/Expected, Purple=Secured/AI features.",
+      "change": {
+        "property": "badge.colorSemantics",
+        "from": "undefined",
+        "to": "green/blue/yellow/red/grey/purple mapped to status meanings"
+      },
+      "history": [
+        {
+          "date": "2026-05-29",
+          "source": "design-pattern-sync",
+          "session": "notion-ds-sync"
+        }
+      ]
+    },
+    {
+      "id": "L019",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "spacing"
+      },
+      "signals": 1,
+      "rule": "Default spacing: 16px between components. 12px between buttons or tabs. Spacing within a component is variable for visual balance; 12px for button groups within a component.",
+      "change": {
+        "property": "spacing.defaults",
+        "from": "undefined",
+        "to": "16px between-component, 12px between-buttons/tabs"
+      },
+      "history": [
+        {
+          "date": "2026-05-29",
+          "source": "design-pattern-sync",
+          "session": "notion-ds-sync"
+        }
+      ]
+    },
+    {
+      "id": "L020",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "Table"
+      },
+      "signals": 1,
+      "rule": "In tables: if rows have a trailing action button, cells within that row can be made clickable without breaking accessibility. Avoid having both a clickable row AND clickable cells — pick one interaction model per table.",
+      "change": {
+        "property": "table.clickableCells",
+        "from": "undefined",
+        "to": "allowed when row has trailing action button"
+      },
+      "history": [
+        {
+          "date": "2026-05-29",
+          "source": "design-pattern-sync",
+          "session": "notion-ds-sync"
+        }
+      ]
+    },
+    {
+      "id": "L021",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "Button - Destructive"
+      },
+      "signals": 1,
+      "rule": "Destructive / Delete button always requires a confirmation dialog before executing. CTA must use action verb + object: \"Delete booking\", \"Remove rental\" — never just \"Delete\".",
+      "change": {
+        "property": "destructiveButton.confirmationRequired",
+        "from": "optional",
+        "to": "always"
+      },
+      "history": [
+        {
+          "date": "2026-05-29",
+          "source": "design-pattern-sync",
+          "session": "notion-ds-sync"
+        }
       ]
     }
   ],
