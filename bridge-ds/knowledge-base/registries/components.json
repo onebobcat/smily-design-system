@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-01T10:00:30.357Z",
+  "generatedAt": "2026-07-02T09:23:39.900Z",
   "components": [
     {
       "name": "Flags",
@@ -641,13 +641,13 @@
       "key": "2c71fb69cececb0d27ec415b1781258697705454",
       "id": "6369:28484",
       "type": "COMPONENT_SET",
-      "variants": 8,
+      "variants": 9,
       "page": "           Cards / Entity",
       "category": "layout",
       "properties": {
         "info about": "VARIANT(Apps,booking,cards,guest,rental,task)",
-        "size": "VARIANT(large,small,default)",
-        "context": "VARIANT(Inbox,default,view booking details page,Payment and guest)"
+        "size": "VARIANT(large,small,default,entity)",
+        "context": "VARIANT(Inbox,default,view booking details page,Payment and guest,cleaner)"
       },
       "description": ""
     },
