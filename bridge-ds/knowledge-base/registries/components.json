@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-06T10:49:57.869Z",
+  "generatedAt": "2026-07-07T09:52:37.106Z",
   "components": [
     {
       "name": "Flags",
@@ -917,20 +917,6 @@
       "description": "Table row.\n\nClickable cells in tables:\n• If the row itself is NOT clickable (action button at row end), it is acceptable to have clickable cells within the row.\n• If a row has a trailing action button, this provides a consistent interaction pattern and maintains accessibility.\n• Key principle: action buttons at row end ensure consistent experience and clearly separate navigation from data content.\n• Avoid having both a clickable row AND clickable cells — pick one interaction model per table.\n\nAccessibility: having action buttons at the end of rows (not inline within cells) ensures screen readers can identify interactive elements reliably."
     },
     {
-      "name": "Top navigation bar",
-      "key": "53ced9cd3c999efa60a58be72729217f78d6386c",
-      "id": "3353:524",
-      "type": "COMPONENT_SET",
-      "variants": 5,
-      "page": "         Navigation • bar",
-      "category": "navigation",
-      "properties": {
-        "Breakpoint": "VARIANT(desktop,mobile)",
-        "Property 2": "VARIANT(back,default,standard,subpage)"
-      },
-      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
-    },
-    {
       "name": "Badge - custom",
       "key": "75dbe30c442443159c0148126311133236729878",
       "id": "3109:6029",
@@ -1037,17 +1023,6 @@
       "description": ""
     },
     {
-      "name": "Input field",
-      "key": "faf9322c819684984b49b25a6cf73ffc5cbc9ad1",
-      "id": "240:6996",
-      "type": "COMPONENT_SET",
-      "variants": 54,
-      "page": "Input fields",
-      "category": "layout",
-      "properties": {},
-      "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
-    },
-    {
       "name": "Filters and search desktop NEW ",
       "key": "c909b4c7ef015d6a0928d8def56e966a6116810c",
       "id": "7171:1118",
@@ -1086,6 +1061,41 @@
         "Styling": "VARIANT(Crosslink,Simple)"
       },
       "description": "Text button (link-style). Secondary action, visually subordinate to primary CTA.\n\nColor — always match the surface, not the sentiment:\n• Positive (teal) — default, white/neutral backgrounds. Most common (73 instances).\n• Informational (blue) — inside informational banners/cards (blue-50 background).\n• Secondary (gray) — muted surfaces only, use sparingly (3 instances).\n• Warning (red) — destructive/irreversible actions only. Never on neutral surfaces (5 instances).\n\nTwo sub-patterns:\n• Navigation — trailing edit/pencil icon. Takes user to a related management screen.\n• Expand/collapse — trailing chevron-down icon. Reveals inline detail without navigating away.\n\nPlacement: right-aligned in form section, vertically centered next to the relevant field group."
+    },
+    {
+      "name": "Top navigation bar",
+      "key": "53ced9cd3c999efa60a58be72729217f78d6386c",
+      "id": "3353:524",
+      "type": "COMPONENT_SET",
+      "variants": 9,
+      "page": "         Navigation • bar",
+      "category": "navigation",
+      "properties": {
+        "Breakpoint": "VARIANT(desktop,mobile)",
+        "types": "VARIANT(back,New value,subpage,<4 elements on the right,overflow,equal or more than 4 elements:2 back elements and more than overflow on the right,equal 4 elements: 2 on the left and overflow on the right,equal 4 element :back elements on the right and 2 icon buttons on the right)"
+      },
+      "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
+    },
+    {
+      "name": "Search Input / AI",
+      "key": "faf9322c819684984b49b25a6cf73ffc5cbc9ad1",
+      "id": "240:6996",
+      "type": "COMPONENT_SET",
+      "variants": 54,
+      "page": "Input fields",
+      "category": "layout",
+      "properties": {
+        "Unit suffix#4637:49": "BOOLEAN",
+        "Helper Text#4637:98": "TEXT",
+        "Currency prefix#4644:0": "BOOLEAN",
+        "Has Secondary Right Icon#4644:55": "BOOLEAN",
+        "Has Right Icon#4644:111": "BOOLEAN",
+        "Has Left Icon#4644:167": "BOOLEAN",
+        "State": "VARIANT(Enabled placeholder,Hover,Focused,Entered,Error,Disabled,Locked)",
+        "Type": "VARIANT(numeric,text,search with AI,select,search without AI)",
+        "Size": "VARIANT(large,small,Large,Small)"
+      },
+      "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
     },
     {
       "name": "Bottom navigation bar",
