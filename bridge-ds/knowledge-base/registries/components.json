@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-07T09:52:37.106Z",
+  "generatedAt": "2026-07-08T08:37:42.022Z",
   "components": [
     {
       "name": "Flags",
@@ -735,7 +735,7 @@
       "key": "2a4a98d4604d342be5101e389c9c8a02b800f7ec",
       "id": "3330:3286",
       "type": "COMPONENT_SET",
-      "variants": 2,
+      "variants": 0,
       "page": "Calendars",
       "category": "layout",
       "properties": {
