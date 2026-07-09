@@ -382,6 +382,7 @@ function Icon({ name, size = 20, color = "currentColor", strokeWidth = 1.5 }) {
     settings: "M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z",
     chevron_down: "M6 9l6 6 6-6",
     chevron_right: "M9 18l6-6-6-6",
+    chevron_left: "M15 18l-6-6 6-6",
     user: "M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z",
     language: "M12 22a10 10 0 100-20 10 10 0 000 20zm0 0c-2.5 0-4-4.5-4-10S9.5 2 12 2s4 4.5 4 10-1.5 10-4 10zM2 12h20",
   };
@@ -1243,6 +1244,141 @@ function InAppIntercept({ title, question, onSubmit, onDismiss, onClose }) {
   );
 }
 
+// ─── BADGE ───────────────────────────────────────────────────────────────────
+
+const BADGE_COLORS = {
+  green:  { bg: "#f2fbf4", border: "#96dfa6", text: "#1d4a29", solid: tokens.colors.success },
+  blue:   { bg: "#f1f9fe", border: "#99c2f5", text: "#114869", solid: tokens.colors.info },
+  yellow: { bg: "#fffbeb", border: "#f8d451", text: "#763811", solid: tokens.colors.warning },
+  red:    { bg: "#fef3f2", border: "#f9b0a8", text: "#7b2921", solid: tokens.colors.error },
+  grey:   { bg: tokens.colors.gray50, border: tokens.colors.gray300, text: tokens.colors.gray700, solid: tokens.colors.gray500 },
+  purple: { bg: "#f5f0ff", border: "#c9b3f7", text: "#4b2e83", solid: "#8b5cf6" },
+};
+
+function Badge({ children, color = "green", variant = "tonal" }) {
+  const cfg = BADGE_COLORS[color];
+  const isSolid = variant === "solid";
+  const isOutline = variant === "outline";
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center", gap: 4,
+      padding: "2px 8px", borderRadius: tokens.radii.sm,
+      fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 13,
+      background: isSolid ? cfg.solid : isOutline ? "white" : cfg.bg,
+      border: `1px solid ${isSolid ? cfg.solid : cfg.border}`,
+      color: isSolid ? "white" : cfg.text,
+    }}>{children}</span>
+  );
+}
+
+// ─── SNACKBAR ────────────────────────────────────────────────────────────────
+
+function Snackbar({ variant = "success", message }) {
+  const isError = variant === "error";
+  return (
+    <div style={{
+      display: "flex", alignItems: "center", gap: 10,
+      background: isError ? "#7b2921" : tokens.colors.gray900,
+      color: "white", borderRadius: tokens.radii.md,
+      padding: "12px 16px", boxShadow: tokens.shadows.cardStrong,
+      fontFamily: tokens.fonts.body, fontSize: 14, maxWidth: 420,
+    }}>
+      <Icon name={isError ? "alert" : "check"} size={18} color={isError ? "#f9b0a8" : tokens.colors.primary} />
+      <span style={{ flex: 1, lineHeight: 1.4 }}>{message}</span>
+    </div>
+  );
+}
+
+// ─── FILTER BAR ──────────────────────────────────────────────────────────────
+
+function FilterPill({ label, active, onClick }) {
+  return (
+    <button onClick={onClick} style={{
+      display: "inline-flex", alignItems: "center", gap: 6,
+      padding: "8px 14px", borderRadius: tokens.radii.pill,
+      border: `1px solid ${active ? tokens.colors.primary : tokens.colors.gray300}`,
+      background: active ? "rgba(29,200,202,0.1)" : "white",
+      color: active ? tokens.colors.primary : tokens.colors.gray600,
+      fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 13, cursor: "pointer",
+    }}>
+      {label}
+      {active && <Icon name="close" size={12} color={tokens.colors.primary} />}
+    </button>
+  );
+}
+
+function FilterDropdownButton({ label = "Filters", count }) {
+  return (
+    <button style={{
+      display: "inline-flex", alignItems: "center", gap: 6,
+      padding: "8px 14px", borderRadius: tokens.radii.pill,
+      border: `1px solid ${tokens.colors.gray300}`, background: "white",
+      color: tokens.colors.gray600, fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 13, cursor: "pointer",
+    }}>
+      {label}{count ? ` (${count})` : ""}
+      <Icon name="chevron_down" size={13} color={tokens.colors.gray400} />
+    </button>
+  );
+}
+
+// ─── DATE PICKER ─────────────────────────────────────────────────────────────
+
+function DatePickerCalendar({ month = "June 2025", days = 30, startOffset = 6, selectedStart = 12, selectedEnd = 16 }) {
+  const cells = Array.from({ length: days }, (_, i) => i + 1);
+  return (
+    <div style={{ width: 280, background: "white", border: `1px solid ${tokens.colors.gray100}`, borderRadius: tokens.radii.md, padding: 16, boxShadow: tokens.shadows.card }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+        <Icon name="chevron_left" size={16} color={tokens.colors.gray400} />
+        <span style={{ fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 14, color: tokens.colors.headingColor }}>{month}</span>
+        <Icon name="chevron_right" size={16} color={tokens.colors.gray400} />
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 2, marginBottom: 4 }}>
+        {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
+          <div key={i} style={{ textAlign: "center", fontSize: 11, color: tokens.colors.gray400, fontFamily: tokens.fonts.body }}>{d}</div>
+        ))}
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 2 }}>
+        {Array.from({ length: startOffset }).map((_, i) => <div key={`e${i}`} />)}
+        {cells.map(day => {
+          const inRange = day >= selectedStart && day <= selectedEnd;
+          const isEdge = day === selectedStart || day === selectedEnd;
+          return (
+            <div key={day} style={{
+              display: "flex", alignItems: "center", justifyContent: "center",
+              height: 28, borderRadius: isEdge ? "50%" : tokens.radii.xs,
+              background: isEdge ? tokens.colors.primary : inRange ? "rgba(29,200,202,0.12)" : "transparent",
+              color: isEdge ? "white" : inRange ? tokens.colors.primary : tokens.colors.gray700,
+              fontFamily: tokens.fonts.body, fontSize: 13, fontWeight: isEdge ? 600 : 400,
+            }}>{day}</div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─── BREADCRUMBS ─────────────────────────────────────────────────────────────
+
+function Breadcrumbs({ items = [] }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: tokens.fonts.body, fontSize: 13 }}>
+      {items.map((item, i) => {
+        const isLast = i === items.length - 1;
+        return (
+          <span key={i} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+            <span style={{
+              color: isLast ? tokens.colors.gray700 : tokens.colors.gray400,
+              fontWeight: isLast ? 600 : 400,
+              cursor: isLast ? "default" : "pointer",
+            }}>{item}</span>
+            {!isLast && <Icon name="chevron_right" size={12} color={tokens.colors.gray300} />}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
 // ─── ACCORDION ───────────────────────────────────────────────────────────────
 // Matches Figma DS node 2971-2205 — component key 7afec5b11ac9c3d87fd4739ff410f970ec7c932e
 // Flat white card, 1px gray-200 border, no shadow, border-radius md (10px)
@@ -1348,7 +1484,7 @@ export default function SmilyDesignSystem() {
             </h1>
           </div>
           <p style={{ fontFamily: tokens.fonts.body, fontSize: "12px", color: tokens.colors.gray500, margin: "4px 0 0 42px" }}>
-            13 components · Colors · Typography · Buttons · Inputs · Dialogs · Navigation · Cards · Labels · Infographics · Tabs · Pagination · Tooltip · Intercept
+            18 components · Colors · Typography · Buttons · Inputs · Dialogs · Navigation · Cards · Labels · Infographics · Tabs · Pagination · Tooltip · Intercept · Badges · Snackbar · Filter bar · Date picker · Breadcrumbs
           </p>
         </div>
         <div style={{ display: "flex", gap: "6px" }}>
@@ -2115,6 +2251,117 @@ export default function SmilyDesignSystem() {
                   ))}
                 </tbody>
               </table>
+            </Section>
+        </Accordion>
+
+        {/* BADGES */}
+        <Accordion title="🎫 Badges">
+            <Section title="Status colors">
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <Badge color="green">Confirmed</Badge>
+                <Badge color="blue">Upcoming</Badge>
+                <Badge color="yellow">Pending</Badge>
+                <Badge color="red">Overdue</Badge>
+                <Badge color="grey">Inactive</Badge>
+                <Badge color="purple">AI-powered</Badge>
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Color semantics: green = completed or success. Blue = upcoming, scheduled, or partially collected. Yellow = pending or warning. Red = danger, overdue, or action required. Grey = incomplete, inactive, or expected but not confirmed. Purple = secured (guaranteed) or an AI-powered feature. Apply the color that matches the state being communicated, not a decorative choice.
+              </div>
+            </Section>
+
+            <Section title="Variants">
+              <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "flex-start" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1 }}>Tonal (default)</div>
+                  <Badge color="green" variant="tonal">Confirmed</Badge>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1 }}>Outline</div>
+                  <Badge color="green" variant="outline">Confirmed</Badge>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div style={{ fontFamily: tokens.fonts.body, fontSize: 11, color: tokens.colors.gray400, textTransform: "uppercase", letterSpacing: 1 }}>Solid</div>
+                  <Badge color="green" variant="solid">Confirmed</Badge>
+                </div>
+              </div>
+            </Section>
+        </Accordion>
+
+        {/* SNACKBAR */}
+        <Accordion title="🔔 Snackbar">
+            <Section title="Success">
+              <Snackbar variant="success" message="Your changes have been saved" />
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Shown after all save requests succeed. Exit edit mode after display.
+              </div>
+            </Section>
+
+            <Section title="Error (partial failure)">
+              <Snackbar variant="error" message="Some booking details couldn't be saved. Please fix the errors below." />
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                On partial save failure, keep failed fields in Error state and apply Entered styling to fields that saved successfully. Never reset valid inputs after a failed save — show the error snackbar alongside field-level error messages.
+              </div>
+            </Section>
+
+            <Section title="Placement">
+              <div style={{ fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Positioned top-center, 80px from the top of the viewport (below the browser chrome bar). It overlays page content without blocking primary navigation.
+              </div>
+            </Section>
+        </Accordion>
+
+        {/* FILTER BAR */}
+        <Accordion title="🔍 Filter Bar">
+            <Section title="≤3 filters (inline pills)">
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <FilterPill label="Status: Confirmed" active />
+                <FilterPill label="Channel" />
+                <FilterPill label="Date range" />
+              </div>
+            </Section>
+
+            <Section title="≥4 filters (overflow dropdown)">
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <FilterPill label="Status: Confirmed" active />
+                <FilterPill label="Channel" />
+                <FilterPill label="Date range" />
+                <FilterDropdownButton count={2} />
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Standardized filter bar for all list and calendar pages. Up to 3 filter buttons show inline as pills; 4 or more hide the overflow behind a "Filters" dropdown button. Elements stay top-aligned so the layout doesn't break when horizontal scroll triggers on narrow viewports.
+              </div>
+            </Section>
+        </Accordion>
+
+        {/* DATE PICKER */}
+        <Accordion title="📅 Date Picker">
+            <Section title="Range selection">
+              <DatePickerCalendar />
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Date pickers let users select a single date or a range of dates. Available as a docked input (inline field), a modal (dialog), or a season calendar for longer-range selection.
+              </div>
+            </Section>
+
+            <Section title="Docked input">
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                height: 45, padding: "0 12px", borderRadius: tokens.radii.sm,
+                border: `1px solid ${tokens.colors.gray300}`, background: tokens.colors.gray50,
+              }}>
+                <Icon name="calendar" size={16} color={tokens.colors.gray400} />
+                <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray700 }}>Jun 12 – Jun 16, 2025</span>
+              </div>
+            </Section>
+        </Accordion>
+
+        {/* BREADCRUMBS */}
+        <Accordion title="🍞 Breadcrumbs">
+            <Section title="Operational hierarchy">
+              <Breadcrumbs items={["Locastay", "Airbnb", "Seaside Villa", "Booking #4821"]} />
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Shows the user's location within the application hierarchy: account → channel → rental → booking, from most general to most specific. Labels are sentence case; nouns are acceptable since breadcrumbs navigate rather than act.
+              </div>
             </Section>
         </Accordion>
       </div>
