@@ -2364,6 +2364,52 @@ export default function SmilyDesignSystem() {
               </div>
             </Section>
         </Accordion>
+
+        {/* DATA TABLE */}
+        <Accordion title="🗄 Data Table">
+            <Section title="Row with trailing action button">
+              <div style={{ background: "white", border: `1px solid ${tokens.colors.gray100}`, borderRadius: tokens.radii.md, overflow: "hidden" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: tokens.fonts.body }}>
+                  <thead>
+                    <tr style={{ background: tokens.colors.gray50, borderBottom: `1px solid ${tokens.colors.gray100}` }}>
+                      {["Guest", "Property", "Check-in", "Status", ""].map(h => (
+                        <th key={h} style={{ textAlign: "left", padding: "10px 16px", fontSize: 12, fontWeight: 600, color: tokens.colors.gray500 }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { guest: "Emma Laurent", property: "Seaside Villa", date: "12 Jul 2026", status: "Confirmed", color: "green" },
+                      { guest: "Marco Bianchi", property: "Loft Central", date: "18 Jul 2026", status: "Pending", color: "yellow" },
+                      { guest: "Sofia Reyes", property: "Mountain Cabin", date: "24 Jul 2026", status: "Overdue", color: "red" },
+                    ].map((row, i) => (
+                      <tr
+                        key={row.guest}
+                        style={{ borderBottom: i < 2 ? `1px solid ${tokens.colors.gray100}` : "none", cursor: "pointer" }}
+                        onMouseEnter={e => e.currentTarget.style.background = tokens.colors.gray50}
+                        onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+                      >
+                        <td style={{ padding: "12px 16px", fontSize: 14, color: tokens.colors.dark }}>{row.guest}</td>
+                        <td style={{ padding: "12px 16px", fontSize: 14, color: tokens.colors.gray600 }}>{row.property}</td>
+                        <td style={{ padding: "12px 16px", fontSize: 14, color: tokens.colors.gray600 }}>{row.date}</td>
+                        <td style={{ padding: "12px 16px" }}>
+                          <Badge color={row.color}>{row.status}</Badge>
+                        </td>
+                        <td style={{ padding: "12px 16px", textAlign: "right" }}>
+                          <button style={{ background: "transparent", border: "none", cursor: "pointer", padding: 4, display: "inline-flex", color: tokens.colors.gray400 }} aria-label="View booking">
+                            <Icon name="chevron_right" size={18} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 620 }}>
+                When a row has a trailing action button, cells within that row can be made clickable without breaking accessibility. Never combine a clickable row with clickable cells — pick one interaction model per table. Placing the action button at the end of the row (not inline within a cell) lets screen readers identify interactive elements reliably.
+              </div>
+            </Section>
+        </Accordion>
       </div>
     </div>
   );
