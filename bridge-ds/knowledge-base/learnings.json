@@ -1,7 +1,7 @@
 {
   "version": 1,
   "meta": {
-    "lastUpdated": "2026-07-01",
+    "lastUpdated": "2026-07-09",
     "dsName": "Smily"
   },
   "learnings": [
@@ -570,6 +570,54 @@
       "source": {
         "type": "component-description",
         "session": "figma-ds-scan-2026-07-01"
+      }
+    },
+    {
+      "id": "L028",
+      "scope": "contextual",
+      "context": {
+        "screenType": "any",
+        "component": "button-text"
+      },
+      "change": {
+        "property": "textButton.subPatterns"
+      },
+      "rule": "Text buttons follow two sub-patterns: navigation (trailing edit/pencil icon, takes the user to a related management screen) and expand/collapse (trailing chevron-down icon, reveals inline detail without navigating away). Place text buttons right-aligned in the form section, vertically centered next to the relevant field group.",
+      "source": {
+        "type": "component-description",
+        "session": "figma-ds-scan-2026-07-09"
+      }
+    },
+    {
+      "id": "L029",
+      "scope": "contextual",
+      "context": {
+        "screenType": "any",
+        "component": "table-row"
+      },
+      "change": {
+        "property": "table.accessibilityPattern"
+      },
+      "rule": "Place row action buttons at the end of the row rather than inline within cells. This lets screen readers identify interactive elements reliably and keeps navigation separated from data content.",
+      "source": {
+        "type": "component-description",
+        "session": "figma-ds-scan-2026-07-09"
+      }
+    },
+    {
+      "id": "L030",
+      "scope": "contextual",
+      "context": {
+        "screenType": "any",
+        "component": "input-field"
+      },
+      "change": {
+        "property": "input.scrollbarBehavior"
+      },
+      "rule": "Desktop designs must always account for the scroll bar, using Chrome and Firefox scroll bar behavior as the reference since it adds padding to the content area. Mobile designs need no reserved padding, as the scroll bar sits on top of the margins.",
+      "source": {
+        "type": "component-description",
+        "session": "figma-ds-scan-2026-07-09"
       }
     }
   ],
