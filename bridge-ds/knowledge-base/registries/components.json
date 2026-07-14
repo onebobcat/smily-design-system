@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-13T09:38:16.217Z",
+  "generatedAt": "2026-07-14T08:18:17.435Z",
   "components": [
     {
       "name": "Flags",
@@ -380,7 +380,7 @@
       "page": "           Cards / Informational",
       "category": "forms",
       "properties": {
-        "Content": "VARIANT(Metric,Cards,Text)",
+        "Content": "VARIANT(Stats,Text)",
         "Purpose": "VARIANT(danger,informational,neutral,smily branded,success,warning,Informational)",
         "Stacked": "VARIANT(vertically,horizontally)"
       },
@@ -453,7 +453,7 @@
       "category": "layout",
       "properties": {
         "Instance#6369:2": "INSTANCE_SWAP",
-        "Type": "VARIANT(Card as tab,Tasks,conversation)",
+        "Type": "VARIANT(Card as tab,Tasks,conversation,Metric)",
         "Property 2": "VARIANT(default,selected,unselected)"
       },
       "description": ""
