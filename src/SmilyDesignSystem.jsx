@@ -1321,6 +1321,79 @@ function FilterDropdownButton({ label = "Filters", count }) {
   );
 }
 
+// ─── SELECTION CONTROLS ──────────────────────────────────────────────────────
+
+function Checkbox({ label, checked, onChange, disabled = false, error = false, description }) {
+  return (
+    <label style={{
+      display: "flex", alignItems: "flex-start", gap: 8,
+      cursor: disabled ? "not-allowed" : "pointer",
+      opacity: disabled ? 0.5 : 1,
+    }}>
+      <span style={{
+        width: 18, height: 18, flexShrink: 0, marginTop: 1,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        borderRadius: tokens.radii.xs,
+        border: `1.5px solid ${error ? tokens.colors.error : checked ? tokens.colors.primary : tokens.colors.gray300}`,
+        background: checked ? tokens.colors.primary : "white",
+      }}>
+        {checked && <Icon name="check" size={12} color="white" strokeWidth={3} />}
+      </span>
+      <span>
+        <div style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: error ? tokens.colors.error : tokens.colors.gray700 }}>{label}</div>
+        {description && <div style={{ fontFamily: tokens.fonts.body, fontSize: 12, color: tokens.colors.gray400, marginTop: 2 }}>{description}</div>}
+      </span>
+      <input type="checkbox" checked={!!checked} onChange={onChange || (() => {})} readOnly={!onChange} disabled={disabled} style={{ display: "none" }} />
+    </label>
+  );
+}
+
+function Radio({ label, checked, onChange, disabled = false, description }) {
+  return (
+    <label style={{
+      display: "flex", alignItems: "flex-start", gap: 8,
+      cursor: disabled ? "not-allowed" : "pointer",
+      opacity: disabled ? 0.5 : 1,
+    }}>
+      <span style={{
+        width: 18, height: 18, flexShrink: 0, marginTop: 1, borderRadius: "50%",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        border: `1.5px solid ${checked ? tokens.colors.primary : tokens.colors.gray300}`,
+        background: "white",
+      }}>
+        {checked && <span style={{ width: 9, height: 9, borderRadius: "50%", background: tokens.colors.primary }} />}
+      </span>
+      <span>
+        <div style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray700 }}>{label}</div>
+        {description && <div style={{ fontFamily: tokens.fonts.body, fontSize: 12, color: tokens.colors.gray400, marginTop: 2 }}>{description}</div>}
+      </span>
+      <input type="radio" checked={!!checked} onChange={onChange || (() => {})} readOnly={!onChange} disabled={disabled} style={{ display: "none" }} />
+    </label>
+  );
+}
+
+function ToggleSwitch({ checked, onChange, label, disabled = false }) {
+  return (
+    <label style={{ display: "inline-flex", alignItems: "center", gap: 10, cursor: disabled ? "not-allowed" : "pointer", opacity: disabled ? 0.5 : 1 }}>
+      <span
+        onClick={disabled ? undefined : onChange}
+        style={{
+          width: 36, height: 20, borderRadius: tokens.radii.pill, position: "relative", flexShrink: 0,
+          background: checked ? tokens.colors.primary : tokens.colors.gray300,
+          transition: "background 0.15s",
+        }}
+      >
+        <span style={{
+          position: "absolute", top: 2, left: checked ? 18 : 2,
+          width: 16, height: 16, borderRadius: "50%", background: "white",
+          boxShadow: "0 1px 2px rgba(0,0,0,0.2)", transition: "left 0.15s",
+        }} />
+      </span>
+      {label && <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray700 }}>{label}</span>}
+    </label>
+  );
+}
+
 // ─── DATE PICKER ─────────────────────────────────────────────────────────────
 
 function DatePickerCalendar({ month = "June 2025", days = 30, startOffset = 6, selectedStart = 12, selectedEnd = 16 }) {
@@ -1375,6 +1448,73 @@ function Breadcrumbs({ items = [] }) {
           </span>
         );
       })}
+    </div>
+  );
+}
+
+// ─── AVATAR ──────────────────────────────────────────────────────────────────
+
+const CHANNEL_AVATAR = {
+  Airbnb:        { bg: "#FF5A5F", label: "A" },
+  "Booking.com": { bg: "#003580", label: "B" },
+  Expedia:       { bg: "#00355F", label: "E" },
+};
+
+function Avatar({ type = "Icon", name = "Emma Laurent" }) {
+  const initials = name.split(" ").map(p => p[0]).slice(0, 2).join("").toUpperCase();
+  const channel = CHANNEL_AVATAR[type];
+  return (
+    <div style={{ position: "relative", width: 40, height: 40, flexShrink: 0 }}>
+      <div style={{
+        width: 40, height: 40, borderRadius: "50%",
+        background: channel ? tokens.colors.gray100 : "rgba(29,200,202,0.12)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 14,
+        color: channel ? tokens.colors.gray600 : tokens.colors.primary,
+      }}>
+        {type === "Icon" ? <Icon name="user" size={18} color={tokens.colors.gray400} /> : initials}
+      </div>
+      {channel && (
+        <div style={{
+          position: "absolute", bottom: -2, right: -2,
+          width: 16, height: 16, borderRadius: "50%",
+          background: channel.bg, border: "2px solid white",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontSize: 8, fontWeight: 700, color: "white", fontFamily: tokens.fonts.body,
+        }}>{channel.label}</div>
+      )}
+    </div>
+  );
+}
+
+function AvatarUserRow({ name, subtext, side = "left" }) {
+  const nameBlock = (
+    <div>
+      <div style={{ fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 14, color: tokens.colors.headingColor }}>{name}</div>
+      <div style={{ fontFamily: tokens.fonts.body, fontSize: 12, color: tokens.colors.gray400 }}>{subtext}</div>
+    </div>
+  );
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10, flexDirection: side === "right" ? "row-reverse" : "row" }}>
+      <Avatar type="Icon" />
+      {nameBlock}
+    </div>
+  );
+}
+
+// ─── PROGRESS BAR ────────────────────────────────────────────────────────────
+
+function ProgressBar({ value = 60, orientation = "horizontal" }) {
+  if (orientation === "vertical") {
+    return (
+      <div style={{ width: 8, height: 120, borderRadius: tokens.radii.pill, background: tokens.colors.gray100, position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: `${value}%`, background: tokens.colors.primary, borderRadius: tokens.radii.pill }} />
+      </div>
+    );
+  }
+  return (
+    <div style={{ width: "100%", maxWidth: 320, height: 8, borderRadius: tokens.radii.pill, background: tokens.colors.gray100, overflow: "hidden" }}>
+      <div style={{ width: `${value}%`, height: "100%", background: tokens.colors.primary, borderRadius: tokens.radii.pill }} />
     </div>
   );
 }
@@ -1443,6 +1583,9 @@ export default function SmilyDesignSystem() {
   const [demoTab, setDemoTab] = useState("Overview");
   const [demoPillTab, setDemoPillTab] = useState("Monthly");
   const [showIntercept, setShowIntercept] = useState(true);
+  const [demoChecked, setDemoChecked] = useState(true);
+  const [demoRadio, setDemoRadio] = useState("monthly");
+  const [demoToggle, setDemoToggle] = useState(true);
 
   return (
     <div style={{
@@ -2407,6 +2550,77 @@ export default function SmilyDesignSystem() {
               </div>
               <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 620 }}>
                 When a row has a trailing action button, cells within that row can be made clickable without breaking accessibility. Never combine a clickable row with clickable cells — pick one interaction model per table. Placing the action button at the end of the row (not inline within a cell) lets screen readers identify interactive elements reliably.
+              </div>
+            </Section>
+        </Accordion>
+
+        {/* SELECTION CONTROLS */}
+        <Accordion title="☑️ Selection Controls">
+            <Section title="Checkbox">
+              <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "flex-start" }}>
+                <Checkbox label="Enabled" checked={demoChecked} onChange={() => setDemoChecked(v => !v)} />
+                <Checkbox label="With description" checked={demoChecked} onChange={() => setDemoChecked(v => !v)} description="Applies to all rentals in this account" />
+                <Checkbox label="Error" checked={false} error description="Select at least one option" />
+                <Checkbox label="Disabled" checked={false} disabled />
+              </div>
+            </Section>
+
+            <Section title="Radio">
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <Radio label="Monthly billing" checked={demoRadio === "monthly"} onChange={() => setDemoRadio("monthly")} description="Charged on the 1st of every month" />
+                <Radio label="Yearly billing" checked={demoRadio === "yearly"} onChange={() => setDemoRadio("yearly")} description="Charged once a year, 2 months free" />
+                <Radio label="Disabled option" checked={false} disabled />
+              </div>
+            </Section>
+
+            <Section title="Toggle">
+              <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "center" }}>
+                <ToggleSwitch checked={demoToggle} onChange={() => setDemoToggle(v => !v)} label="Enable notifications" />
+                <ToggleSwitch checked={false} label="Off" />
+                <ToggleSwitch checked={true} disabled label="Disabled (on)" />
+              </div>
+            </Section>
+        </Accordion>
+
+        {/* AVATAR */}
+        <Accordion title="👤 Avatar">
+            <Section title="Channel avatars">
+              <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
+                {["Airbnb", "Booking.com", "Expedia", "Icon"].map(type => (
+                  <div key={type} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                    <Avatar type={type} name="Emma Laurent" />
+                    <span style={{ fontFamily: tokens.fonts.body, fontSize: 12, color: tokens.colors.gray400 }}>{type}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Channel badges (Airbnb, Booking.com, Expedia) overlay the avatar to show which OTA a guest or booking originated from. Use the plain icon avatar when no channel context applies.
+              </div>
+            </Section>
+
+            <Section title="User on the left / right">
+              <div style={{ display: "flex", gap: 40, flexWrap: "wrap" }}>
+                <AvatarUserRow name="Marco Bianchi" subtext="Guest" side="left" />
+                <AvatarUserRow name="Marco Bianchi" subtext="Guest" side="right" />
+              </div>
+            </Section>
+        </Accordion>
+
+        {/* PROGRESS BAR */}
+        <Accordion title="📶 Progress Bar">
+            <Section title="Horizontal">
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 320 }}>
+                <ProgressBar value={30} />
+                <ProgressBar value={65} />
+                <ProgressBar value={100} />
+              </div>
+            </Section>
+
+            <Section title="Vertical">
+              <div style={{ display: "flex", gap: 24, alignItems: "flex-end" }}>
+                <ProgressBar orientation="vertical" value={30} />
+                <ProgressBar orientation="vertical" value={65} />
+                <ProgressBar orientation="vertical" value={100} />
               </div>
             </Section>
         </Accordion>
