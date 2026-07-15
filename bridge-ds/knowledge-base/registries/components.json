@@ -380,7 +380,7 @@
       "page": "           Cards / Informational",
       "category": "forms",
       "properties": {
-        "Content": "VARIANT(Metric,Cards,Text)",
+        "Content": "VARIANT(Stats,Cards,Text)",
         "Purpose": "VARIANT(danger,informational,neutral,smily branded,success,warning,Informational)",
         "Stacked": "VARIANT(vertically,horizontally)"
       },
@@ -453,7 +453,7 @@
       "category": "layout",
       "properties": {
         "Instance#6369:2": "INSTANCE_SWAP",
-        "Type": "VARIANT(Card as tab,Tasks,conversation)",
+        "Type": "VARIANT(Metric,Tasks,conversation)",
         "Property 2": "VARIANT(default,selected,unselected)"
       },
       "description": ""

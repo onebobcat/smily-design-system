@@ -247,6 +247,34 @@ Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Renta
   </p>
 </div>
 ```
+`Cards/informational` has a `Content` variant (`Text | Cards | Stats`). The "Stats" content-flavor swaps the body paragraph for a single highlighted figure between two text lines — still static, no trend, no interaction. See Metric Card below for the interactive KPI equivalent.
+
+### Metric Card
+`Cards/list item`, `Type = Metric` in Figma. A white bordered KPI card — label with optional info tooltip, value + unit, and a color-coded trend badge (green = up, red = down). Doubles as a selectable tab: click one to switch what a dashboard chart below it shows. Selected state gets a teal border; unselected stays gray-200. Not to be confused with the tinted "Stat" content variant of the Informational Card below, which is static and carries no trend.
+```jsx
+<div style={{
+  background: "#fff",
+  border: "1px solid #d4d8e3", // #1DC8CA when selected
+  borderRadius: "10px",
+  padding: "16px",
+  width: "176px",
+  cursor: "pointer",
+}}>
+  <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+    <span style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 14, color: "#4e5a7b" }}>Occupancy rate</span>
+    {/* info icon */}
+  </div>
+  <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 4 }}>
+    <span style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 600, fontSize: 24, color: "#4e5a7b" }}>67</span>
+    <span style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 14, color: "#4e5a7b" }}>%</span>
+    <span style={{
+      background: "#e1f7e5", color: "#0b2813", borderRadius: "5px",
+      padding: "2px 8px", fontFamily: "'Open Sans', sans-serif", fontWeight: 600, fontSize: 14,
+    }}>+25%</span>
+    {/* chevron icon, marginLeft: auto */}
+  </div>
+</div>
+```
 
 ### Page Header
 ```jsx

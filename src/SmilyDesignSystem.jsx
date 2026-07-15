@@ -725,7 +725,7 @@ function InfoCard({ purpose = "informational", header = "Header", body = "This b
   );
 }
 
-function MetricCard({ purpose = "neutral", label = "Body", metric = "Heading 1", sublabel = "Body" }) {
+function StatCard({ purpose = "neutral", label = "Body", metric = "Heading 1", sublabel = "Body" }) {
   const cfg = CARD_PURPOSES[purpose];
   const metricColor = purpose === "smily" ? "#04969d" : purpose === "danger" ? "#d53d2d" : tokens.colors.gray700;
   return (
@@ -736,6 +736,46 @@ function MetricCard({ purpose = "neutral", label = "Body", metric = "Heading 1",
       <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray700 }}>{label}</span>
       <span style={{ fontFamily: tokens.fonts.body, fontSize: 24, fontWeight: 600, color: metricColor }}>{metric}</span>
       <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray700 }}>{sublabel}</span>
+    </div>
+  );
+}
+
+// Cards/list item, Type=Metric — KPI card used as a selectable tab (Property 2: selected/unselected)
+function MetricCard({ label = "Occupancy rate", value = "67", unit = "%", trend, trendPositive = true, showInfo = true, selected = false, onClick }) {
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        background: "white", cursor: onClick ? "pointer" : "default",
+        border: `1px solid ${selected ? tokens.colors.primary : tokens.colors.gray200}`,
+        borderRadius: tokens.radii.md, padding: 16, width: 176,
+        display: "flex", flexDirection: "column", gap: 4,
+        boxShadow: selected ? "0 0 0 1px " + tokens.colors.primary : "none",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 4, width: "100%" }}>
+        <span style={{
+          fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray600,
+          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+        }}>{label}</span>
+        {showInfo && <Icon name="info" size={14} color={tokens.colors.gray400} />}
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+        <span style={{ display: "flex", alignItems: "baseline", gap: 2 }}>
+          <span style={{ fontFamily: tokens.fonts.body, fontSize: 24, fontWeight: 600, color: tokens.colors.gray600, lineHeight: "30px" }}>{value}</span>
+          <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray600 }}>{unit}</span>
+        </span>
+        {trend && (
+          <span style={{
+            display: "inline-flex", alignItems: "center", padding: "2px 8px", borderRadius: tokens.radii.sm,
+            background: trendPositive ? "#e1f7e5" : "#fde3e0", color: trendPositive ? "#0b2813" : "#7b2921",
+            fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 14,
+          }}>{trend}</span>
+        )}
+        <span style={{ display: "flex", marginLeft: "auto" }}>
+          <Icon name="chevron_right" size={12} color={tokens.colors.gray400} />
+        </span>
+      </div>
     </div>
   );
 }
@@ -1586,6 +1626,7 @@ export default function SmilyDesignSystem() {
   const [demoChecked, setDemoChecked] = useState(true);
   const [demoRadio, setDemoRadio] = useState("monthly");
   const [demoToggle, setDemoToggle] = useState(true);
+  const [demoMetricTab, setDemoMetricTab] = useState("occupancy");
 
   return (
     <div style={{
@@ -2356,11 +2397,25 @@ export default function SmilyDesignSystem() {
               </div>
             </Section>
 
-            <Section title="Metric Cards">
+            <Section title="Stat Cards">
               <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                <MetricCard purpose="neutral" label="Total bookings" metric="1,284" sublabel="This month" />
-                <MetricCard purpose="smily" label="Revenue" metric="€42,600" sublabel="+12% vs last month" />
-                <MetricCard purpose="danger" label="Cancellations" metric="38" sublabel="This month" />
+                <StatCard purpose="neutral" label="Total bookings" metric="1,284" sublabel="This month" />
+                <StatCard purpose="smily" label="Revenue" metric="€42,600" sublabel="+12% vs last month" />
+                <StatCard purpose="danger" label="Cancellations" metric="38" sublabel="This month" />
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Cards/informational, Content = Stats. A purpose-tinted callout that highlights a single figure between two text lines — static, no trend, no interaction. Use for a headline number inside an already-colored context (e.g. a warning card that also states a count).
+              </div>
+            </Section>
+
+            <Section title="Metric Card">
+              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+                <MetricCard label="Occupancy rate" value="67" unit="%" trend="+25%" trendPositive selected={demoMetricTab === "occupancy"} onClick={() => setDemoMetricTab("occupancy")} />
+                <MetricCard label="Average nightly rate" value="184" unit="€" trend="-4%" trendPositive={false} selected={demoMetricTab === "adr"} onClick={() => setDemoMetricTab("adr")} />
+                <MetricCard label="Guest satisfaction" value="4.8" unit="/5" showInfo={false} selected={demoMetricTab === "csat"} onClick={() => setDemoMetricTab("csat")} />
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
+                Cards/list item, Type = Metric. A white bordered KPI card — label with optional info tooltip, value + unit, and a color-coded trend badge (green = up, red = down). Doubles as a selectable tab (click one to switch the dashboard chart below it): the selected card gets a teal border, unselected cards stay gray. Distinct from the Stat Card above — this one is interactive and always carries a real value + trend, not just a static figure.
               </div>
             </Section>
 
