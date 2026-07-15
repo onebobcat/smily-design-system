@@ -247,7 +247,7 @@ Nav items (in order): Dashboard, Inbox, Tasks, Calendar, Bookings, Guests, Renta
   </p>
 </div>
 ```
-`Cards/informational` has a `Content` variant (`Text | Cards | Stats`). The "Stats" content-flavor swaps the body paragraph for a single highlighted figure between two text lines — still static, no trend, no interaction. See Metric Card below for the interactive KPI equivalent.
+`Cards/informational` has a `Content` variant (`Text | Stats`). The "Stats" content-flavor swaps the body paragraph for a single highlighted figure between two text lines — still static, no trend, no interaction. See Metric Card below for the interactive KPI equivalent.
 
 ### Metric Card
 `Cards/list item`, `Type = Metric` in Figma. A white bordered KPI card — label with optional info tooltip, value + unit, and a color-coded trend badge (green = up, red = down). Doubles as a selectable tab: click one to switch what a dashboard chart below it shows. Selected state gets a teal border; unselected stays gray-200. Not to be confused with the tinted "Stat" content variant of the Informational Card below, which is static and carries no trend.
