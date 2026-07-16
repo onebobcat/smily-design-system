@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-15T08:23:44.425Z",
+  "generatedAt": "2026-07-16T08:23:02.511Z",
   "components": [
     {
       "name": "Flags",
@@ -453,7 +453,7 @@
       "category": "layout",
       "properties": {
         "Instance#6369:2": "INSTANCE_SWAP",
-        "Type": "VARIANT(Card as tab,Tasks,conversation,Metric)",
+        "Type": "VARIANT(Tasks,conversation,Metric)",
         "Property 2": "VARIANT(default,selected,unselected)"
       },
       "description": ""
