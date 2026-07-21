@@ -387,9 +387,12 @@ These rules were captured from real design sessions and corrections. Follow them
 - **textButton.subPatterns**: Text buttons follow two sub-patterns: navigation (trailing edit/pencil icon, takes the user to a related management screen) and expand/collapse (trailing chevron-down icon, reveals inline detail without navigating away). Place text buttons right-aligned in the form section, vertically centered next to the relevant field group.
 - **table.accessibilityPattern**: Place row action buttons at the end of the row rather than inline within cells. This lets screen readers identify interactive elements reliably and keeps navigation separated from data content.
 - **input.scrollbarBehavior**: Desktop designs must always account for the scroll bar, using Chrome and Firefox scroll bar behavior as the reference since it adds padding to the content area. Mobile designs need no reserved padding, as the scroll bar sits on top of the margins.
+- **dropzone.disabledState.tokens**: Dropzone's Disabled state goes lighter than a straight one-step-down substitution from Default, and lighter than Input field's own Disabled border. Background drops to gray-50 (not gray-100), border to gray-200 (not gray-300 — Input field's disabled border stays at gray-300, Dropzone goes one step further). Text/icon muting is not uniform: title label ('Upload extra photos') and the file-size hint ('Max 10 MB per file') go to gray-400; the primary instruction ('Drag and drop or') and the format hint ('JPG, PNG, WEBP...') go to gray-300 (more muted); the former teal 'click to upload' link also goes to gray-400. The upload icon stays gray-300, unchanged from other states. Use these exact tokens per element rather than a single flat 'disabled gray' — the split is deliberate, not derivable from a simple hierarchy rule.
+- **filterBar.clearButtonStyle**: The "Clear filters" or "Clear all" action in a filter bar is a secondary text button, not a destructive/red one. It should not visually compete with the bar's primary actions.
 
 ### Form
 - **form.saveErrorBehavior**: On partial save failure: keep failed fields in Error state and apply Entered styling to successfully saved fields. Never reset valid inputs after a failed save. Show error snackbar alongside field-level error messages.
+- **errorMessage.copyStyle**: Field-level error copy must be specific and actionable, e.g. "Email format is invalid" — never a generic message like "Error occurred".
 
 ### Dialogs vs Intercepts
 | | Blocking Dialog | In-app Intercept |
