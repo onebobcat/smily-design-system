@@ -1,7 +1,7 @@
 {
   "version": 1,
   "meta": {
-    "lastUpdated": "2026-07-09",
+    "lastUpdated": "2026-07-21",
     "dsName": "Smily"
   },
   "learnings": [
@@ -618,6 +618,61 @@
       "source": {
         "type": "component-description",
         "session": "figma-ds-scan-2026-07-09"
+      }
+    },
+    {
+      "id": "L031",
+      "scope": "contextual",
+      "context": {
+        "screenType": "any",
+        "component": "dropzone",
+        "section": "disabled-state"
+      },
+      "signals": 1,
+      "rule": "Dropzone's Disabled state goes lighter than a straight one-step-down substitution from Default, and lighter than Input field's own Disabled border. Background drops to gray-50 (not gray-100), border to gray-200 (not gray-300 — Input field's disabled border stays at gray-300, Dropzone goes one step further). Text/icon muting is not uniform: title label ('Upload extra photos') and the file-size hint ('Max 10 MB per file') go to gray-400; the primary instruction ('Drag and drop or') and the format hint ('JPG, PNG, WEBP...') go to gray-300 (more muted); the former teal 'click to upload' link also goes to gray-400. The upload icon stays gray-300, unchanged from other states. Use these exact tokens per element rather than a single flat 'disabled gray' — the split is deliberate, not derivable from a simple hierarchy rule.",
+      "change": {
+        "property": "dropzone.disabledState.tokens",
+        "from": "bg=$color/gray-100, border=$color/gray-300, title/instruction/format-hint text=$color/gray-600 (unmuted), link=$color/gray-400, size-hint=$color/gray-600, icon=$color/gray-300",
+        "to": "bg=$color/gray-50, border=$color/gray-200, title label=$color/gray-400, instruction+format-hint=$color/gray-300, link=$color/gray-400, size-hint=$color/gray-400, icon=$color/gray-300 (unchanged)"
+      },
+      "history": [
+        {
+          "date": "2026-07-17",
+          "source": "manual-correction",
+          "session": "dropzone-state-variants"
+        }
+      ]
+    },
+    {
+      "id": "L032",
+      "scope": "contextual",
+      "context": {
+        "screenType": "any",
+        "component": "filter-bar"
+      },
+      "change": {
+        "property": "filterBar.clearButtonStyle"
+      },
+      "rule": "The \"Clear filters\" or \"Clear all\" action in a filter bar is a secondary text button, not a destructive/red one. It should not visually compete with the bar's primary actions.",
+      "source": {
+        "type": "component-description",
+        "session": "figma-ds-scan-2026-07-21"
+      }
+    },
+    {
+      "id": "L033",
+      "scope": "global",
+      "context": {
+        "screenType": "form",
+        "component": "input-field"
+      },
+      "change": {
+        "property": "errorMessage.copyStyle"
+      },
+      "rule": "Field-level error copy must be specific and actionable, e.g. \"Email format is invalid\" — never a generic message like \"Error occurred\".",
+      "source": {
+        "type": "component-description",
+        "session": "figma-ds-scan-2026-07-21"
       }
     }
   ],
