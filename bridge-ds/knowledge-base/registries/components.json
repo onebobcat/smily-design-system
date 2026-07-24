@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-23T08:38:51.305Z",
+  "generatedAt": "2026-07-24T08:34:32.750Z",
   "components": [
     {
       "name": "Flags",
@@ -233,6 +233,13 @@
       "properties": {
         "swap trailing icon#3603:7": "INSTANCE_SWAP",
         "swap leading icon#3603:14": "INSTANCE_SWAP",
+        "Heading text#7496:0": "TEXT",
+        "Body text#7496:29": "TEXT",
+        "Heading 3 dialog text#7498:0": "TEXT",
+        "Small body text#7498:29": "TEXT",
+        "Explanation text#7498:58": "TEXT",
+        "Heading 1 text#7498:87": "TEXT",
+        "Heading 2 text#7498:116": "TEXT",
         "Leading icon": "VARIANT(False,True)",
         "Trailing icon": "VARIANT(True,False)",
         "Type": "VARIANT(Heading 4,Body,Small body,Heading 3 (dialogs),Heading 1,Heading 2,Explanation)"
@@ -598,6 +605,7 @@
       "page": "Badges",
       "category": "layout",
       "properties": {
+        "Badge text#7502:0": "TEXT",
         "size": "VARIANT(m,Payout,Expense,Rent,Fees & services)",
         "icon": "VARIANT(false,true)",
         "Theme": "VARIANT(orange,information,success,error,magic,brand,new)"
