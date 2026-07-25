@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-24T08:34:32.750Z",
+  "generatedAt": "2026-07-25T08:15:06.225Z",
   "components": [
     {
       "name": "Flags",
@@ -383,7 +383,7 @@
       "key": "552b4fe938d5d15c03032b4fd1ec4d51bae5d9f9",
       "id": "6369:28280",
       "type": "COMPONENT_SET",
-      "variants": 13,
+      "variants": 14,
       "page": "           Cards / Informational",
       "category": "forms",
       "properties": {
@@ -597,22 +597,6 @@
       "description": "Day cell"
     },
     {
-      "name": "badge - solid inverted",
-      "key": "5c2fb621d54eadba901f24575514334255f94138",
-      "id": "3109:5955",
-      "type": "COMPONENT_SET",
-      "variants": 8,
-      "page": "Badges",
-      "category": "layout",
-      "properties": {
-        "Badge text#7502:0": "TEXT",
-        "size": "VARIANT(m,Payout,Expense,Rent,Fees & services)",
-        "icon": "VARIANT(false,true)",
-        "Theme": "VARIANT(orange,information,success,error,magic,brand,new)"
-      },
-      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
-    },
-    {
       "name": "season calendar",
       "key": "7168eab3982218520f68363afa6745e07a929f53",
       "id": "3330:3315",
@@ -630,6 +614,22 @@
         "State": "VARIANT(Enabled,Hovered,Focused,Pressed,Disabled,past day,start,end)"
       },
       "description": "Day cell"
+    },
+    {
+      "name": "badge - solid inverted",
+      "key": "5c2fb621d54eadba901f24575514334255f94138",
+      "id": "3109:5955",
+      "type": "COMPONENT_SET",
+      "variants": 9,
+      "page": "Badges",
+      "category": "layout",
+      "properties": {
+        "Badge text#7502:0": "TEXT",
+        "size": "VARIANT(m,Payout,Expense,Rent,Fees & services)",
+        "icon": "VARIANT(false,true)",
+        "Theme": "VARIANT(orange,information,success,error,magic,brand,new,yellow)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
     },
     {
       "name": "Navigation drawer",
@@ -1060,6 +1060,8 @@
         "Text#3549:223": "TEXT",
         "leading icon#4904:0": "BOOLEAN",
         "trailing icon#4904:121": "BOOLEAN",
+        "Leading icon swap#7507:0": "INSTANCE_SWAP",
+        "Trailing icon swap#7507:176": "INSTANCE_SWAP",
         "Action": "VARIANT(Tertiary bis)",
         "State": "VARIANT(Default,Disabled,Hover,Loading,Active)",
         "Type": "VARIANT(Positive,Warning,Secondary,Informational)",
