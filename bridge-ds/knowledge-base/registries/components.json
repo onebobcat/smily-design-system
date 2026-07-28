@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-27T10:01:20.957Z",
+  "generatedAt": "2026-07-28T08:44:11.196Z",
   "components": [
     {
       "name": "Flags",
@@ -1087,11 +1087,11 @@
       "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
     },
     {
-      "name": "Search Input / AI",
+      "name": "Input fields",
       "key": "faf9322c819684984b49b25a6cf73ffc5cbc9ad1",
       "id": "240:6996",
       "type": "COMPONENT_SET",
-      "variants": 54,
+      "variants": 66,
       "page": "Input fields",
       "category": "layout",
       "properties": {
@@ -1102,7 +1102,7 @@
         "Has Right Icon#4644:111": "BOOLEAN",
         "Has Left Icon#4644:167": "BOOLEAN",
         "State": "VARIANT(Enabled placeholder,Hover,Focused,Entered,Error,Disabled,Locked)",
-        "Type": "VARIANT(numeric,text,search with AI,select,search without AI)",
+        "Type": "VARIANT(numeric,text,search with AI,select,search without AI,multi-select)",
         "Size": "VARIANT(large,small,Large,Small)"
       },
       "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
