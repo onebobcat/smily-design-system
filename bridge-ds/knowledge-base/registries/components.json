@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-21T08:37:35.484Z",
+  "generatedAt": "2026-07-30T08:36:55.103Z",
   "components": [
     {
       "name": "Flags",
@@ -233,6 +233,13 @@
       "properties": {
         "swap trailing icon#3603:7": "INSTANCE_SWAP",
         "swap leading icon#3603:14": "INSTANCE_SWAP",
+        "Heading text#7496:0": "TEXT",
+        "Body text#7496:29": "TEXT",
+        "Heading 3 dialog text#7498:0": "TEXT",
+        "Small body text#7498:29": "TEXT",
+        "Explanation text#7498:58": "TEXT",
+        "Heading 1 text#7498:87": "TEXT",
+        "Heading 2 text#7498:116": "TEXT",
         "Leading icon": "VARIANT(False,True)",
         "Trailing icon": "VARIANT(True,False)",
         "Type": "VARIANT(Heading 4,Body,Small body,Heading 3 (dialogs),Heading 1,Heading 2,Explanation)"
@@ -376,7 +383,7 @@
       "key": "552b4fe938d5d15c03032b4fd1ec4d51bae5d9f9",
       "id": "6369:28280",
       "type": "COMPONENT_SET",
-      "variants": 13,
+      "variants": 14,
       "page": "           Cards / Informational",
       "category": "forms",
       "properties": {
@@ -590,21 +597,6 @@
       "description": "Day cell"
     },
     {
-      "name": "badge - solid inverted",
-      "key": "5c2fb621d54eadba901f24575514334255f94138",
-      "id": "3109:5955",
-      "type": "COMPONENT_SET",
-      "variants": 8,
-      "page": "Badges",
-      "category": "layout",
-      "properties": {
-        "size": "VARIANT(m,Payout,Expense,Rent,Fees & services)",
-        "icon": "VARIANT(false,true)",
-        "Theme": "VARIANT(orange,information,success,error,magic,brand,new)"
-      },
-      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
-    },
-    {
       "name": "season calendar",
       "key": "7168eab3982218520f68363afa6745e07a929f53",
       "id": "3330:3315",
@@ -622,6 +614,22 @@
         "State": "VARIANT(Enabled,Hovered,Focused,Pressed,Disabled,past day,start,end)"
       },
       "description": "Day cell"
+    },
+    {
+      "name": "badge - solid inverted",
+      "key": "5c2fb621d54eadba901f24575514334255f94138",
+      "id": "3109:5955",
+      "type": "COMPONENT_SET",
+      "variants": 9,
+      "page": "Badges",
+      "category": "layout",
+      "properties": {
+        "Badge text#7502:0": "TEXT",
+        "size": "VARIANT(m,Payout,Expense,Rent,Fees & services)",
+        "icon": "VARIANT(false,true)",
+        "Theme": "VARIANT(orange,information,success,error,magic,brand,new,yellow)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
     },
     {
       "name": "Navigation drawer",
@@ -1052,6 +1060,8 @@
         "Text#3549:223": "TEXT",
         "leading icon#4904:0": "BOOLEAN",
         "trailing icon#4904:121": "BOOLEAN",
+        "Leading icon swap#7507:0": "INSTANCE_SWAP",
+        "Trailing icon swap#7507:176": "INSTANCE_SWAP",
         "Action": "VARIANT(Tertiary bis)",
         "State": "VARIANT(Default,Disabled,Hover,Loading,Active)",
         "Type": "VARIANT(Positive,Warning,Secondary,Informational)",
@@ -1077,11 +1087,11 @@
       "description": "Navigation component.\n\nNavigation Information Architecture:\n• Navigation reflects the user's operational scope (e.g., list of bookings, rentals).\n• System-level features belong in Settings (e.g., rental tags to categorize rentals).\n• Internal Smily processes live contextually within their relevant section (e.g., claim damage protection within the rental section).\n\nCTA labels in navigation: nouns are acceptable for menu items, tabs, and chips — they navigate rather than act.\n• \"Rentals\", \"Reports\", \"Settings\" are correct for navigation items.\n• Reserve action verbs for buttons that trigger an immediate action.\n\nSentence case. Never use & — always \"and\"."
     },
     {
-      "name": "Search Input / AI",
+      "name": "Input fields",
       "key": "faf9322c819684984b49b25a6cf73ffc5cbc9ad1",
       "id": "240:6996",
       "type": "COMPONENT_SET",
-      "variants": 54,
+      "variants": 66,
       "page": "Input fields",
       "category": "layout",
       "properties": {
@@ -1092,7 +1102,7 @@
         "Has Right Icon#4644:111": "BOOLEAN",
         "Has Left Icon#4644:167": "BOOLEAN",
         "State": "VARIANT(Enabled placeholder,Hover,Focused,Entered,Error,Disabled,Locked)",
-        "Type": "VARIANT(numeric,text,search with AI,select,search without AI)",
+        "Type": "VARIANT(numeric,text,search with AI,select,search without AI,multi-select)",
         "Size": "VARIANT(large,small,Large,Small)"
       },
       "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
