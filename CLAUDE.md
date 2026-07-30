@@ -397,6 +397,7 @@ These rules were captured from real design sessions and corrections. Follow them
 - **snackbar.autoDismiss**: Snackbar auto-dismisses after approximately 4 seconds and always provides a manual dismiss option. When a sticky footer is present (e.g. a form with a persistent action bar), the snackbar sits above that footer at the bottom of the screen rather than top-center — the top-center, y=80 placement in [[snackbar.position]] applies to standalone post-action feedback without a sticky footer.
 - **snackbar.successSuppression**: Never show a success snackbar if any part of a multi-field save failed. The success snackbar ("Your changes have been saved") only fires when every save request succeeds; a partial failure shows the error snackbar instead, per [[form.saveErrorBehavior]].
 - **form.scrollToFirstError**: On long forms, scroll to the first validation error after a failed save so the user is not left hunting for it below the fold.
+- **helperText.style**: Helper text under a field must stay short: one line of plain instructional copy, never a multi-sentence explanation and never a "find out more" or help-center link. When a field needs a longer explanation of what it means (not just how to fill it), move that content into an info tooltip icon next to the field label instead of stretching the helper text. The tooltip can link out to a help-center article; the helper text never should.
 
 ### Dialogs vs Intercepts
 | | Blocking Dialog | In-app Intercept |
