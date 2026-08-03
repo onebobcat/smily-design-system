@@ -356,7 +356,7 @@ function Section({ title, children }) {
 
 // ─── SVG ICON ────────────────────────────────────────────────────────────────
 
-function Icon({ name, size = 20, color = "currentColor", strokeWidth = 1.5 }) {
+function Icon({ name, size = 20, color = "currentColor", strokeWidth = 1.5, style }) {
   const paths = {
     close: "M18 6L6 18M6 6l12 12",
     trash: "M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6",
@@ -385,9 +385,11 @@ function Icon({ name, size = 20, color = "currentColor", strokeWidth = 1.5 }) {
     chevron_left: "M15 18l-6-6 6-6",
     user: "M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z",
     language: "M12 22a10 10 0 100-20 10 10 0 000 20zm0 0c-2.5 0-4-4.5-4-10S9.5 2 12 2s4 4.5 4 10-1.5 10-4 10zM2 12h20",
+    filter: "M3 4h18l-7 9v7l-4 2v-9L3 4z",
+    plus: "M12 5v14M5 12h14",
   };
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, ...style }}>
       <path d={paths[name] || ""} />
     </svg>
   );
@@ -2528,6 +2530,84 @@ export default function SmilyDesignSystem() {
               </div>
               <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 560 }}>
                 Standardized filter bar for all list and calendar pages. Up to 3 filter buttons show inline as pills; 4 or more hide the overflow behind a "Filters" dropdown button. Elements stay top-aligned so the layout doesn't break when horizontal scroll triggers on narrow viewports.
+              </div>
+            </Section>
+
+            <Section title="Active filters row (desktop)">
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{
+                    display: "inline-flex", alignItems: "center", gap: 6,
+                    padding: "7px 8px 7px 12px", borderRadius: tokens.radii.sm,
+                    border: `2px solid ${tokens.colors.primary}`, background: tokens.colors.gray100,
+                    color: tokens.colors.primary, fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 14,
+                  }}>
+                    <Icon name="filter" size={16} color={tokens.colors.primary} />
+                    Filters (3)
+                    <Icon name="chevron_down" size={16} color={tokens.colors.primary} style={{ transform: "rotate(180deg)" }} />
+                  </div>
+                  <button style={{
+                    display: "inline-flex", alignItems: "center", gap: 4,
+                    background: "transparent", border: "none", cursor: "pointer",
+                    fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 14, color: tokens.colors.gray600, padding: "8px 12px",
+                  }}>
+                    Clear the 3 filters
+                    <Icon name="close" size={16} color={tokens.colors.gray600} />
+                  </button>
+                </div>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {[
+                    { label: "Rentals", active: true },
+                    { label: "From/To", active: true, icon: "calendar" },
+                    { label: "Destination", active: true },
+                    { label: "Sleeps", active: false },
+                    { label: "Bedrooms", active: false },
+                  ].map(f => (
+                    <div key={f.label} style={{
+                      display: "inline-flex", alignItems: "center", gap: 6,
+                      padding: "8px 8px 8px 12px", borderRadius: tokens.radii.sm,
+                      border: f.active ? `2px solid ${tokens.colors.gray400}` : `1px solid ${tokens.colors.gray300}`,
+                      background: f.active ? tokens.colors.gray100 : "white",
+                      color: f.active ? tokens.colors.gray600 : tokens.colors.gray500,
+                      fontFamily: tokens.fonts.body, fontWeight: 600, fontSize: 14,
+                    }}>
+                      {f.icon && <Icon name={f.icon} size={16} color={tokens.colors.gray500} />}
+                      {f.label}
+                      <Icon name="chevron_down" size={16} color={tokens.colors.gray400} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 620 }}>
+                When filters are active, the "Filters" trigger switches from outline to tonal (filled teal) — a known outline→tonal inconsistency tracked as a separate ticket; implement as-is, no custom workarounds. The clear action reads "Clear the N filters" and stays a secondary text button, never red. Chips with a non-default value get a heavier 2px border to stand out from untouched filters in the same row.
+              </div>
+            </Section>
+
+            <Section title="Mobile — icon-only trigger">
+              <div style={{
+                display: "flex", alignItems: "center", justifyContent: "space-between",
+                height: 56, padding: "0 16px", background: "white",
+                border: `1px solid ${tokens.colors.gray100}`, borderRadius: tokens.radii.md, maxWidth: 375,
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <Icon name="chevron_left" size={20} color={tokens.colors.gray600} />
+                  <span style={{ fontFamily: tokens.fonts.body, fontSize: 14, color: tokens.colors.gray600 }}>Bookings</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <button style={{ background: "transparent", border: "none", cursor: "pointer", width: 37, height: 37, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: tokens.radii.sm }}>
+                    <Icon name="filter" size={20} color={tokens.colors.gray700} />
+                  </button>
+                  <button style={{
+                    width: 37, height: 37, borderRadius: tokens.radii.sm, border: "none", cursor: "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    background: tokens.colors.primaryGradient,
+                  }}>
+                    <Icon name="plus" size={20} color="white" />
+                  </button>
+                </div>
+              </div>
+              <div style={{ marginTop: 16, fontFamily: tokens.fonts.body, fontSize: 13, color: tokens.colors.gray500, lineHeight: 1.7, maxWidth: 620 }}>
+                On mobile the filter trigger is icon-only — no text label, no button border — since the funnel icon is a universal identifier and the header is already dense. It sits top-right, next to the primary CTA. The chevron used on desktop is dropped too: tapping always opens a panel or bottom sheet, so it adds nothing. When a toolbar already carries 4 or more elements (e.g. a multi-rental calendar with view tabs and date navigation), Filters and Legend move into a "⋮" overflow menu instead, ordered view-density options before data-scoping controls: Compact view, Detailed view, Legend, Filters.
               </div>
             </Section>
         </Accordion>
