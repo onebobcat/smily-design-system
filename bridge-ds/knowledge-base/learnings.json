@@ -1,7 +1,7 @@
 {
   "version": 1,
   "meta": {
-    "lastUpdated": "2026-07-30",
+    "lastUpdated": "2026-08-03",
     "dsName": "Smily"
   },
   "learnings": [
@@ -791,6 +791,57 @@
       "source": {
         "type": "component-description",
         "session": "figma-ds-scan-2026-07-30"
+      }
+    },
+    {
+      "id": "L041",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "layout",
+        "section": "breakpoints"
+      },
+      "change": {
+        "property": "breakpoints.thresholds"
+      },
+      "rule": "Smily designs for three breakpoints, not a generic device-based set: mobile below 570px, tablet from 570px to 1000px, and desktop above 1000px. Use these exact thresholds when deciding where a layout should reflow, not screen-size assumptions from a specific device.",
+      "source": {
+        "type": "figma-file-inspection",
+        "session": "figma-responsiveness-scan-2026-08-03"
+      }
+    },
+    {
+      "id": "L042",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "navigation-drawer",
+        "section": "responsive"
+      },
+      "change": {
+        "property": "navigation.responsiveBehavior"
+      },
+      "rule": "Primary navigation adapts per breakpoint rather than collapsing to a single mobile pattern: the full 256px labeled sidebar on desktop (>1000px) becomes an icon-only collapsed rail with no labels on tablet (570-1000px), then a bottom tab bar with 5 icon+label items on mobile (<570px), with overflow items grouped under a trailing \"Menu\" tab. Never jump straight from the labeled sidebar to a hamburger menu.",
+      "source": {
+        "type": "figma-file-inspection",
+        "session": "figma-responsiveness-scan-2026-08-03"
+      }
+    },
+    {
+      "id": "L043",
+      "scope": "global",
+      "context": {
+        "screenType": "any",
+        "component": "layout",
+        "section": "container"
+      },
+      "change": {
+        "property": "layout.containerMaxWidth"
+      },
+      "rule": "Page content containers cap at a maximum width (1126px) rather than stretching to fill wide desktop viewports. The capped container stays left-aligned next to the sidebar, not centered in the remaining space — extra viewport width becomes right-side margin, not extra content width.",
+      "source": {
+        "type": "figma-file-inspection",
+        "session": "figma-responsiveness-scan-2026-08-03"
       }
     }
   ],
