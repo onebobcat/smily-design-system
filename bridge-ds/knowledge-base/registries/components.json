@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-11T07:16:20.355Z",
+  "generatedAt": "2026-08-12T07:40:16.993Z",
   "components": [
     {
       "name": "Flags",
@@ -929,12 +929,12 @@
       "key": "75dbe30c442443159c0148126311133236729878",
       "id": "3109:6029",
       "type": "COMPONENT_SET",
-      "variants": 5,
+      "variants": 6,
       "page": "Badges",
       "category": "layout",
       "properties": {
         "Text#3549:550": "TEXT",
-        "Type": "VARIANT(text,card/row - delivered,outline custom,card/row - new,card/row - seen)"
+        "Type": "VARIANT(text,card/row - delivered,outline custom,card/row - new,card/row - seen,double status)"
       },
       "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
     },
