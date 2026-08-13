@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-12T07:40:16.993Z",
+  "generatedAt": "2026-08-13T07:42:24.896Z",
   "components": [
     {
       "name": "Flags",
@@ -925,20 +925,6 @@
       "description": "Table row.\n\nClickable cells in tables:\n• If the row itself is NOT clickable (action button at row end), it is acceptable to have clickable cells within the row.\n• If a row has a trailing action button, this provides a consistent interaction pattern and maintains accessibility.\n• Key principle: action buttons at row end ensure consistent experience and clearly separate navigation from data content.\n• Avoid having both a clickable row AND clickable cells — pick one interaction model per table.\n\nAccessibility: having action buttons at the end of rows (not inline within cells) ensures screen readers can identify interactive elements reliably."
     },
     {
-      "name": "Badge - custom",
-      "key": "75dbe30c442443159c0148126311133236729878",
-      "id": "3109:6029",
-      "type": "COMPONENT_SET",
-      "variants": 6,
-      "page": "Badges",
-      "category": "layout",
-      "properties": {
-        "Text#3549:550": "TEXT",
-        "Type": "VARIANT(text,card/row - delivered,outline custom,card/row - new,card/row - seen,double status)"
-      },
-      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration."
-    },
-    {
       "name": "Dialog",
       "key": "bef5dfebc5194cb7a2d3794373c28e71b06dd679",
       "id": "2401:10692",
@@ -1106,6 +1092,20 @@
         "Size": "VARIANT(large,small,Large,Small)"
       },
       "description": "Input field.\n\nStates: Enabled placeholder → Hover → Focused → Entered → Error → Disabled → Locked (numeric).\nTypes: text, search, select, numeric. Sizes: large (85px), small (77px).\n\nError state (Save & error handling):\n• On partial save failure: keep failed fields in Error state; apply Entered styling to successfully saved fields.\n• Never reset valid inputs after failure. Show error snackbar alongside field errors.\n• Error copy: specific and actionable — \"Email format is invalid\", not generic \"Error occurred\".\n\nScroll bar (desktop): always include in designs. Use Chrome/Firefox behavior as reference (scroll bar adds padding). Mobile: no reserved padding — bar sits on top of margins.\n\nSpacing: between components = 16px. Between buttons/tabs = 12px.\nCopy: use \"and\" not \"&\". Sentence case. Labels are nouns, helper text is a short sentence."
+    },
+    {
+      "name": "Badge - custom",
+      "key": "75dbe30c442443159c0148126311133236729878",
+      "id": "3109:6029",
+      "type": "COMPONENT_SET",
+      "variants": 6,
+      "page": "Badges",
+      "category": "layout",
+      "properties": {
+        "Text#3549:550": "TEXT",
+        "Type": "VARIANT(text,card/row - delivered,outline custom,card/row - new,card/row - seen,double status)"
+      },
+      "description": "Badge — status indicator.\n\nColor semantics (Smily DS):\n• 🟢 Green = Completed, Success.\n• 🔵 Blue = Upcoming, Scheduled, Partially collected.\n• 🟡 Yellow = Pending, Warning (may or may not be received).\n• 🔴 Red = Danger, Take action required, Overdue.\n• 🔘 Grey = Incomplete, Inactive, Expected but not confirmed.\n• 🟣 Purple = Secured (guaranteed), or AI-powered feature.\n\nApply the color that matches the semantic meaning of the status — never use color for decoration.\n\nDot vs labelled badge\n• When two status badges sit side by side in the same row, both render as dots, with no labels. This keeps the row readable.\n• A single status renders as a labelled badge (text + dot). That is the status badge, not the dot form.\n• A dot always inherits the colour token of the status badge it stands in for. For the new status, that token is colors/turquoise/Teal-500.\n• Type=double status shows two dots plus a timestamp, for a row item carrying two statuses at once.\n\nFull spec is on canvas in the annotation frame below this component set. Decided 11 Aug 2026 by Gwenn Le Pechoux and Abel Nyeki. Context: inbox read/unread indicator. Ref FEX-3114."
     },
     {
       "name": "Bottom navigation bar",
